@@ -6,23 +6,23 @@
 
 ---
 
-К примеру: слева путь к папке моделей "ComfyUI", справа папка моделей "automatic1111", внизу наша программа.
-Для удобства работы лучше сразу приготовьте открытые в нужном месте окна с папками "Куда" и "Откуда".
+К примеру: слева путь к папке моделей _**"ComfyUI"**_, справа папка моделей _**"automatic1111"**_, внизу наша программа.
+Для удобства работы лучше сразу приготовьте открытые в нужном месте окна с папками _**"Куда"**_ и _**"Откуда"**_.
 
-> For example: on the left is the path to the folder of models "ComfyUI", on the right is the folder of models "automatic 1111", at the bottom is our program.
-> For the convenience of work, it is better to immediately prepare windows open in the right place with the "Where" and "From" folders.
+> For example: on the left is the path to the folder of models "**_ComfyUI_**", on the right is the folder of models "**_automatic1111_**", at the bottom is our program.
+> For the convenience of work, it is better to immediately prepare windows open in the right place with the "**_Where_**" and "**_From_**" folders.
 
 ## ![Windows](img/1.jpg)
 
-Запускаем SymLinkCreator
+Запускаем "**SymLinkCreato**
 
-> Start SymLinkCreator
+> Start "**SymLinkCreator**"
 
 ## ![Main Windows](img/2.jpg)
 
-Первой строкой списка всегда должны быть папка «Куда»!!! Стаскиваем ее мышкой в окно программы.
+Первой строкой списка всегда должны быть папка «**Куда**»!!! Стаскиваем ее мышкой в окно программы.
 
-> The first line of the list should always be the "Where To" folder!!! Drag it with the mouse into the program window.
+> The first line of the list should always be the "**Where To**" folder!!! Drag it with the mouse into the program window.
 
 ## ![Main Windows](img/3.jpg)
 
@@ -36,7 +36,7 @@
 
 ---
 
-После того, как первой строкой вставлен путь к папке, в которой будут создаваться ссылки, тащим в окно произвольное количество папок и файлов, количество которых ограничено настройками в INI-файле, который появится рядом с программой после первого выхода из нее. (По умолчанию количество файлов в списке ограничено 25, чтобы вы случайно не стащили в окно каталог Windows (к примеру). Вы можете изменить это значение в INI-файле, и перезапустить программу, но это на вашу ответственность, я думаю, вы понимаете, что делаете).
+После того, как первой строкой вставлен путь к папке, в которой будут создаваться ссылки, тащим в окно произвольное количество папок и файлов, количество которых ограничено настройками в **INI**-файле, который появится рядом с программой после первого выхода из нее. (По умолчанию количество файлов в списке ограничено **25**, чтобы вы случайно не стащили в окно каталог Windows (к примеру). Вы можете изменить это значение в INI-файле, и перезапустить программу, но это на вашу ответственность, я думаю, вы понимаете, что делаете).
 
 > After the path to the folder in which links will be created is inserted in the first line, we drag an arbitrary number of folders and files into the window, the number of which is limited by the settings in the ini-file that appears next to the program after the first exit from it. (By default, the number of files in the list is limited to 25, so that you don't accidentally swipe the Windows directory into the window (for example). You can change this value in the INI file and restart the program, but it's your responsibility, I think you understand what you're doing).
 
