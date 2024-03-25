@@ -148,5 +148,7 @@ HTML-файл, поставляемый с программой, изначал�
 > Suggestions, comments, etc.
 
 NStor
+
 https://t.me/stable_cascade_rus
+
 https://t.me/srigert
