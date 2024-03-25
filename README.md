@@ -1,8 +1,8 @@
-# SymLinkCreator
+# SymLinkCreator (Windows x32)
 
-**Создатель символических ссылок на файлы и папки**
+**Создатель символических ссылок на файлы и папки - Windows x32 прилолжение**
 
-> Creator of symbolic links on files and folders
+> Creator of symbolic links on files and folders - Windows x32 application
 
 ---
 
