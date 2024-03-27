@@ -56,7 +56,7 @@
         <DCC_Namespace>Vcl;Vcl.Imaging;Vcl.Touch;Vcl.Samples;Vcl.Shell;System;Xml;Data;Datasnap;Web;Soap;Winapi;$(DCC_Namespace)</DCC_Namespace>
         <VerInfo_Locale>1049</VerInfo_Locale>
         <VerInfo_Keys>CompanyName=;FileDescription=;FileVersion=1.0.0.0;InternalName=;LegalCopyright=;LegalTrademarks=;OriginalFilename=;ProductName=;ProductVersion=1.0.0.0;Comments=;CFBundleName=</VerInfo_Keys>
-        <Custom_Styles>Windows10|VCLSTYLE|$(BDSCOMMONDIR)\Styles\Windows10.vsf</Custom_Styles>
+        <Custom_Styles>Windows10|VCLSTYLE|$(BDSCOMMONDIR)\Styles\Windows10.vsf;&quot;Windows10 Blue|VCLSTYLE|$(BDSCOMMONDIR)\Styles\Windows10Blue.vsf&quot;;&quot;Windows10 Dark|VCLSTYLE|$(BDSCOMMONDIR)\Styles\Windows10Dark.vsf&quot;</Custom_Styles>
         <DCC_OutputDRCFile>true</DCC_OutputDRCFile>
     </PropertyGroup>
     <PropertyGroup Condition="'$(Base_Win32)'!=''">
@@ -85,7 +85,7 @@
     <PropertyGroup Condition="'$(Cfg_1_Win32)'!=''">
         <AppDPIAwarenessMode>PerMonitorV2</AppDPIAwarenessMode>
         <VerInfo_IncludeVerInfo>true</VerInfo_IncludeVerInfo>
-        <VerInfo_Keys>CompanyName=A&amp;AP Programmer Group;FileDescription=$(MSBuildProjectName);FileVersion=1.1.0.13;InternalName=SymLinkCreator;LegalCopyright=A&amp;AP;LegalTrademarks=A&amp;AP;OriginalFilename=SymLinkCreator.exe;ProductName=$(MSBuildProjectName);ProductVersion=1.1.0.0;Comments=Symbolic Links Creator;ProgramID=com.embarcadero.$(MSBuildProjectName)</VerInfo_Keys>
+        <VerInfo_Keys>CompanyName=A&amp;AP Programmer Group;FileDescription=$(MSBuildProjectName);FileVersion=1.1.0.14;InternalName=SymLinkCreator;LegalCopyright=A&amp;AP;LegalTrademarks=A&amp;AP;OriginalFilename=SymLinkCreator.exe;ProductName=$(MSBuildProjectName);ProductVersion=1.1.0.0;Comments=Symbolic Links Creator;ProgramID=com.embarcadero.$(MSBuildProjectName)</VerInfo_Keys>
         <VerInfo_MinorVer>1</VerInfo_MinorVer>
         <Icon_MainIcon>SymLinkCreator_Icon.ico</Icon_MainIcon>
         <VerInfo_PreRelease>true</VerInfo_PreRelease>
@@ -93,7 +93,7 @@
         <VerInfo_AutoIncVersion>true</VerInfo_AutoIncVersion>
         <UWP_DelphiLogo150>inons\link_150.png</UWP_DelphiLogo150>
         <AppEnableRuntimeThemes>true</AppEnableRuntimeThemes>
-        <VerInfo_Build>13</VerInfo_Build>
+        <VerInfo_Build>14</VerInfo_Build>
         <VerInfo_Locale>1033</VerInfo_Locale>
     </PropertyGroup>
     <PropertyGroup Condition="'$(Cfg_2)'!=''">

@@ -64,6 +64,7 @@ type
     procedure BlinkTimerTimer(Sender: TObject);
     procedure ListBoxReload(Sender: TObject);
     procedure GridRenumerate(Sender: TObject);
+
   private
     procedure WMDROPFILES(var Message: TWMDROPFILES); message WM_DROPFILES;
     { Private declarations }
@@ -78,8 +79,10 @@ var
   sFiles, sList, sHelp, sSize, sFile, FolderStr, NotAFolder, srtUnavail, sPath, sMsgInclideFiles, sMsgDlgCaption, eFromEncode, eToEncode, sMaxDragFiles, sHelpFile, slastFileName: String;
   sNoData, sDoDirs, sDoDirsHint, sAskDirs, sAskDirsHint, sCopyButton, sCopyButtonHint, sCopySizes, sCopySizesHint, sCopyPaths, sCopyPathsHint, sShellExecute, sShellExecuteHint, mFile, mFileHint: string;
   // MenuNames lang variables
-  sNeedFiles, smFile, smFileHint, smOpen, smOpenHint, smSave, smSaveHint, smNew, smNewHint, smQuit, smQuitHint, smFileList, smFileListHint, smDelete, smDeleteHint, smClear, smClearHint, smCopyAll, smCopyAllHint, smCopyNAmes, smCopyNAmesHint, smpNew,
-    smpOpen, smpSave, smpCopyAll, smpCopyNames, smpDelete, smpQuit: string;
+  sNeedFiles, smFile, smFileHint, smOpen, smOpenHint, smSave, smSaveHint, smNew, smNewHint, smQuit, smQuitHint, smFileList, smFileListHint, smDelete, smDeleteHint, smClear, smClearHint,
+  smCopyAll, smCopyAllHint, smCopyNAmes, smCopyNAmesHint, smpNew, smpOpen, smpSave, smpCopyAll, smpCopyNames, smpDelete, smpQuit: string;
+  // name of load lang
+  currentLang: String;
 
 implementation
 
@@ -138,9 +141,11 @@ begin
   batFileName := Ini.ReadString('Bat', 'fName', 'SimLinkCreator');
   batFileExt := Ini.ReadString('Bat', 'fExt', '.bat');
   slastFileName := Ini.ReadString('LastFile', 'File', Extractfilepath(paramstr(0)) + 'SymLinkCreator_last.txt');
+  currentLang := Ini.ReadString('Lang', 'Lang', 'en');
   Ini.Free;
   // open lang files
-  langIni := TIniFile.Create(Extractfilepath(paramstr(0)) + 'SymLinkCreator_lang.ini');
+  CreateDir(Extractfilepath(paramstr(0)) + 'Lang');
+  langIni := TIniFile.Create(Extractfilepath(paramstr(0)) + 'Lang\' +currentLang+ '.ini');
   sNeedFiles := langIni.ReadString('ENG', 'NeedFiles', 'Drag files/folders then start "Create links"');
   FolderStr := langIni.ReadString('ENG', 'FolderStr', 'Folder');
   NotAFolder := langIni.ReadString('ENG', 'NotAFolder', 'First string must be FOLDER!!!');
@@ -315,9 +320,10 @@ begin
   Ini.WriteBool('AskDirs', 'Checked', AskDirs.Checked);
   Ini.WriteBool('CopySizes', 'Checked', CopySizes.Checked);
   Ini.WriteBool('CopyPaths', 'Checked', CopyPaths.Checked);
+  Ini.WriteString('Lang', 'Lang', currentLang);
   Ini.Free;
   // Save main lang strings
-  langIni := TIniFile.Create(Extractfilepath(paramstr(0)) + 'SymLinkCreator_lang.ini');
+  langIni := TIniFile.Create(Extractfilepath(paramstr(0)) + 'Lang\' + CurrentLang + '.ini');
   langIni.WriteString('ENG', 'FilderStr', FolderStr);
   langIni.WriteString('ENG', 'NeedFiles', sNeedFiles);
   langIni.WriteString('ENG', 'folderFirts', NotAFolder);
