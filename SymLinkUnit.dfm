@@ -169,7 +169,7 @@ object SymLinkForm: TSymLinkForm
     Width = 1148
     Height = 620
     Align = alClient
-    PageIndex = 1
+    PageIndex = 2
     Font.Charset = DEFAULT_CHARSET
     Font.Color = clWindowText
     Font.Height = -11
@@ -212,7 +212,7 @@ object SymLinkForm: TSymLinkForm
         Font.Quality = fqClearType
         Options = [goFixedVertLine, goFixedHorzLine, goVertLine, goHorzLine, goDrawFocusSelected, goColSizing, goTabs]
         ParentFont = False
-        PopupMenu = PopUpGreedMenu
+        PopupMenu = pMenu
         TabOrder = 0
         OnKeyDown = FileGridKeyDown
         ColWidths = (
@@ -247,10 +247,7 @@ object SymLinkForm: TSymLinkForm
         Height = 592
         Align = alClient
         TabOrder = 0
-        ExplicitLeft = 44
-        ExplicitTop = 52
-        ExplicitWidth = 1413
-        ExplicitHeight = 857
+        ExplicitTop = -2
         ControlData = {
           4C000000D37500002F3D00000000000000000000000000000000000000000000
           000000004C000000000000000000000001000000E0D057007335CF11AE690800
@@ -283,19 +280,19 @@ object SymLinkForm: TSymLinkForm
       end
       item
         SizeStyle = ssAbsolute
+        Value = 105.000000000000000000
+      end
+      item
+        SizeStyle = ssAbsolute
+        Value = 70.000000000000000000
+      end
+      item
+        SizeStyle = ssAbsolute
+        Value = 70.000000000000000000
+      end
+      item
+        SizeStyle = ssAbsolute
         Value = 110.000000000000000000
-      end
-      item
-        SizeStyle = ssAbsolute
-        Value = 70.000000000000000000
-      end
-      item
-        SizeStyle = ssAbsolute
-        Value = 70.000000000000000000
-      end
-      item
-        SizeStyle = ssAbsolute
-        Value = 120.000000000000000000
       end
       item
         Value = 100.000000000000000000
@@ -350,7 +347,7 @@ object SymLinkForm: TSymLinkForm
       Top = 4
       Width = 83
       Height = 17
-      Hint = 'Ask everyone about the folders in the list'
+      Hint = '-- no lang file --'
       Margins.Left = 2
       Margins.Top = 2
       Margins.Right = 2
@@ -360,11 +357,11 @@ object SymLinkForm: TSymLinkForm
       TabOrder = 0
     end
     object CopySizes: TCheckBox
-      Left = 394
+      Left = 389
       Top = 4
       Width = 52
       Height = 17
-      Hint = 'Add the file size to the file names as well'
+      Hint = '-- nj leng file --'
       Margins.Left = 2
       Margins.Top = 2
       Margins.Right = 2
@@ -374,11 +371,11 @@ object SymLinkForm: TSymLinkForm
       TabOrder = 1
     end
     object CopyPaths: TCheckBox
-      Left = 462
+      Left = 457
       Top = 4
       Width = 56
       Height = 17
-      Hint = 'Add the full path to the files'
+      Hint = '-- no lang file --'
       Margins.Left = 2
       Margins.Top = 2
       Margins.Right = 2
@@ -392,7 +389,7 @@ object SymLinkForm: TSymLinkForm
       Top = 4
       Width = 180
       Height = 17
-      Hint = 'Include files in folders instead of folders in the list'
+      Hint = '-- no lang file --'
       Margins.Left = 2
       Margins.Top = 2
       Margins.Right = 2
@@ -402,33 +399,33 @@ object SymLinkForm: TSymLinkForm
       TabOrder = 3
     end
     object ShellExecute: TBitBtn
-      Left = 531
+      Left = 525
       Top = 0
-      Width = 108
+      Width = 99
       Height = 25
-      Hint = 'Run script and create symbolic links'
+      Hint = '-- no lang file --'
       Anchors = []
       Caption = 'Create links'
       Enabled = False
       Glyph.Data = {
         42020000424D4202000000000000420000002800000010000000100000000100
         10000300000000020000120B0000120B00000000000000000000007C0000E003
-        00001F000000FF7FDE7B7B6FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7F
-        FF7FFF7FFF7FFF7F704745275967FF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7F
-        FF7FFF7FFF7FFF7FC516600B621B0D3FBE7BFF7FFF7FFF7FFF7FFF7FFF7FFF7F
-        FF7FFF7FFF7FFF7F88224002C1062007E41A5863FF7FFF7FFF7FFF7FFF7FFF7F
-        FF7FFF7FFF7FFF7F4822E001410A6106E002E002AC2EDF7FFF7FFF7FFF7FFF7F
-        FF7FFF7FFF7FFF7F6926C001E005010A210A8106C002820A375BFF7FFF7FFF7F
-        FF7FFF7FFF7FFF7FAE36461A030EC001E0010106210A80026002AC2EBD77FF7F
-        FF7FFF7FFF7FFF7F8E368C2E8D2E48222412020AE105E10921066002430E9B6F
-        FF7FFF7FFF7FFF7FAD3268226B2A8D328D328B2E8A2A8A2A8B2E8926661ABB6F
-        FF7FFF7FFF7FFF7FAC32871E8A266A2A6B2A6C2A8C2E8C2E471ECF3ADD77FF7F
-        FF7FFF7FFF7FFF7FAB32851E882689268A268B2A481E281A575BFF7FFF7FFF7F
-        FF7FFF7FFF7FFF7FCC2EC51EA72288268726430E8C2EDE7BFF7FFF7FFF7FFF7F
-        FF7FFF7FFF7FFF7FEC2EE51AC726A4166416775FFF7FFF7FFF7FFF7FFF7FFF7F
-        FF7FFF7FFF7FFF7F0A2B4417C20ECB2EDE77FF7FFF7FFF7FFF7FFF7FFF7FFF7F
-        FF7FFF7FFF7FFF7F2B2F0007775FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7F
-        FF7FFF7FFF7FFF7F7967565BFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7F
+        00001F000000FF7F2412FF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7F
+        FF7FFF7FFF7FFF7F030E2412461AFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7F
+        FF7FFF7FFF7FFF7F030E030E030E2412471EFF7FFF7FFF7FFF7FFF7FFF7FFF7F
+        FF7FFF7FFF7FFF7F030E030E030E030E030E24124516FF7FFF7FFF7FFF7FFF7F
+        FF7FFF7FFF7FFF7F030E030E030E030E030E030E030E2416892AFF7FFF7FFF7F
+        FF7FFF7FFF7FFF7F030E030E030E030E030E030E030E030E030E2516FF7FFF7F
+        FF7FFF7FFF7FFF7F030E030E030E030E030E030E030E030E030E030E030E461A
+        FF7FFF7FFF7FFF7F030E030E030E030E030E030E030E0312030E030E030E030E
+        030E2412FF7FFF7F030E030E030E030E030E030E030E030E030E030E030E030E
+        030E8A2AFF7FFF7F030E030E030E030E030E030E030E030E030E030E030E6826
+        FF7FFF7FFF7FFF7F030E030E030E030E030E0312030E030E030E471EFF7FFF7F
+        FF7FFF7FFF7FFF7F030E030E030E030E2412030E030E461AFF7FFF7FFF7FFF7F
+        FF7FFF7FFF7FFF7F030E030E030E030E030E2516FF7FFF7FFF7FFF7FFF7FFF7F
+        FF7FFF7FFF7FFF7F030E030E241224128926FF7FFF7FFF7FFF7FFF7FFF7FFF7F
+        FF7FFF7FFF7FFF7F030E24126822FF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7F
+        FF7FFF7FFF7FFE7B2516FF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7F
         FF7FFF7FFF7F}
       TabOrder = 4
       OnClick = ShellExecuteClick
@@ -436,31 +433,38 @@ object SymLinkForm: TSymLinkForm
     object CopyButton: TBitBtn
       Left = 275
       Top = 0
-      Width = 110
+      Width = 105
       Height = 25
-      Hint = 'Copy list of files'
+      Hint = '-- no lang file --'
       Anchors = []
       Caption = 'Copy file list'
       Glyph.Data = {
-        42020000424D4202000000000000420000002800000010000000100000000100
-        10000300000000020000120B0000120B00000000000000000000007C0000E003
-        00001F000000FF7F7E679F67BF6FBF6FBF6FBF6FBF6FBF6FBF6FFF737B6FFF7F
-        FF7FFF7FFF7FFF7FBF679F67BF6FBF6BBF6BBF6BBF6BBF6BBF6BFF779C6FFF7F
-        FF7FFF7FFF7FFF7F9F679F679F637F5B7F5B7F5B7F5B7F579F63DF773F471E43
-        1E475C5BFF7FFF7F9F679F679F637F577F5B7F5B7F5B7F579F63DF773F433F43
-        5F4B9F5FFF7FFF7F9F679F679F677F5B7F5F7F5F7F5F7F5B9F67DF7BDF2EBF1E
-        3F4B7F5BFF7FFF7F9F679F679F677F5F7F5F7F5F7F5F7F5B9F67DF7BDF2EBF1E
-        3F4B7F5BFF7FFF7F9F679F679F637F577F5B7F5B7F5B5F579F63DF7BFF32BF26
-        3F4B7F5BFF7FFF7F9F679F679F677F5F7F5F7F5F7F5F7F5F9F67DF77FF32BF22
-        3F4B7F5BFF7FFF7F9F679F679F637F5B7F5B7F5B7F5B7F5B9F67DF7BDF2EBF1E
-        3F4B7F5BFF7FFF7F9F679F679F637F5B7F5B7F5B7F5B7F5F9F6BDF7BFF36DF26
-        3F4B7F5BFF7FFF7F9F679F63DF73DF73BF73BF73DF73BF6F9F6BDF77DF2ABF1E
-        3F4B7F5BFF7FFF7F9F679F67BF6FBF6BBF6BBF6FBF6F3F4B7F5B5F53BF22DF2E
-        3F4F7F5FFF7FFF7FBF6B9F67FF73DF73BF73BF6FBF735F4F3F4BFF363F471F47
-        3F3F9F57FF7FFF7F7D639F639D6F9E6B9F679F6BBF6B3F4BFF363F4FBF267F02
-        FF161A5BFF7FFF7FFF7FFF7FFF7FBE6FFF363F4B3F471F473F475F53DF22BF02
-        F956FF7FFF7FFF7FFF7FFF7FFF7F9D6FFF323F473F473F4B3F4B5F53FF26D952
-        FF7FFF7FFF7F}
+        36030000424D3603000000000000360000002800000010000000100000000100
+        18000000000000030000C30E0000C30E00000000000000000000FFFFFFFFFFFF
+        FFFFFFFFFFFFFFFFFFFFFFFFEDE8E79D8981957B75987F82967F84957F859380
+        86927E867F7478FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF70362570
+        36257036257036257036257036257036257036254010028A6F79FFFFFFFFFFFF
+        FFFFFFFFFFFFFFFFFFFFFFFF703625B88572FFDBAFFFBF8AFFBD84F9AE72F9AB
+        63FFC46887572A917076FFFFFFFAF5F5E6DBDCE6DDE0E6DDE3F8FCFF703625C5
+        846DFFCCA2FBB886F3B681E2A572E29F61F6B569854C27907174FFFFFF703625
+        703625703625703625703625703625DAA28FFFDCB5F6C292F5BB90EDAD88E5A8
+        78FEBB7C92492E926E76FFFFFF703625E09371E9A073EC996EE9956D703625D6
+        AA91FFEBCBF3CAA8F0C09FEEBD96E8B986FAC5858F4D328F6D74FFFFFF703625
+        FFB995FFBF8DFCB480FFB07D703625D9B49DFFF7E7F4D3BEF3CFB4EAC9AAE2C9
+        8EFDD58C8B51348C6C74FFFFFF703625FDC5A7F7C898F0B887F8B989703625D9
+        B7A7FFFFFBFDE0D1F6D4BFEACABAE6D09EFFE9A59D523F986874FFFFFF703625
+        FFD3B4F8D4A7F3C296FBC398703625DBBFABFFFFFCFFEFE3F8DECAF0CBC0FDD6
+        CCFFF3CBAF48389E626DFFFFFF703625FEDCC3F4DDC0ECC9AFF2C8AA703625DD
+        C8B8FFFFFFFEF2EAFEEEE0FFFBF1EBCEC6A0331C4E0000B29490FFFFFF703625
+        FFE8D3F3E1D0EFD8C7F7DAC6703625DFCBBBFFFFFFFFFFFAFDEEDEFFFDEFCAAC
+        A04F0000A66043FFFFFFFFFFFF703625FFF3DDFAE8DBF6E0D0FFE9CD70362570
+        3625703625703625703625703625481E10B2857BFFFFFFFFFFFFFFFFFF703625
+        FFFAE5FEF1E5FEE7DAFFE5D2FFEDD8E6AD91A8442B6B34226B3422703625FFFF
+        FFFFFFFFFFFFFFFFFFFFFFFFFF703625FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFB2
+        63522400006B3422FFFFFFFEFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF703625
+        E0C5B2DCCCB5D2C2AACEB6ADDEC1A4481E106B3422FFFFFFFFFFFFFFFFFFFFFF
+        FFFFFFFFFFFFFFFFFFFFFFFFFF70362570362570362570362570362570362570
+        3625FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF}
       TabOrder = 5
       OnClick = CopyButtonClick
     end
@@ -470,40 +474,41 @@ object SymLinkForm: TSymLinkForm
     Top = 648
     Width = 1148
     Height = 20
+    AutoHint = True
     Panels = <
       item
-        Text = 'No data'
-        Width = 50
+        BiDiMode = bdRightToLeft
+        ParentBiDiMode = False
+        Width = 200
       end>
-    SimpleText = '1234'
   end
-  object PopUpGreedMenu: TPopupMenu
+  object pMenu: TPopupMenu
     Left = 836
     Top = 4
-    object mClearAllFileList: TMenuItem
+    object mNew: TMenuItem
       Caption = 'New'
       Hint = 'Clear table and start new list'
-      OnClick = mClearAllFileListClick
+      OnClick = mNewClick
     end
     object mOpen: TMenuItem
       Caption = 'Open'
       Hint = 'Open saved file list'
       OnClick = mmOpenClick
     end
-    object mSaveAll: TMenuItem
+    object mSave: TMenuItem
       Caption = 'Save'
       Hint = 'Save file list'
-      OnClick = mSaveAllClick
+      OnClick = mSaveClick
     end
-    object mCopyAllToBuff: TMenuItem
+    object mCopyAll: TMenuItem
       Caption = 'Copy'
       Hint = 'Copy all to clipboard'
-      OnClick = mCopyAllToBuffClick
+      OnClick = mCopyAllClick
     end
-    object mCopyNamesToBuff: TMenuItem
+    object mCopyNames: TMenuItem
       Caption = 'Copy names'
       Hint = 'Copy only file names'
-      OnClick = mCopyNamesToBuffClick
+      OnClick = mCopyNamesClick
     end
     object mDelete: TMenuItem
       Caption = 'Delete'
@@ -534,23 +539,23 @@ object SymLinkForm: TSymLinkForm
         Hint = 'Open file'
         OnClick = mmOpenClick
       end
-      object mmSaveAs: TMenuItem
+      object mmSave: TMenuItem
         Caption = 'Save'
         Hint = 'Save file'
-        OnClick = mSaveAllClick
+        OnClick = mSaveClick
       end
       object mmNew: TMenuItem
         Caption = 'New'
         Hint = 'Clear all and start new project'
-        OnClick = mClearAllFileListClick
+        OnClick = mNewClick
       end
-      object mmExit: TMenuItem
+      object mmQuit: TMenuItem
         Caption = 'Quit'
         Hint = 'Quit'
         OnClick = mQuitClick
       end
     end
-    object mmEdit: TMenuItem
+    object mmFileList: TMenuItem
       Caption = 'Filelist'
       Hint = 'Filelist'
       object mmDelClick: TMenuItem
@@ -561,17 +566,17 @@ object SymLinkForm: TSymLinkForm
       object mmClear: TMenuItem
         Caption = 'Clear'
         Hint = 'Clear all'
-        OnClick = mClearAllFileListClick
+        OnClick = mNewClick
       end
-      object mmToBuf: TMenuItem
+      object mmCopyAll: TMenuItem
         Caption = 'Copy all'
         Hint = 'Copy all data from list'
-        OnClick = mCopyAllToBuffClick
+        OnClick = mCopyAllClick
       end
-      object mmCopyNamesToBuff: TMenuItem
+      object mmCopyOnlyNames: TMenuItem
         Caption = 'Copy only names'
         Hint = 'Copi onli file names'
-        OnClick = mCopyNamesToBuffClick
+        OnClick = mCopyNamesClick
       end
     end
   end

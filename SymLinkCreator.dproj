@@ -57,18 +57,19 @@
         <VerInfo_Locale>1049</VerInfo_Locale>
         <VerInfo_Keys>CompanyName=;FileDescription=;FileVersion=1.0.0.0;InternalName=;LegalCopyright=;LegalTrademarks=;OriginalFilename=;ProductName=;ProductVersion=1.0.0.0;Comments=;CFBundleName=</VerInfo_Keys>
         <Custom_Styles>Windows10|VCLSTYLE|$(BDSCOMMONDIR)\Styles\Windows10.vsf</Custom_Styles>
+        <DCC_OutputDRCFile>true</DCC_OutputDRCFile>
     </PropertyGroup>
     <PropertyGroup Condition="'$(Base_Win32)'!=''">
         <DCC_Namespace>System.Win;Data.Win;Datasnap.Win;Web.Win;Soap.Win;Xml.Win;Bde;$(DCC_Namespace)</DCC_Namespace>
         <BT_BuildType>Debug</BT_BuildType>
         <VerInfo_IncludeVerInfo>true</VerInfo_IncludeVerInfo>
-        <VerInfo_Keys>CompanyName=A&amp;AP Programmer Group;FileDescription=$(MSBuildProjectName);FileVersion=1.0.2.0;InternalName=SynLinkCreator;LegalCopyright=A&amp;AP;LegalTrademarks=A&amp;AP;OriginalFilename=SymLinkCreator;ProductName=$(MSBuildProjectName);ProductVersion=1.0.2.0;Comments=Symbolic links file creator;ProgramID=com.embarcadero.$(MSBuildProjectName)</VerInfo_Keys>
+        <VerInfo_Keys>CompanyName=A&amp;AP Programmer Group;FileDescription=$(MSBuildProjectName);FileVersion=1.1.0.0;InternalName=SynLinkCreator;LegalCopyright=A&amp;AP;LegalTrademarks=A&amp;AP;OriginalFilename=SymLinkCreator;ProductName=$(MSBuildProjectName);ProductVersion=1.1.0.0;Comments=Symbolic link file creator;ProgramID=com.embarcadero.$(MSBuildProjectName)</VerInfo_Keys>
         <Manifest_File>$(BDS)\bin\default_app.manifest</Manifest_File>
         <Icon_MainIcon>link.ico</Icon_MainIcon>
         <AppEnableRuntimeThemes>true</AppEnableRuntimeThemes>
         <UWP_DelphiLogo44>inons\link_44.png</UWP_DelphiLogo44>
         <UWP_DelphiLogo150>inons\link_150.png</UWP_DelphiLogo150>
-        <VerInfo_Release>2</VerInfo_Release>
+        <VerInfo_MinorVer>1</VerInfo_MinorVer>
     </PropertyGroup>
     <PropertyGroup Condition="'$(Base_Win64)'!=''">
         <Icon_MainIcon>Filelist_Icon1.ico</Icon_MainIcon>
@@ -84,7 +85,7 @@
     <PropertyGroup Condition="'$(Cfg_1_Win32)'!=''">
         <AppDPIAwarenessMode>PerMonitorV2</AppDPIAwarenessMode>
         <VerInfo_IncludeVerInfo>true</VerInfo_IncludeVerInfo>
-        <VerInfo_Keys>CompanyName=A&amp;AP Programmer Group;FileDescription=$(MSBuildProjectName);FileVersion=1.1.0.10;InternalName=SymLinkCreator;LegalCopyright=A&amp;AP;LegalTrademarks=A&amp;AP;OriginalFilename=SymLinkCreator.exe;ProductName=$(MSBuildProjectName);ProductVersion=1.1.0.0;Comments=Symbolic Links Creator;ProgramID=com.embarcadero.$(MSBuildProjectName)</VerInfo_Keys>
+        <VerInfo_Keys>CompanyName=A&amp;AP Programmer Group;FileDescription=$(MSBuildProjectName);FileVersion=1.1.0.13;InternalName=SymLinkCreator;LegalCopyright=A&amp;AP;LegalTrademarks=A&amp;AP;OriginalFilename=SymLinkCreator.exe;ProductName=$(MSBuildProjectName);ProductVersion=1.1.0.0;Comments=Symbolic Links Creator;ProgramID=com.embarcadero.$(MSBuildProjectName)</VerInfo_Keys>
         <VerInfo_MinorVer>1</VerInfo_MinorVer>
         <Icon_MainIcon>SymLinkCreator_Icon.ico</Icon_MainIcon>
         <VerInfo_PreRelease>true</VerInfo_PreRelease>
@@ -92,7 +93,7 @@
         <VerInfo_AutoIncVersion>true</VerInfo_AutoIncVersion>
         <UWP_DelphiLogo150>inons\link_150.png</UWP_DelphiLogo150>
         <AppEnableRuntimeThemes>true</AppEnableRuntimeThemes>
-        <VerInfo_Build>10</VerInfo_Build>
+        <VerInfo_Build>13</VerInfo_Build>
         <VerInfo_Locale>1033</VerInfo_Locale>
     </PropertyGroup>
     <PropertyGroup Condition="'$(Cfg_2)'!=''">
@@ -150,6 +151,16 @@
                     <Excluded_Packages Name="$(BDSBIN)\dcloffice2k260.bpl">Microsoft Office 2000 Sample Automation Server Wrapper Components</Excluded_Packages>
                     <Excluded_Packages Name="$(BDSBIN)\dclofficexp260.bpl">Microsoft Office XP Sample Automation Server Wrapper Components</Excluded_Packages>
                 </Excluded_Packages>
+                <Language>
+                    <Language Name="ProjectLang">$00000419</Language>
+                </Language>
+                <Resource_DLL_Projects>
+                    <Resource_DLL_Projects Name="Item0">Русский (Россия)*$00000419*RUS*RUS</Resource_DLL_Projects>
+                </Resource_DLL_Projects>
+                <RDP_Source_Files>
+                    <RDP_Source_Files Name="Item0">SymLinkUnit.dfm</RDP_Source_Files>
+                    <RDP_Source_Files Name="Item1">SymLinkCreator.drc</RDP_Source_Files>
+                </RDP_Source_Files>
             </Delphi.Personality>
             <Platforms>
                 <Platform value="Win32">True</Platform>
