@@ -5,7 +5,7 @@ interface
 uses
   Windows, SysUtils, Controls, Forms, Messages, Dialogs, Grids, Clipbrd, ExtCtrls, Menus, StdCtrls, Classes, Graphics,
   Vcl.ComCtrls, IdBaseComponent, IdMessage, Vcl.TabNotBk, DragDrop, DropSource, DragDropFile, DropTarget, DragDropFormats,
-  ImgList, ActnList, Actions, ImageList, Types, example, Vcl.Buttons, Vcl.ToolWin, Vcl.OleCtrls, SHDocVw;
+  ImgList, ActnList, Actions, ImageList, Types, example, Vcl.Buttons, Vcl.ToolWin, Vcl.OleCtrls, SHDocVw, Vcl.Imaging.pngimage;
 
 type
 
@@ -33,19 +33,25 @@ type
     mDelete: TMenuItem;
     mmDelClick: TMenuItem;
     msgTimer: TTimer;
-    BottomGridPanel: TGridPanel;
-    AskDirs: TCheckBox;
-    CopySizes: TCheckBox;
-    CopyPaths: TCheckBox;
-    DoDirs: TCheckBox;
-    ShellExecute: TBitBtn;
-    CopyButton: TBitBtn;
     ListBox: TListBox;
     BlinkTimer: TTimer;
     mOpen: TMenuItem;
     StatusBar: TStatusBar;
     WebBrowser: TWebBrowser;
     TrayIcon: TTrayIcon;
+    GridPanel: TGridPanel;
+    Image2: TImage;
+    DoDirs: TCheckBox;
+    Image3: TImage;
+    AskDirs: TCheckBox;
+    Image4: TImage;
+    CopyButton: TBitBtn;
+    Image5: TImage;
+    CopyPaths: TCheckBox;
+    CopySizes: TCheckBox;
+    Image7: TImage;
+    ShellExecute: TBitBtn;
+    Image1: TImage;
     ThemeBox: TComboBox;
     procedure FormCreate(Sender: TObject);
     procedure mSaveClick(Sender: TObject);
@@ -82,15 +88,15 @@ var
   sFiles, sList, sHelp, sSize, sFile, FolderStr, NotAFolder, srtUnavail, sPath, sMsgInclideFiles, sMsgDlgCaption, eFromEncode, eToEncode, sMaxDragFiles, sHelpFile, slastFileName: String;
   sNoData, sDoDirs, sDoDirsHint, sAskDirs, sAskDirsHint, sCopyButton, sCopyButtonHint, sCopySizes, sCopySizesHint, sCopyPaths, sCopyPathsHint, sShellExecute, sShellExecuteHint, mFile, mFileHint: string;
   // MenuNames lang variables
-  sNeedFiles, smFile, smFileHint, smOpen, smOpenHint, smSave, smSaveHint, smNew, smNewHint, smQuit, smQuitHint, smFileList, smFileListHint, smDelete, smDeleteHint, smClear, smClearHint,
-  smCopyAll, smCopyAllHint, smCopyNAmes, smCopyNAmesHint, smpNew, smpOpen, smpSave, smpCopyAll, smpCopyNames, smpDelete, smpQuit: string;
+  sNeedFiles, smFile, smFileHint, smOpen, smOpenHint, smSave, smSaveHint, smCopy, smCopyHint, smNew, smNewHint, smQuit, smQuitHint, smFileList, smFileListHint, smDelete, smDeleteHint, smClear, smClearHint, smCopyAll, smCopyAllHint, smCopyNames,
+    smCopyNamesHint, smpNew, smpNewHint, smpOpen, smpOpenHint, smpSave, smpSaveHint, smpCopyAll, smpCopyAllHint, smpCopyNames, smpCopyNamesHint, smpDelete, smpDeleteHint, smpQuit, smpQuitHint: string;
   // name of load lang
   currentLang, currentTheme: String;
 
 implementation
 
 uses
-  ShellApi, IniFiles, VCL.Themes;
+  ShellApi, IniFiles, Vcl.Themes;
 
 Var
   All_sizes: INT64;
@@ -124,20 +130,20 @@ begin
   hourTimeStamp := FormatDateTime('yyyymmdd-hh', now);
   // load ini-files
   Ini := TIniFile.Create(Extractfilepath(paramstr(0)) + 'SymLinkCreator.ini');
-  SymLinkForm.Width := Ini.ReadInteger('WinSize', 'Width', 840);
-  SymLinkForm.Height := Ini.ReadInteger('WinSize', 'Height', 700);
+  SymLinkForm.Width := Ini.ReadInteger('WinSize', 'Width', 1000);
+  SymLinkForm.Height := Ini.ReadInteger('WinSize', 'Height', 680);
   SymLinkForm.Left := Ini.ReadInteger('WinPosition', 'X', 100);
   SymLinkForm.Top := Ini.ReadInteger('WinPosition', 'Y', 100);
   DoDirs.Checked := Ini.ReadBool('DoDirs', 'Checked', false);
   AskDirs.Checked := Ini.ReadBool('AskDirs', 'Checked', false);
   CopySizes.Checked := Ini.ReadBool('CopySizes', 'Checked', false);
   CopyPaths.Checked := Ini.ReadBool('CopyPaths', 'Checked', false);
-  SymLinkForm.FileGrid.ColWidths[1] := Ini.ReadInteger('FileGridColWidth', 'Width1', 370);
-  SymLinkForm.FileGrid.ColWidths[2] := Ini.ReadInteger('FileGridColWidth', 'Width2', 310);
+  SymLinkForm.FileGrid.ColWidths[1] := Ini.ReadInteger('FileGridColWidth', 'Width1', 430);
+  SymLinkForm.FileGrid.ColWidths[2] := Ini.ReadInteger('FileGridColWidth', 'Width2', 390);
   SymLinkForm.FileGrid.ColWidths[3] := Ini.ReadInteger('FileGridColWidth', 'Width3', 85);
   MaxDragFiles := Ini.ReadInteger('MaxDragFiles', 'Files', 25);
   sHelpFile := Ini.ReadString('Help', 'File', 'SimLinkCreatorHelpEn.html');
-  TabNotebook.ActivePage := Ini.ReadString('Pages', 'ActivePAge', 'Help');
+  TabNotebook.ActivePage := Ini.ReadString('Pages', 'ActivePage', 'Help');
   logFilePath := Ini.ReadString('Logs', 'fPath', Extractfilepath(paramstr(0)) + 'Logs');
   logFileName := Ini.ReadString('Logs', 'fName', 'SimLinkCreator');
   logFileExt := Ini.ReadString('Logs', 'fExt', '.log');
@@ -146,69 +152,85 @@ begin
   batFileExt := Ini.ReadString('Bat', 'fExt', '.bat');
   slastFileName := Ini.ReadString('LastFile', 'File', Extractfilepath(paramstr(0)) + 'SymLinkCreator_last.txt');
   currentLang := Ini.ReadString('Lang', 'Lang', 'en');
-  currentTheme := Ini.ReadString('Theme', 'Theme', 'Windows10');
+  currentTheme := Ini.ReadString('Theme', 'Theme', 'Carbon');
   Ini.Free;
   // open lang files
   CreateDir(Extractfilepath(paramstr(0)) + 'Lang');
-  langIni := TIniFile.Create(Extractfilepath(paramstr(0)) + 'Lang\' +currentLang+ '.ini');
-  sNeedFiles := langIni.ReadString('ENG', 'NeedFiles', 'Drag files/folders then start "Create links"');
-  FolderStr := langIni.ReadString('ENG', 'FolderStr', 'Folder');
-  NotAFolder := langIni.ReadString('ENG', 'NotAFolder', 'First string must be FOLDER!!!');
-  srtUnavail := langIni.ReadString('ENG', 'Unavailable', 'Unavailable');
-  sPath := langIni.ReadString('ENG', 'Path', 'Path');
-  sFile := langIni.ReadString('ENG', 'File', 'File');
-  sSize := langIni.ReadString('ENG', 'Sise', 'Size');
-  sFiles := langIni.ReadString('ENG', 'TabFiles', 'Files');
-  sList := langIni.ReadString('ENG', 'TabList', 'Flat list');
-  sHelp := langIni.ReadString('ENG', 'TabHelp', 'Help');
-  sMsgInclideFiles := langIni.ReadString('ENG', 'sMsgInclideFiles', 'Include files in them instead of folders?');
-  sMsgDlgCaption := langIni.ReadString('ENG', 'sMsgDlgCaption', 'The logic of enabling folders');
-  srtUnavail := langIni.ReadString('ENG', 'srtUnavail', 'Unavailable');
-  eFromEncode := langIni.ReadString('ENG', 'eFromEncode', '1251');
-  eToEncode := langIni.ReadString('ENG', 'eToEncode', '866');
-  sMaxDragFiles := langIni.ReadString('ENG', 'sMaxDragFiles', ' ' + IntToStr(MaxDragFiles) + ' files max - ini-file settings');
-  sNoData := langIni.ReadString('ENG', 'NoData', 'No data');
-  sDoDirs := langIni.ReadString('ENG', 'DoDirs', 'files instead of folders or >');
-  sDoDirsHint := langIni.ReadString('ENG', 'DoDirsHint', 'Include files in folders instead of folders in the list');
-  sDoDirs := langIni.ReadString('ENG', 'DoDirs', 'files instead of folders or >');
-  sAskDirs := langIni.ReadString('ENG', 'AskDirs', 'ask all time');
-  sAskDirsHint := langIni.ReadString('ENG', 'AskDirsHint', 'Ask everyone about the folders in the list');
-  sCopyButton := langIni.ReadString('ENG', 'CopyButton', 'Copy file list');
-  sCopyButtonHint := langIni.ReadString('ENG', 'CopyButtonHint', 'Copy file list to buffer');
-  sCopySizes := langIni.ReadString('ENG', 'CopySizes', '+ size');
-  sCopySizesHint := langIni.ReadString('ENG', 'sCopySizesHint', 'Add the file size to the file names as well');
-  sCopyPaths := langIni.ReadString('ENG', 'CopyPaths', '+ path');
-  sCopyPathsHint := langIni.ReadString('ENG', 'sCopyPathsHint', 'Add the full paths to the files');
-  sShellExecute := langIni.ReadString('ENG', 'ShellExecute', 'Create Links');
-  sShellExecuteHint := langIni.ReadString('ENG', 'ShellExecuteHint', 'Run script and create symbolic links');
+  langIni := TIniFile.Create(Extractfilepath(paramstr(0)) + 'Lang\' + currentLang + '.ini');
+  sNeedFiles := langIni.ReadString('Lang', 'NeedFiles', 'Drag files/folders then start "Create links"');
+  FolderStr := langIni.ReadString('Lang', 'FolderStr', 'Folder');
+  NotAFolder := langIni.ReadString('Lang', 'NotAFolder', 'First string must be FOLDER!!!');
+  srtUnavail := langIni.ReadString('Lang', 'Unavailable', 'Unavailable');
+  sPath := langIni.ReadString('Lang', 'Path', 'Path');
+  sFile := langIni.ReadString('Lang', 'File', 'File');
+  sSize := langIni.ReadString('Lang', 'Sise', 'Size');
+  sFiles := langIni.ReadString('Lang', 'TabFiles', 'Files');
+  sList := langIni.ReadString('Lang', 'TabList', 'Flat list');
+  sHelp := langIni.ReadString('Lang', 'TabHelp', 'Help');
+  sMsgInclideFiles := langIni.ReadString('Lang', 'sMsgInclideFiles', 'Include files in them instead of folders?');
+  sMsgDlgCaption := langIni.ReadString('Lang', 'sMsgDlgCaption', 'The logic of enabling folders');
+  srtUnavail := langIni.ReadString('Lang', 'srtUnavail', 'Unavailable');
+  eFromEncode := langIni.ReadString('Lang', 'eFromEncode', '1251');
+  eToEncode := langIni.ReadString('Lang', 'eToEncode', '866');
+  sMaxDragFiles := langIni.ReadString('Lang', 'sMaxDragFiles', ' ' + IntToStr(MaxDragFiles) + ' files max - ini-file settings');
+  sNoData := langIni.ReadString('Lang', 'NoData', 'No data');
+  sDoDirs := langIni.ReadString('Lang', 'DoDirs', 'files instead of folders or >');
+  sDoDirsHint := langIni.ReadString('Lang', 'DoDirsHint', 'Include files in folders instead of folders in the list');
+  sDoDirs := langIni.ReadString('Lang', 'DoDirs', 'files instead of folders or >');
+  sAskDirs := langIni.ReadString('Lang', 'AskDirsText', 'ask all time');
+  sAskDirsHint := langIni.ReadString('Lang', 'AskDirsHint', 'Ask everyone about the folders in the list');
+  sCopyButton := langIni.ReadString('Lang', 'CopyButton', 'Copy file list');
+  sCopyButtonHint := langIni.ReadString('Lang', 'CopyButtonHint', 'Copy file list to buffer');
+  sCopySizes := langIni.ReadString('Lang', 'CopySizes', '+ size');
+  sCopySizesHint := langIni.ReadString('Lang', 'CopySizesHint', 'Add the file size to the file names as well');
+  sCopyPaths := langIni.ReadString('Lang', 'CopyPaths', '+ path');
+  sCopyPathsHint := langIni.ReadString('Lang', 'CopyPathsHint', 'Add the full paths to the files');
+  sShellExecute := langIni.ReadString('Lang', 'ShellExecute', 'Create Links');
+  sShellExecuteHint := langIni.ReadString('Lang', 'ShellExecuteHint', 'Run script and create symbolic links');
   // load all menu lang strings
-  smFile := langIni.ReadString('ENG-Menu', smFile, 'File');
-  smFileHint := langIni.ReadString('ENG-Menu', smFileHint, 'File operations');
-  smOpen := langIni.ReadString('ENG-Menu', smOpen, 'Open');
-  smOpenHint := langIni.ReadString('ENG-Menu', smOpenHint, 'Open saved file list');
-  smSave := langIni.ReadString('ENG-Menu', smSave, 'Save');
-  smSaveHint := langIni.ReadString('ENG-Menu', smSaveHint, 'Save file list');
-  smNew := langIni.ReadString('ENG-Menu', smNew, 'New');
-  smNewHint := langIni.ReadString('ENG-Menu', smNewHint, 'New file list');
-  smQuit := langIni.ReadString('ENG-Menu', smQuit, 'Quit');
-  smQuitHint := langIni.ReadString('ENG-Menu', smQuitHint, 'Finish and exit');
-  smFileList := langIni.ReadString('ENG-Menu', smFileList, 'File list');
-  smFileListHint := langIni.ReadString('ENG-Menu', smFileListHint, 'Operations with filelist');
-  smDelete := langIni.ReadString('ENG-Menu', smDelete, 'Delete');
-  smDeleteHint := langIni.ReadString('ENG-Menu', smDeleteHint, 'Delete current string');
-  smClear := langIni.ReadString('ENG-Menu', smClear, 'Clear');
-  smClearHint := langIni.ReadString('ENG-Menu', smClearHint, 'Clear all');
-  smCopyAll := langIni.ReadString('ENG-Menu', smCopyAll, 'Copy all');
-  smCopyAllHint := langIni.ReadString('ENG-Menu', smCopyAllHint, 'Copy all to buffer');
-  smCopyNAmes := langIni.ReadString('ENG-Menu', smCopyNAmes, 'Copy only names');
-  smCopyNAmesHint := langIni.ReadString('ENG-Menu', smCopyNAmesHint, 'Copy only names to buffer');
-  smpNew := langIni.ReadString('ENG-Menu', smpNew, 'New');
-  smpOpen := langIni.ReadString('ENG-Menu', smpOpen, 'Open');
-  smpSave := langIni.ReadString('ENG-Menu', smpSave, 'Save');
-  smpCopyAll := langIni.ReadString('ENG-Menu', smpCopyAll, 'Copy all');
-  smpCopyNames := langIni.ReadString('ENG-Menu', smpCopyNames, 'Copy names');
-  smpDelete := langIni.ReadString('ENG-Menu', smpDelete, 'Delete');
-  smpQuit := langIni.ReadString('ENG-Menu', smpQuit, 'Quit');
+  smFile := langIni.ReadString('Lang-Menu', 'smFile', 'File');
+  smFileHint := langIni.ReadString('Lang-Menu', 'smFileHint', 'File operations');
+  smOpen := langIni.ReadString('Lang-Menu', 'smOpen', 'Open');
+  smOpenHint := langIni.ReadString('Lang-Menu', 'smOpenHint', 'Open saved file list');
+  smSave := langIni.ReadString('Lang-Menu', 'smSave', 'Save');
+  smSaveHint := langIni.ReadString('Lang-Menu', 'smSaveHint', 'Save file list');
+  smNew := langIni.ReadString('Lang-Menu', 'smNew', 'New');
+  smNewHint := langIni.ReadString('Lang-Menu', 'smNewHint', 'New file list');
+  smQuit := langIni.ReadString('Lang-Menu', 'smQuit', 'Quit');
+  smQuitHint := langIni.ReadString('Lang-Menu', 'smQuitHint', 'Finish and exit');
+  smFileList := langIni.ReadString('Lang-Menu', 'smFileList', 'File list');
+  smFileListHint := langIni.ReadString('Lang-Menu', 'smFileListHint', 'Operations with filelist');
+  smDelete := langIni.ReadString('Lang-Menu', 'smDelete', 'Delete');
+  smDeleteHint := langIni.ReadString('Lang-Menu', 'smDeleteHint', 'Delete current string');
+  smClear := langIni.ReadString('Lang-Menu', 'smClear', 'Clear');
+  smClearHint := langIni.ReadString('Lang-Menu', 'smClearHint', 'Clear all');
+  smCopyAll := langIni.ReadString('Lang-Menu', 'smCopyAll', 'Copy all');
+  smCopyAllHint := langIni.ReadString('Lang-Menu', 'smCopyAllHint', 'Copy all to buffer');
+  smCopyNames := langIni.ReadString('Lang-Menu', 'smCopyNAmes', 'Copy only names');
+  smCopyNamesHint := langIni.ReadString('Lang-Menu', 'smCopyNAmesHint', 'Copy only names to buffer');
+  smpNew := langIni.ReadString('Lang-Menu', 'smpNew', 'New');
+  smpOpen := langIni.ReadString('Lang-Menu', 'smpOpen', 'Open');
+  smpSave := langIni.ReadString('Lang-Menu', 'smpSave', 'Save');
+  smpCopyAll := langIni.ReadString('Lang-Menu', 'smpCopyAll', 'Copy all');
+  smpCopyNames := langIni.ReadString('Lang-Menu', 'smpCopyNames', 'Copy names');
+  smpDelete := langIni.ReadString('Lang-Menu', 'smpDelete', 'Delete');
+  smpQuit := langIni.ReadString('Lang-Menu', 'smpQuit', 'Quit');
+
+  smpNew := langIni.ReadString('Lang-Menu', 'mNew', 'New');
+  smpNewHint := langIni.ReadString('Lang-Menu', 'mNewHint', 'New file-list');
+  smpOpen := langIni.ReadString('Lang-Menu', 'mOpen', 'Open');
+  smpOpenHint := langIni.ReadString('Lang-Menu', 'mOpenHint', 'Open file-list');
+  smpSave := langIni.ReadString('Lang-Menu', 'mSave', 'Save');
+  smpSaveHint := langIni.ReadString('Lang-Menu', 'mSaveHint', 'Save file-list');
+  smpCopyAll := langIni.ReadString('Lang-Menu', 'mCopyAll', 'Copy all');
+  smpCopyAllHint := langIni.ReadString('Lang-Menu', 'mCopyHint', 'Copy all to buffer');
+  smpCopyNames := langIni.ReadString('Lang-Menu', 'mCopyNames', 'Copy names');
+  smpCopyNamesHint := langIni.ReadString('Lang-Menu', 'mCopyNamesHint', 'Copy only file names');
+  smpDelete := langIni.ReadString('Lang-Menu', 'mDelete', 'Delete');
+  smpDeleteHint := langIni.ReadString('Lang-Menu', 'mDeleteHint', 'Delete current string');
+  smpQuit := langIni.ReadString('Lang-Menu', 'mQuit', 'Quit');
+  smpQuitHint := langIni.ReadString('Lang-Menu', 'mQuitHint', 'Exit program');
+
   langIni.Free;
   // init main menu lang strings
   MainMenu.Items.Items[0].Caption := smFile;
@@ -230,16 +252,23 @@ begin
   MainMenu.Items.Items[1].Items[1].Hint := smClearHint;
   MainMenu.Items.Items[1].Items[2].Caption := smCopyAll;
   MainMenu.Items.Items[1].Items[2].Hint := smCopyAllHint;
-  MainMenu.Items.Items[1].Items[3].Caption := smCopyNAmes;
-  MainMenu.Items.Items[1].Items[3].Hint := smCopyNAmesHint;
+  MainMenu.Items.Items[1].Items[3].Caption := smCopyNames;
+  MainMenu.Items.Items[1].Items[3].Hint := smCopyNamesHint;
   // init pop-up menu lang strings
   pMenu.Items[0].Caption := smpNew;
+  pMenu.Items[0].Hint := smpNewHint;
   pMenu.Items[1].Caption := smpOpen;
+  pMenu.Items[1].Hint := smpOpenHint;
   pMenu.Items[2].Caption := smpSave;
+  pMenu.Items[2].Hint := smpSaveHint;
   pMenu.Items[3].Caption := smpCopyAll;
+  pMenu.Items[3].Hint := smpCopyAllHint;
   pMenu.Items[4].Caption := smpCopyNames;
+  pMenu.Items[4].Hint := smpCopyNamesHint;
   pMenu.Items[5].Caption := smpDelete;
+  pMenu.Items[5].Hint := smpDeleteHint;
   pMenu.Items[6].Caption := smpQuit;
+  pMenu.Items[6].Hint := smpQuitHint;
   // init tools lang strings
   ShellExecute.Caption := sShellExecute;
   ShellExecute.Hint := sShellExecuteHint;
@@ -262,6 +291,7 @@ begin
   TabNotebook.Pages[0] := sFiles;
   TabNotebook.Pages[1] := sList;
   TabNotebook.Pages[2] := sHelp;
+
   // try load Help page without exceptions
   try
     if FileExists(sHelpFile) then
@@ -293,7 +323,10 @@ begin
   end;
   sm := TStyleManager.Create;
   TStyleManager.TrySetStyle(currentTheme);
-  for i := 0 to Length(sm.StyleNames)-1 do ThemeBox.Items.Add(sm.StyleNames[i]);
+  for i := 0 to Length(sm.StyleNames) - 1 do
+    ThemeBox.Items.Add(sm.StyleNames[i]);
+  ThemeBox.Sorted := true;
+  ThemeBox.Text := currentTheme;
 end;
 
 procedure TSymLinkForm.FormDestroy(Sender: TObject);
@@ -332,63 +365,90 @@ begin
   Ini.WriteString('Theme', 'Theme', currentTheme);
   Ini.Free;
   // Save main lang strings
-  langIni := TIniFile.Create(Extractfilepath(paramstr(0)) + 'Lang\' + CurrentLang + '.ini');
-  langIni.WriteString('ENG', 'FilderStr', FolderStr);
-  langIni.WriteString('ENG', 'NeedFiles', sNeedFiles);
-  langIni.WriteString('ENG', 'folderFirts', NotAFolder);
-  langIni.WriteString('ENG', 'Unavailable', srtUnavail);
-  langIni.WriteString('ENG', 'Path', sPath);
-  langIni.WriteString('ENG', 'File', sFile);
-  langIni.WriteString('ENG', 'Sise', sSize);
-  langIni.WriteString('ENG', 'TabFiles', sFiles);
-  langIni.WriteString('ENG', 'TabList', sList);
-  langIni.WriteString('ENG', 'TabHelp', sHelp);
-  langIni.WriteString('ENG', 'sMsgInclideFiles', sMsgInclideFiles);
-  langIni.WriteString('ENG', 'sMsgDlgCaption', sMsgDlgCaption);
-  langIni.WriteString('ENG', 'srtUnavail', srtUnavail);
-  langIni.WriteString('ENG', 'eFromEncode', eFromEncode);
-  langIni.WriteString('ENG', 'eToEncode', eToEncode);
-  langIni.WriteString('ENG', 'sMaxDragFiles', sMaxDragFiles);
-  langIni.WriteString('ENG', 'NoData', sNoData);
-  langIni.WriteString('ENG', 'DoDirs', sDoDirs);
-  langIni.WriteString('ENG', 'DoDirsHint', sDoDirsHint);
-  langIni.WriteString('ENG', 'CopyButton', sCopyButton);
-  langIni.WriteString('ENG', 'CopyButtonHint', sCopyButtonHint);
-  langIni.WriteString('ENG', 'CopySizes', sCopySizes);
-  langIni.WriteString('ENG', 'CopySizesHint', sCopySizesHint);
-  langIni.WriteString('ENG', 'CopyPaths', sCopyPaths);
-  langIni.WriteString('ENG', 'CopyPathsHint', sCopyPathsHint);
-  langIni.WriteString('ENG', 'ShellExecute', sShellExecute);
-  langIni.WriteString('ENG', 'ShellExecuteHint', sShellExecuteHint);
-  // Save menu lang strings
-  langIni.WriteString('ENG-Menu', 'smFile', smFile);
-  langIni.WriteString('ENG-Menu', 'smFileHint', smFileHint);
-  langIni.WriteString('ENG-Menu', 'smOpen', smOpen);
-  langIni.WriteString('ENG-Menu', 'smOpenHint', smOpenHint);
-  langIni.WriteString('ENG-Menu', 'smSave', smSave);
-  langIni.WriteString('ENG-Menu', 'smSaveHint', smSaveHint);
-  langIni.WriteString('ENG-Menu', 'smNew', smNew);
-  langIni.WriteString('ENG-Menu', 'smNewHint', smNewHint);
-  langIni.WriteString('ENG-Menu', 'smQuit', smQuit);
-  langIni.WriteString('ENG-Menu', 'smQuitHint', smQuitHint);
-  langIni.WriteString('ENG-Menu', 'smFileList', smFileList);
-  langIni.WriteString('ENG-Menu', 'smFileListHint', smFileListHint);
-  langIni.WriteString('ENG-Menu', 'smDelete', smDelete);
-  langIni.WriteString('ENG-Menu', 'smDeleteHint', smDeleteHint);
-  langIni.WriteString('ENG-Menu', 'smClear', smClear);
-  langIni.WriteString('ENG-Menu', 'smClearHint', smClearHint);
-  langIni.WriteString('ENG-Menu', 'smCopyAll', smCopyAll);
-  langIni.WriteString('ENG-Menu', 'smCopyAllHint', smCopyAllHint);
-  langIni.WriteString('ENG-Menu', 'smCopyNAmes', smCopyNAmes);
-  langIni.WriteString('ENG-Menu', 'smCopyNAmesHint', smCopyNAmesHint);
-  langIni.WriteString('ENG-Menu', 'smpNew', smpNew);
-  langIni.WriteString('ENG-Menu', 'smpOpen', smpOpen);
-  langIni.WriteString('ENG-Menu', 'smpSave', smpSave);
-  langIni.WriteString('ENG-Menu', 'smpCopyAll', smpCopyAll);
-  langIni.WriteString('ENG-Menu', 'smpCopyNAmes', smpCopyNames);
-  langIni.WriteString('ENG-Menu', 'smpDelete', smpDelete);
-  langIni.WriteString('ENG-Menu', 'smpQuit', smpQuit);
-  langIni.Free;
+
+  if currentLang <> 'ru' then
+  begin
+    langIni := TIniFile.Create(Extractfilepath(paramstr(0)) + 'Lang\' + currentLang + '.ini');
+    langIni.WriteString('Lang', 'FilderStr', FolderStr);
+    langIni.WriteString('Lang', 'NeedFiles', sNeedFiles);
+    langIni.WriteString('Lang', 'folderFirts', NotAFolder);
+    langIni.WriteString('Lang', 'Unavailable', srtUnavail);
+    langIni.WriteString('Lang', 'Path', sPath);
+    langIni.WriteString('Lang', 'File', sFile);
+    langIni.WriteString('Lang', 'Sise', sSize);
+    langIni.WriteString('Lang', 'TabFiles', sFiles);
+    langIni.WriteString('Lang', 'TabList', sList);
+    langIni.WriteString('Lang', 'TabHelp', sHelp);
+    langIni.WriteString('Lang', 'sMsgInclideFiles', sMsgInclideFiles);
+    langIni.WriteString('Lang', 'sMsgDlgCaption', sMsgDlgCaption);
+    langIni.WriteString('Lang', 'srtUnavail', srtUnavail);
+    langIni.WriteString('Lang', 'eFromEncode', eFromEncode);
+    langIni.WriteString('Lang', 'eToEncode', eToEncode);
+    langIni.WriteString('Lang', 'sMaxDragFiles', sMaxDragFiles);
+    langIni.WriteString('Lang', 'NoData', sNoData);
+    langIni.WriteString('Lang', 'DoDirs', sDoDirs);
+    langIni.WriteString('Lang', 'DoDirsHint', sDoDirsHint);
+    langIni.WriteString('Lang', 'CopyButton', sCopyButton);
+    langIni.WriteString('Lang', 'CopyButtonHint', sCopyButtonHint);
+    langIni.WriteString('Lang', 'CopySizes', sCopySizes);
+    langIni.WriteString('Lang', 'CopySizesHint', sCopySizesHint);
+    langIni.WriteString('Lang', 'CopyPaths', sCopyPaths);
+    langIni.WriteString('Lang', 'CopyPathsHint', sCopyPathsHint);
+    langIni.WriteString('Lang', 'ShellExecute', sShellExecute);
+    langIni.WriteString('Lang', 'ShellExecuteHint', sShellExecuteHint);
+    langIni.WriteString('Lang', 'AskDirsText', sAskDirs);
+    langIni.WriteString('Lang', 'AskDirsHint', sAskDirsHint);
+    // Save menu lang strings
+    langIni.WriteString('Lang-Menu', 'smFile', smFile);
+    langIni.WriteString('Lang-Menu', 'smFileHint', smFileHint);
+    langIni.WriteString('Lang-Menu', 'smOpen', smOpen);
+    langIni.WriteString('Lang-Menu', 'smOpenHint', smOpenHint);
+    langIni.WriteString('Lang-Menu', 'smSave', smSave);
+    langIni.WriteString('Lang-Menu', 'smSaveHint', smSaveHint);
+    langIni.WriteString('Lang-Menu', 'smNew', smNew);
+    langIni.WriteString('Lang-Menu', 'smNewHint', smNewHint);
+    langIni.WriteString('Lang-Menu', 'smQuit', smQuit);
+    langIni.WriteString('Lang-Menu', 'smQuitHint', smQuitHint);
+    langIni.WriteString('Lang-Menu', 'smFileList', smFileList);
+    langIni.WriteString('Lang-Menu', 'smFileListHint', smFileListHint);
+    langIni.WriteString('Lang-Menu', 'smDelete', smDelete);
+    langIni.WriteString('Lang-Menu', 'smDeleteHint', smDeleteHint);
+    langIni.WriteString('Lang-Menu', 'smClear', smClear);
+    langIni.WriteString('Lang-Menu', 'smClearHint', smClearHint);
+    langIni.WriteString('Lang-Menu', 'smCopyAll', smCopyAll);
+    langIni.WriteString('Lang-Menu', 'smCopyAllHint', smCopyAllHint);
+    langIni.WriteString('Lang-Menu', 'smCopyNAmes', smCopyNames);
+    langIni.WriteString('Lang-Menu', 'smCopyNAmesHint', smCopyNamesHint);
+    langIni.WriteString('Lang-Menu', 'mNew', smNew);
+    langIni.WriteString('Lang-Menu', 'mNewHint', smNewHint);
+    langIni.WriteString('Lang-Menu', 'mOpen', smOpen);
+    langIni.WriteString('Lang-Menu', 'mOpenHint', smOpenHint);
+    langIni.WriteString('Lang-Menu', 'mSave', smSave);
+    langIni.WriteString('Lang-Menu', 'mSaveHint', smSaveHint);
+//    langIni.WriteString('Lang-Menu', 'mCopyAll', smCopy);
+//    langIni.WriteString('Lang-Menu', 'mCopyAllHint', smCopyHint);
+    langIni.WriteString('Lang-Menu', 'mCopyNames', smCopyNames);
+    langIni.WriteString('Lang-Menu', 'mCopyNamesHint', smCopyNamesHint);
+    langIni.WriteString('Lang-Menu', 'mDelete', smDelete);
+    langIni.WriteString('Lang-Menu', 'mDeleteHint', smDeleteHint);
+    langIni.WriteString('Lang-Menu', 'mQuit', smQuit);
+    langIni.WriteString('Lang-Menu', 'mQuitHint', smQuitHint);
+    langIni.WriteString('Lang-Menu', 'smpNew', smpNew);
+    langIni.WriteString('Lang-Menu', 'smpNewHent', smpNewHint);
+    langIni.WriteString('Lang-Menu', 'smpOpen', smpOpen);
+    langIni.WriteString('Lang-Menu', 'smpOpenHint', smpOpenHint);
+    langIni.WriteString('Lang-Menu', 'smpSave', smpSave);
+    langIni.WriteString('Lang-Menu', 'smpSaveHint', smpSaveHint);
+    langIni.WriteString('Lang-Menu', 'smpCopyAll', smpCopyAll);
+    langIni.WriteString('Lang-Menu', 'smpCopyAllHint', smpCopyAllHint);
+    langIni.WriteString('Lang-Menu', 'smpCopyNames', smpCopyNames);
+    langIni.WriteString('Lang-Menu', 'smpCopyNamesHint', smpCopyNamesHint);
+    langIni.WriteString('Lang-Menu', 'smpDelete', smpDelete);
+    langIni.WriteString('Lang-Menu', 'smpDeleteHint', smpDeleteHint);
+    langIni.WriteString('Lang-Menu', 'smpQuit', smpQuit);
+    langIni.WriteString('Lang-Menu', 'smpQuitHint', smpQuitHint);
+    langIni.Free;
+  end;
   // Load last fileList
   begin
     ListBoxReload(Self);
@@ -426,10 +486,10 @@ procedure findlastmath(str1, str2: string; var findtopos: Integer);
 var
   a: Integer;
 begin
-  if length(str1) < findtopos then
-    findtopos := length(str1);
-  if length(str2) < findtopos then
-    findtopos := length(str2);
+  if Length(str1) < findtopos then
+    findtopos := Length(str1);
+  if Length(str2) < findtopos then
+    findtopos := Length(str2);
   For a := 1 to findtopos do
     if str1[a] <> str2[a] then
       break;
@@ -611,11 +671,13 @@ begin
   saveBatFile('');
   WinExec('test.cmd', SW_HIDE);
 end;
+
 // show-hide theme box
 procedure TSymLinkForm.StatusBarDblClick(Sender: TObject);
 begin
   ThemeBox.Visible := NOT ThemeBox.Visible;
 end;
+
 // change theme
 procedure TSymLinkForm.ThemeBoxSelect(Sender: TObject);
 begin
@@ -670,7 +732,7 @@ var
 begin
   strFolder := FileGrid.Cells[3, 1];
 
-  if strFolder.length = 0 then
+  if strFolder.Length = 0 then
   begin
     ShellExecute.Enabled := false;
     StatusBar.Panels.Items[0].Text := NotAFolder;

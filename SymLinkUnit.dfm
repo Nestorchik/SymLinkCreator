@@ -1,8 +1,8 @@
 object SymLinkForm: TSymLinkForm
   Left = 221
   Top = 129
-  Width = 822
-  Height = 729
+  Width = 1349
+  Height = 733
   Margins.Left = 2
   Margins.Top = 2
   Margins.Right = 2
@@ -165,10 +165,11 @@ object SymLinkForm: TSymLinkForm
   TextHeight = 17
   object TabNotebook: TTabbedNotebook
     Left = 0
-    Top = 28
-    Width = 804
-    Height = 620
+    Top = 29
+    Width = 1331
+    Height = 623
     Align = alClient
+    PageIndex = 1
     Font.Charset = DEFAULT_CHARSET
     Font.Color = clWindowText
     Font.Height = -11
@@ -181,7 +182,6 @@ object SymLinkForm: TSymLinkForm
     TabFont.Name = 'MS Sans Serif'
     TabFont.Style = []
     TabOrder = 0
-    ExplicitTop = 26
     object TTabPage
       Left = 4
       Top = 24
@@ -189,8 +189,8 @@ object SymLinkForm: TSymLinkForm
       object FileGrid: TStringGrid
         Left = 0
         Top = 0
-        Width = 796
-        Height = 592
+        Width = 1323
+        Height = 595
         Margins.Left = 2
         Margins.Top = 2
         Margins.Right = 2
@@ -229,8 +229,8 @@ object SymLinkForm: TSymLinkForm
       object ListBox: TListBox
         Left = 0
         Top = 0
-        Width = 796
-        Height = 592
+        Width = 1323
+        Height = 595
         Align = alClient
         ItemHeight = 13
         TabOrder = 0
@@ -244,258 +244,27 @@ object SymLinkForm: TSymLinkForm
         AlignWithMargins = True
         Left = 3
         Top = 3
-        Width = 790
-        Height = 586
+        Width = 1317
+        Height = 589
         Align = alClient
         TabOrder = 0
         ExplicitLeft = 0
         ExplicitTop = 4
         ExplicitWidth = 1134
+        ExplicitHeight = 586
         ControlData = {
-          4C000000A6510000913C00000000000000000000000000000000000000000000
-          000000004C000000000000000000000001000000E0D057007335CF11AE690800
-          2B2E126208000000000000004C0000000114020000000000C000000000000046
+          4C0000001E880000E03C00000000000000000000000000000000000000000000
+          000000004C000000000000000000000000000000000000000000000000000000
+          0000000000000000000000004C0000000114020000000000C000000000000046
           8000000000000000000000000000000000000000000000000000000000000000
           00000000000000000100000000000000000000000000000000000000}
       end
     end
   end
-  object BottomGridPanel: TGridPanel
-    Left = 0
-    Top = 0
-    Width = 804
-    Height = 28
-    Margins.Left = 5
-    Margins.Top = 0
-    Margins.Right = 5
-    Margins.Bottom = 0
-    Align = alTop
-    Alignment = taRightJustify
-    BevelOuter = bvNone
-    ColumnCollection = <
-      item
-        SizeStyle = ssAuto
-        Value = 180.000000000000000000
-      end
-      item
-        SizeStyle = ssAuto
-        Value = 95.000000000000000000
-      end
-      item
-        SizeStyle = ssAuto
-        Value = 105.000000000000000000
-      end
-      item
-        SizeStyle = ssAuto
-        Value = 70.000000000000000000
-      end
-      item
-        SizeStyle = ssAuto
-        Value = 70.000000000000000000
-      end
-      item
-        SizeStyle = ssAuto
-        Value = 110.000000000000000000
-      end
-      item
-        SizeStyle = ssAuto
-        Value = 100.000000000000000000
-      end>
-    ControlCollection = <
-      item
-        Column = 1
-        Control = AskDirs
-        Row = 0
-      end
-      item
-        Column = 3
-        Control = CopySizes
-        Row = 0
-      end
-      item
-        Column = 4
-        Control = CopyPaths
-        Row = 0
-      end
-      item
-        Column = 0
-        Control = DoDirs
-        Row = 0
-      end
-      item
-        Column = 5
-        Control = ShellExecute
-        Row = 0
-      end
-      item
-        Column = 2
-        Control = CopyButton
-        Row = 0
-      end
-      item
-        Column = 6
-        Control = ThemeBox
-        Row = 0
-      end>
-    ParentBackground = False
-    ParentColor = True
-    RowCollection = <
-      item
-        SizeStyle = ssAuto
-        Value = 100.000000000000000000
-      end
-      item
-        SizeStyle = ssAuto
-      end>
-    TabOrder = 1
-    ExplicitTop = 5
-    DesignSize = (
-      804
-      28)
-    object AskDirs: TCheckBox
-      Left = 180
-      Top = 4
-      Width = 83
-      Height = 17
-      Hint = '-- no lang file --'
-      Margins.Left = 2
-      Margins.Top = 2
-      Margins.Right = 2
-      Margins.Bottom = 2
-      Anchors = []
-      Caption = 'ask all time'
-      TabOrder = 0
-    end
-    object CopySizes: TCheckBox
-      Left = 368
-      Top = 4
-      Width = 52
-      Height = 17
-      Hint = '-- nj leng file --'
-      Margins.Left = 2
-      Margins.Top = 2
-      Margins.Right = 2
-      Margins.Bottom = 2
-      Anchors = []
-      Caption = '+ size'
-      TabOrder = 1
-    end
-    object CopyPaths: TCheckBox
-      Left = 420
-      Top = 4
-      Width = 56
-      Height = 17
-      Hint = '-- no lang file --'
-      Margins.Left = 2
-      Margins.Top = 2
-      Margins.Right = 2
-      Margins.Bottom = 2
-      Anchors = []
-      Caption = '+ path'
-      TabOrder = 2
-    end
-    object DoDirs: TCheckBox
-      Left = 0
-      Top = 4
-      Width = 180
-      Height = 17
-      Hint = '-- no lang file --'
-      Margins.Left = 2
-      Margins.Top = 2
-      Margins.Right = 2
-      Margins.Bottom = 2
-      Anchors = []
-      Caption = 'files instead of folders or >'
-      TabOrder = 3
-      ExplicitTop = 6
-    end
-    object ShellExecute: TBitBtn
-      Left = 476
-      Top = 0
-      Width = 96
-      Height = 25
-      Hint = '-- no lang file --'
-      Anchors = []
-      Caption = 'Create links'
-      Enabled = False
-      Glyph.Data = {
-        42020000424D4202000000000000420000002800000010000000100000000100
-        10000300000000020000120B0000120B00000000000000000000007C0000E003
-        00001F000000FF7F2412FF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7F
-        FF7FFF7FFF7FFF7F030E2412461AFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7F
-        FF7FFF7FFF7FFF7F030E030E030E2412471EFF7FFF7FFF7FFF7FFF7FFF7FFF7F
-        FF7FFF7FFF7FFF7F030E030E030E030E030E24124516FF7FFF7FFF7FFF7FFF7F
-        FF7FFF7FFF7FFF7F030E030E030E030E030E030E030E2416892AFF7FFF7FFF7F
-        FF7FFF7FFF7FFF7F030E030E030E030E030E030E030E030E030E2516FF7FFF7F
-        FF7FFF7FFF7FFF7F030E030E030E030E030E030E030E030E030E030E030E461A
-        FF7FFF7FFF7FFF7F030E030E030E030E030E030E030E0312030E030E030E030E
-        030E2412FF7FFF7F030E030E030E030E030E030E030E030E030E030E030E030E
-        030E8A2AFF7FFF7F030E030E030E030E030E030E030E030E030E030E030E6826
-        FF7FFF7FFF7FFF7F030E030E030E030E030E0312030E030E030E471EFF7FFF7F
-        FF7FFF7FFF7FFF7F030E030E030E030E2412030E030E461AFF7FFF7FFF7FFF7F
-        FF7FFF7FFF7FFF7F030E030E030E030E030E2516FF7FFF7FFF7FFF7FFF7FFF7F
-        FF7FFF7FFF7FFF7F030E030E241224128926FF7FFF7FFF7FFF7FFF7FFF7FFF7F
-        FF7FFF7FFF7FFF7F030E24126822FF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7F
-        FF7FFF7FFF7FFE7B2516FF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7F
-        FF7FFF7FFF7F}
-      TabOrder = 4
-      OnClick = ShellExecuteClick
-    end
-    object CopyButton: TBitBtn
-      Left = 263
-      Top = 0
-      Width = 105
-      Height = 25
-      Hint = '-- no lang file --'
-      Anchors = []
-      Caption = 'Copy file list'
-      Glyph.Data = {
-        36030000424D3603000000000000360000002800000010000000100000000100
-        18000000000000030000C30E0000C30E00000000000000000000FFFFFFFFFFFF
-        FFFFFFFFFFFFFFFFFFFFFFFFEDE8E79D8981957B75987F82967F84957F859380
-        86927E867F7478FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF70362570
-        36257036257036257036257036257036257036254010028A6F79FFFFFFFFFFFF
-        FFFFFFFFFFFFFFFFFFFFFFFF703625B88572FFDBAFFFBF8AFFBD84F9AE72F9AB
-        63FFC46887572A917076FFFFFFFAF5F5E6DBDCE6DDE0E6DDE3F8FCFF703625C5
-        846DFFCCA2FBB886F3B681E2A572E29F61F6B569854C27907174FFFFFF703625
-        703625703625703625703625703625DAA28FFFDCB5F6C292F5BB90EDAD88E5A8
-        78FEBB7C92492E926E76FFFFFF703625E09371E9A073EC996EE9956D703625D6
-        AA91FFEBCBF3CAA8F0C09FEEBD96E8B986FAC5858F4D328F6D74FFFFFF703625
-        FFB995FFBF8DFCB480FFB07D703625D9B49DFFF7E7F4D3BEF3CFB4EAC9AAE2C9
-        8EFDD58C8B51348C6C74FFFFFF703625FDC5A7F7C898F0B887F8B989703625D9
-        B7A7FFFFFBFDE0D1F6D4BFEACABAE6D09EFFE9A59D523F986874FFFFFF703625
-        FFD3B4F8D4A7F3C296FBC398703625DBBFABFFFFFCFFEFE3F8DECAF0CBC0FDD6
-        CCFFF3CBAF48389E626DFFFFFF703625FEDCC3F4DDC0ECC9AFF2C8AA703625DD
-        C8B8FFFFFFFEF2EAFEEEE0FFFBF1EBCEC6A0331C4E0000B29490FFFFFF703625
-        FFE8D3F3E1D0EFD8C7F7DAC6703625DFCBBBFFFFFFFFFFFAFDEEDEFFFDEFCAAC
-        A04F0000A66043FFFFFFFFFFFF703625FFF3DDFAE8DBF6E0D0FFE9CD70362570
-        3625703625703625703625703625481E10B2857BFFFFFFFFFFFFFFFFFF703625
-        FFFAE5FEF1E5FEE7DAFFE5D2FFEDD8E6AD91A8442B6B34226B3422703625FFFF
-        FFFFFFFFFFFFFFFFFFFFFFFFFF703625FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFB2
-        63522400006B3422FFFFFFFEFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF703625
-        E0C5B2DCCCB5D2C2AACEB6ADDEC1A4481E106B3422FFFFFFFFFFFFFFFFFFFFFF
-        FFFFFFFFFFFFFFFFFFFFFFFFFF70362570362570362570362570362570362570
-        3625FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF}
-      TabOrder = 5
-      OnClick = CopyButtonClick
-    end
-    object ThemeBox: TComboBox
-      Left = 572
-      Top = 0
-      Width = 145
-      Height = 25
-      Anchors = []
-      DropDownCount = 30
-      TabOrder = 6
-      Text = 'ThemeBox'
-      Visible = False
-      OnSelect = ThemeBoxSelect
-    end
-  end
   object StatusBar: TStatusBar
     Left = 0
-    Top = 648
-    Width = 804
+    Top = 652
+    Width = 1331
     Height = 20
     AutoHint = True
     Panels = <
@@ -506,9 +275,395 @@ object SymLinkForm: TSymLinkForm
       end>
     OnDblClick = StatusBarDblClick
   end
+  object GridPanel: TGridPanel
+    Left = 0
+    Top = 0
+    Width = 1331
+    Height = 29
+    Align = alTop
+    ColumnCollection = <
+      item
+        SizeStyle = ssAuto
+        Value = 6.342745162989680000
+      end
+      item
+        SizeStyle = ssAuto
+        Value = 200.000000000000000000
+      end
+      item
+        SizeStyle = ssAuto
+        Value = 8.333333333333330000
+      end
+      item
+        SizeStyle = ssAuto
+        Value = 8.333333333333334000
+      end
+      item
+        SizeStyle = ssAuto
+        Value = 10.000000000000000000
+      end
+      item
+        SizeStyle = ssAuto
+        Value = 11.111111111111110000
+      end
+      item
+        SizeStyle = ssAuto
+        Value = 12.500000000000000000
+      end
+      item
+        SizeStyle = ssAuto
+        Value = 14.285714285714290000
+      end
+      item
+        SizeStyle = ssAuto
+        Value = 16.666666666666660000
+      end
+      item
+        SizeStyle = ssAuto
+        Value = 20.000000000000000000
+      end
+      item
+        SizeStyle = ssAuto
+        Value = 25.000000000000000000
+      end
+      item
+        SizeStyle = ssAuto
+        Value = 33.333333333333340000
+      end
+      item
+        SizeStyle = ssAuto
+        Value = 50.000000000000000000
+      end
+      item
+        SizeStyle = ssAuto
+        Value = 100.000000000000000000
+      end
+      item
+        Value = 100.000000000000000000
+      end>
+    ControlCollection = <
+      item
+        Column = 0
+        Control = Image2
+        Row = 0
+      end
+      item
+        Column = 1
+        Control = DoDirs
+        Row = 0
+      end
+      item
+        Column = 2
+        Control = Image3
+        Row = 0
+      end
+      item
+        Column = 3
+        Control = AskDirs
+        Row = 0
+      end
+      item
+        Column = 4
+        Control = Image4
+        Row = 0
+      end
+      item
+        Column = 5
+        Control = CopyButton
+        Row = 0
+      end
+      item
+        Column = 6
+        Control = Image5
+        Row = 0
+      end
+      item
+        Column = 7
+        Control = CopyPaths
+        Row = 0
+      end
+      item
+        Column = 9
+        Control = CopySizes
+        Row = 0
+      end
+      item
+        Column = 10
+        Control = Image7
+        Row = 0
+      end
+      item
+        Column = 11
+        Control = ShellExecute
+        Row = 0
+      end
+      item
+        Column = 12
+        Control = Image1
+        Row = 0
+      end
+      item
+        Column = 13
+        Control = ThemeBox
+        Row = 0
+      end>
+    RowCollection = <
+      item
+        Value = 100.000000000000000000
+      end>
+    TabOrder = 2
+    DesignSize = (
+      1331
+      29)
+    object Image2: TImage
+      Left = 1
+      Top = 6
+      Width = 7
+      Height = 16
+      Anchors = []
+      AutoSize = True
+      Picture.Data = {
+        0954506E67496D61676589504E470D0A1A0A0000000D49484452000000070000
+        00100806000000DA8165F0000000097048597300000EC400000EC401952B0E1B
+        000000144944415478DA63FCFFFF3F032EC0382A39D42401BE032FE13D52E22F
+        0000000049454E44AE426082}
+      ExplicitTop = 1
+    end
+    object DoDirs: TCheckBox
+      Left = 8
+      Top = 6
+      Width = 174
+      Height = 17
+      Hint = '-- no lang file --'
+      Margins.Left = 2
+      Margins.Top = 2
+      Margins.Right = 2
+      Margins.Bottom = 2
+      Anchors = []
+      Caption = 'files instead of folders or >'
+      TabOrder = 0
+    end
+    object Image3: TImage
+      Left = 182
+      Top = 6
+      Width = 7
+      Height = 16
+      Anchors = []
+      AutoSize = True
+      Picture.Data = {
+        0954506E67496D61676589504E470D0A1A0A0000000D49484452000000070000
+        00100806000000DA8165F0000000097048597300000EC400000EC401952B0E1B
+        000000144944415478DA63FCFFFF3F032EC0382A39D42401BE032FE13D52E22F
+        0000000049454E44AE426082}
+      ExplicitTop = 1
+    end
+    object AskDirs: TCheckBox
+      Left = 189
+      Top = 6
+      Width = 80
+      Height = 17
+      Margins.Left = 2
+      Margins.Top = 2
+      Margins.Right = 2
+      Margins.Bottom = 2
+      Anchors = []
+      Caption = 'ask all time'
+      TabOrder = 1
+    end
+    object Image4: TImage
+      Left = 269
+      Top = 6
+      Width = 7
+      Height = 16
+      Anchors = []
+      AutoSize = True
+      Picture.Data = {
+        0954506E67496D61676589504E470D0A1A0A0000000D49484452000000070000
+        00100806000000DA8165F0000000097048597300000EC400000EC401952B0E1B
+        000000144944415478DA63FCFFFF3F032EC0382A39D42401BE032FE13D52E22F
+        0000000049454E44AE426082}
+      ExplicitTop = 1
+    end
+    object CopyButton: TBitBtn
+      Left = 276
+      Top = 2
+      Width = 112
+      Height = 25
+      Hint = '-- no lang file --'
+      Anchors = []
+      Caption = 'Copy file list'
+      Glyph.Data = {
+        26040000424D2604000000000000360000002800000012000000120000000100
+        180000000000F0030000C30E0000C30E00000000000000000000FFFFFFFFFFFF
+        FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+        FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF0000FFFFFFFFFFFFFFFFFFFFFFFFFFFF
+        FFFFFFFFFFFFFFA23D2B8E3F2D883D29893B248A38218C351E8D321A90311591
+        230F391B1EFFFFFF0000FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFA2
+        3D2BFFBA70FFAD5BFFA24DFF9A3EFF9332FF8B26FF8A11FF681369343CFFFFFF
+        0000FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFA23D2BFFB57AF6A966
+        F49F58F39749F18F3CF18930F3871EF26218623139FFFFFF0000FFFFFFFFFFFF
+        FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFA23D2BFFCD9AF8B37AF5AA6BF4A15DF499
+        4EF29142F39131F46821622F36FFFFFF0000FFFFFF53201A9848318F3F278F3C
+        22993D217A1F07A23D2BFFE0B8F8BF8EF7B47EF5AC6FF4A461F49B52F49C43F3
+        6C2D622D33FFFFFF0000FFFFFFA23D2BFFC675FFAC5AFFA24AFFA33FE8690CA2
+        3D2BFFE5CBF9CAA0F7BF91F7B782F6AE74F4A664F6A756F57338622B30FFFFFF
+        0000FFFFFFA23D2BFFC081F5A765F49E57FD9F4CD16618A23D2BFFF3DEF9D4B4
+        F9CAA4F8C295F7B986F7B078F7B46CF6794362282DFFFFFF0000FFFFFFA23D2B
+        FFCC97F7B279F5A86AFDA95FD66E27A23D2BFFFDF0FBDEC5F9D5B6F9CCA8F8C4
+        99F7BB8AF9C483F7895761272BFFFFFF0080FFFFFFA23D2BFFDAACF7BD8DF7B3
+        7DFDB573D87736A23D2BFFFFFFFDE7D4FBDFC7F9D7BAF8CEABFCCA9FFFE6ADFF
+        805A64191FFFFFFF0000FFFFFFA23D2BFFE5C1F8C89FF8BF90FFC088DD8046A2
+        3D2BFFFFFFFCF1E4FCE8D7FCE1CBFCDFC3F3D4B1A23D2BA23D2BA23D2BFFFFFF
+        0000FFFFFFA23D2BFFF2D5F9D2B2F9C9A3FECC9BDD8250A23D2BFFFFFFFFFFFF
+        FFFFFFFFFFF4FFFFF5DBE3D2A23D2BA23D2BFFFFFFFFFFFF0000FFFFFFA23D2B
+        FFFDE8FBDCC3F8D4B5FFD7B0E89E73A23D2BA23D2BA23D2BA23D2BA23D2BA23D
+        2BA23D2BA23D2BFFFFFFFFFFFFFFFFFF0000FFFFFFA23D2BFFFFFBFCE6D3FBDE
+        C6FAD8BBFACFABEB9E77FCA374E0341AA23D2BFFFFFFFFFFFFFFFFFFFFFFFFFF
+        FFFFFFFFFFFFFFFF0000FFFFFFA23D2BFFFFFFFCEFE3FCE8D7FCDFCAFDE4C7EC
+        D8B4A23D2BA23D2BA23D2BFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+        0000FFFFFFA23D2BFFFFFFFFFFFFFFFFFFFFFFF3FFFFFBC4C8B3A23D2BA23D2B
+        FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF0000FFFFFFA23D2B
+        A23D2BA23D2BA23D2BA23D2BA23D2BA23D2BA23D2BFFFFFFFFFFFFFFFFFFFFFF
+        FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF0000FFFFFFFFFFFFFFFFFFFFFFFFFFFF
+        FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+        FFFFFFFFFFFFFFFF0000}
+      TabOrder = 2
+      OnClick = CopyButtonClick
+    end
+    object Image5: TImage
+      Left = 388
+      Top = 6
+      Width = 7
+      Height = 16
+      Anchors = []
+      AutoSize = True
+      Picture.Data = {
+        0954506E67496D61676589504E470D0A1A0A0000000D49484452000000070000
+        00100806000000DA8165F0000000097048597300000EC400000EC401952B0E1B
+        000000144944415478DA63FCFFFF3F032EC0382A39D42401BE032FE13D52E22F
+        0000000049454E44AE426082}
+      ExplicitLeft = 393
+      ExplicitTop = 1
+    end
+    object CopyPaths: TCheckBox
+      Left = 395
+      Top = 6
+      Width = 63
+      Height = 17
+      Hint = '-- no lang file --'
+      Margins.Left = 2
+      Margins.Top = 2
+      Margins.Right = 2
+      Margins.Bottom = 2
+      Anchors = []
+      Caption = '+ path'
+      TabOrder = 3
+    end
+    object CopySizes: TCheckBox
+      Left = 458
+      Top = 6
+      Width = 62
+      Height = 17
+      Hint = '-- nj leng file --'
+      Margins.Left = 2
+      Margins.Top = 2
+      Margins.Right = 2
+      Margins.Bottom = 2
+      Anchors = []
+      Caption = '+ size'
+      TabOrder = 4
+    end
+    object Image7: TImage
+      Left = 520
+      Top = 6
+      Width = 7
+      Height = 16
+      Anchors = []
+      AutoSize = True
+      Picture.Data = {
+        0954506E67496D61676589504E470D0A1A0A0000000D49484452000000070000
+        00100806000000DA8165F0000000097048597300000EC400000EC401952B0E1B
+        000000144944415478DA63FCFFFF3F032EC0382A39D42401BE032FE13D52E22F
+        0000000049454E44AE426082}
+      ExplicitLeft = 572
+      ExplicitTop = 1
+    end
+    object ShellExecute: TBitBtn
+      Left = 527
+      Top = 2
+      Width = 102
+      Height = 25
+      Anchors = []
+      Caption = 'Create links'
+      Enabled = False
+      Glyph.Data = {
+        36040000424D3604000000000000360000002800000010000000100000000100
+        20000000000000040000120B0000120B00000000000000000000FFFFFF0031FF
+        3900FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+        FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF0000FF
+        0A0032FF3A00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+        FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF0000FF
+        0A0000FF0A0032FF3A00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+        FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF0000FF
+        0A0000FF0A0000FF0A0034FF3C00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+        FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF0000FF
+        0A0000FF0A0000FF0A0000FF0A0034FF3C00FFFFFF00FFFFFF00FFFFFF00FFFF
+        FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF0000FF
+        0A0000FF0A0000FF0A0000FF0A0000FF0A0036FF3E00FFFFFF00FFFFFF00FFFF
+        FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF0000FF
+        0A0000FF0A0000FF0A0000FF0A0000FF0A0000FF0A0036FF3E00FFFFFF00FFFF
+        FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF0000FF
+        0A0000FF0A0000FF0A0000FF0A0000FF0A0000FF0A0000FF0A0037FF3F00FFFF
+        FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF0000FF
+        0A0000FF0A0000FF0A0000FF0A0000FF0A0000FF0A0000FF0A0044FF4B00FFFF
+        FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF0000FF
+        0A0000FF0A0000FF0A0000FF0A0000FF0A0000FF0A0043FF4A00FFFFFF00FFFF
+        FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF0000FF
+        0A0000FF0A0000FF0A0000FF0A0000FF0A0042FF4900FFFFFF00FFFFFF00FFFF
+        FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF0000FF
+        0A0000FF0A0000FF0A0000FF0A0042FF4900FFFFFF00FFFFFF00FFFFFF00FFFF
+        FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF0000FF
+        0A0000FF0A0000FF0A0042FF4900FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+        FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF0000FF
+        0A0000FF0A0041FF4800FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+        FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF0000FF
+        0A0041FF4800FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+        FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF0040FF
+        4700FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+        FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00}
+      TabOrder = 5
+      OnClick = ShellExecuteClick
+    end
+    object Image1: TImage
+      Left = 629
+      Top = 6
+      Width = 7
+      Height = 16
+      Anchors = []
+      AutoSize = True
+      Picture.Data = {
+        0954506E67496D61676589504E470D0A1A0A0000000D49484452000000070000
+        00100806000000DA8165F0000000097048597300000EC400000EC401952B0E1B
+        000000144944415478DA63FCFFFF3F032EC0382A39D42401BE032FE13D52E22F
+        0000000049454E44AE426082}
+      ExplicitLeft = 752
+      ExplicitTop = 1
+    end
+    object ThemeBox: TComboBox
+      Left = 636
+      Top = 3
+      Width = 145
+      Height = 22
+      Style = csOwnerDrawVariable
+      Anchors = []
+      DropDownCount = 30
+      TabOrder = 6
+      OnSelect = ThemeBoxSelect
+    end
+  end
   object pMenu: TPopupMenu
-    Left = 836
-    Top = 4
+    Left = 336
+    Top = 184
     object mNew: TMenuItem
       Caption = 'New'
       Hint = 'Clear table and start new list'
@@ -549,12 +704,12 @@ object SymLinkForm: TSymLinkForm
     DefaultExt = 'txt'
     Filter = 'Text files|*.txt|All files|*.*'
     Title = 'Save to file'
-    Left = 928
-    Top = 65532
+    Left = 408
+    Top = 192
   end
   object MainMenu: TMainMenu
-    Left = 1084
-    Top = 20
+    Left = 476
+    Top = 164
     object mmFile: TMenuItem
       Caption = 'File'
       Hint = 'Files'
@@ -608,19 +763,19 @@ object SymLinkForm: TSymLinkForm
     DefaultExt = 'txt'
     Filter = 'Text files|*.txt|All files|*.*'
     Title = 'Open file'
-    Left = 1012
-    Top = 65532
+    Left = 560
+    Top = 152
   end
   object msgTimer: TTimer
     Interval = 1500
     OnTimer = msgTimerTimer
-    Left = 740
-    Top = 60
+    Left = 360
+    Top = 104
   end
   object BlinkTimer: TTimer
     OnTimer = BlinkTimerTimer
-    Left = 812
-    Top = 52
+    Left = 452
+    Top = 112
   end
   object TrayIcon: TTrayIcon
     Animate = True
@@ -766,7 +921,7 @@ object SymLinkForm: TSymLinkForm
       74223A22227D}
     PopupMenu = pMenu
     Visible = True
-    Left = 912
+    Left = 496
     Top = 72
   end
 end

@@ -8,6 +8,30 @@
   resources were bound to the produced executable.
 */
 
+#define Vcl_Imaging_pnglang_EPNGCannotAddInvalidImageText 64944
+#define Vcl_Imaging_pnglang_EPNGCouldNotLoadResourceText 64945
+#define Vcl_Imaging_pnglang_EPNGOutMemoryText 64946
+#define Vcl_Imaging_pnglang_EPNGCannotChangeTransparentText 64947
+#define Vcl_Imaging_pnglang_EPNGHeaderNotPresentText 64948
+#define Vcl_Imaging_pnglang_EInvalidNewSize 64949
+#define Vcl_Imaging_pnglang_EInvalidSpec 64950
+#define Vcl_Imaging_pnglang_EPNGInvalidBitDepthText 64951
+#define Vcl_Imaging_pnglang_EPNGInvalidIHDRText 64960
+#define Vcl_Imaging_pnglang_EPNGMissingMultipleIDATText 64961
+#define Vcl_Imaging_pnglang_EPNGZLIBErrorText 64962
+#define Vcl_Imaging_pnglang_EPNGInvalidPaletteText 64963
+#define Vcl_Imaging_pnglang_EPNGInvalidFileHeaderText 64964
+#define Vcl_Imaging_pnglang_EPNGIHDRNotFirstText 64965
+#define Vcl_Imaging_pnglang_EPNGSizeExceedsText 64966
+#define Vcl_Imaging_pnglang_EPNGUnknownPalEntryText 64967
+#define Vcl_Imaging_pnglang_EPNGUnknownCriticalChunkText 64968
+#define Vcl_Imaging_pnglang_EPNGUnknownCompressionText 64969
+#define Vcl_Imaging_pnglang_EPNGUnknownInterlaceText 64970
+#define Vcl_Imaging_pnglang_EPNGUnknownColorTypeText 64971
+#define Vcl_Imaging_pnglang_EPNGCannotAssignChunkText 64972
+#define Vcl_Imaging_pnglang_EPNGUnexpectedEndText 64973
+#define Vcl_Imaging_pnglang_EPNGNoImageDataText 64974
+#define Vcl_Imaging_pnglang_EPNGCannotAddChunkText 64975
 #define IdResourceStringsProtocols_RSTLSSSLIOHandlerRequired 64976
 #define IdResourceStringsProtocols_RSTLSSLCanNotSetWhileConnected 64977
 #define IdResourceStringsProtocols_RSTLSSLSSLHandshakeFailed 64978
@@ -23,6 +47,7 @@
 #define Vcl_OleConst_SInvalidLicense 64988
 #define Vcl_OleConst_SNotLicensed 64989
 #define Vcl_OleConst_sNoRunningObject 64990
+#define Vcl_Imaging_pnglang_EPngInvalidCRCText 64991
 #define IdResourceStringsCore_RSIOHandlerTypeNotInstalled 64992
 #define IdResourceStringsCore_RSReplyInvalidCode 64993
 #define IdResourceStringsCore_RSReplyCodeAlreadyExists 64994
@@ -569,6 +594,30 @@
 #define System_SysConst_SAccessDenied 65535
 STRINGTABLE
 BEGIN
+	Vcl_Imaging_pnglang_EPNGCannotAddInvalidImageText,	L"It's not allowed to add a new chunk because the current image is invalid."
+	Vcl_Imaging_pnglang_EPNGCouldNotLoadResourceText,	L"The png image could not be loaded from the resource ID."
+	Vcl_Imaging_pnglang_EPNGOutMemoryText,	L"Some operation could not be performed because the system is out of resources. Close some windows and try again."
+	Vcl_Imaging_pnglang_EPNGCannotChangeTransparentText,	L"Setting bit transparency color is not allowed for png images containing alpha value for each pixel (COLOR_RGBALPHA and COLOR_GRAYSCALEALPHA)"
+	Vcl_Imaging_pnglang_EPNGHeaderNotPresentText,	L"This operation is not valid because the current image contains no valid header."
+	Vcl_Imaging_pnglang_EInvalidNewSize,	L"The new size provided for image resizing is invalid."
+	Vcl_Imaging_pnglang_EInvalidSpec,	L"The \"Portable Network Graphics\" could not be created because invalid image type parameters have being provided."
+	Vcl_Imaging_pnglang_EPNGInvalidBitDepthText,	L"The \"Portable Network Graphics\" image could not be loaded because it uses an invalid image bit depth."
+	Vcl_Imaging_pnglang_EPNGInvalidIHDRText,	L"The \"Portable Network Graphics\" image could not be loaded because one of its main piece of data (ihdr) might be corrupted"
+	Vcl_Imaging_pnglang_EPNGMissingMultipleIDATText,	L"This \"Portable Network Graphics\" image is invalid because it has missing image parts."
+	Vcl_Imaging_pnglang_EPNGZLIBErrorText,	L"Could not decompress the image because it contains invalid compressed data.\r\n Description: "
+	Vcl_Imaging_pnglang_EPNGInvalidPaletteText,	L"The \"Portable Network Graphics\" image contains an invalid palette."
+	Vcl_Imaging_pnglang_EPNGInvalidFileHeaderText,	L"The file being read is not a valid \"Portable Network Graphics\" image because it contains an invalid header. This file may be corrupted, try obtaining it again"
+	Vcl_Imaging_pnglang_EPNGIHDRNotFirstText,	L"This \"Portable Network Graphics\" image is not supported or it might be invalid.\r\n(IHDR chunk is not the first)"
+	Vcl_Imaging_pnglang_EPNGSizeExceedsText,	L"This \"Portable Network Graphics\" image is not supported because either its width or height exceeds the maximum size of 65535 pixels."
+	Vcl_Imaging_pnglang_EPNGUnknownPalEntryText,	L"There is no such palette entry."
+	Vcl_Imaging_pnglang_EPNGUnknownCriticalChunkText,	L"This \"Portable Network Graphics\" image contains an unknown critical part which could not be decoded."
+	Vcl_Imaging_pnglang_EPNGUnknownCompressionText,	L"This \"Portable Network Graphics\" image is encoded with an unknown compression scheme which could not be decoded."
+	Vcl_Imaging_pnglang_EPNGUnknownInterlaceText,	L"This \"Portable Network Graphics\" image uses an unknown interlace scheme which could not be decoded."
+	Vcl_Imaging_pnglang_EPNGUnknownColorTypeText,	L"This \"Portable Network Graphics\" image uses an unknown color type which could not be decoded."
+	Vcl_Imaging_pnglang_EPNGCannotAssignChunkText,	L"The chunks must be compatible to be assigned."
+	Vcl_Imaging_pnglang_EPNGUnexpectedEndText,	L"This \"Portable Network Graphics\" image is invalid because the decoder found an unexpected end of the file."
+	Vcl_Imaging_pnglang_EPNGNoImageDataText,	L"This \"Portable Network Graphics\" image contains no data."
+	Vcl_Imaging_pnglang_EPNGCannotAddChunkText,	L"The program tried to add a existent critical chunk to the current image which is not allowed."
 	IdResourceStringsProtocols_RSTLSSSLIOHandlerRequired,	L"SSL IOHandler is required for this setting"
 	IdResourceStringsProtocols_RSTLSSLCanNotSetWhileConnected,	L"This value can not be set while the client is connected."
 	IdResourceStringsProtocols_RSTLSSLSSLHandshakeFailed,	L"SSL negotiation failed."
@@ -584,6 +633,7 @@ BEGIN
 	Vcl_OleConst_SInvalidLicense,	L"License information for %s is invalid"
 	Vcl_OleConst_SNotLicensed,	L"License information for %s not found. You cannot use this control in design mode"
 	Vcl_OleConst_sNoRunningObject,	L"Unable to retrieve a pointer to a running object registered with OLE for %s/%s"
+	Vcl_Imaging_pnglang_EPngInvalidCRCText,	L"This \"Portable Network Graphics\" image is not valid because it contains invalid pieces of data (crc error)"
 	IdResourceStringsCore_RSIOHandlerTypeNotInstalled,	L"No IOHandler of type %s is installed."
 	IdResourceStringsCore_RSReplyInvalidCode,	L"Reply Code is not valid: %s"
 	IdResourceStringsCore_RSReplyCodeAlreadyExists,	L"Reply Code already exists: %s"
