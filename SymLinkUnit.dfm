@@ -12,6 +12,7 @@ object SymLinkForm: TSymLinkForm
   BorderWidth = 1
   Caption = 'SymLinkCreator'
   Color = clAppWorkSpace
+  DragMode = dmAutomatic
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
   Font.Height = -13
@@ -169,7 +170,6 @@ object SymLinkForm: TSymLinkForm
     Width = 1331
     Height = 623
     Align = alClient
-    PageIndex = 1
     Font.Charset = DEFAULT_CHARSET
     Font.Color = clWindowText
     Font.Height = -11
@@ -254,8 +254,8 @@ object SymLinkForm: TSymLinkForm
         ExplicitHeight = 586
         ControlData = {
           4C0000001E880000E03C00000000000000000000000000000000000000000000
-          000000004C000000000000000000000000000000000000000000000000000000
-          0000000000000000000000004C0000000114020000000000C000000000000046
+          000000004C000000000000000000000001000000E0D057007335CF11AE690800
+          2B2E126208000000000000004C0000000114020000000000C000000000000046
           8000000000000000000000000000000000000000000000000000000000000000
           00000000000000000100000000000000000000000000000000000000}
       end
@@ -656,6 +656,7 @@ object SymLinkForm: TSymLinkForm
       Height = 22
       Style = csOwnerDrawVariable
       Anchors = []
+      DragMode = dmAutomatic
       DropDownCount = 30
       TabOrder = 6
       OnSelect = ThemeBoxSelect

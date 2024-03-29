@@ -13,7 +13,7 @@ uses
 
 begin
   Application.Initialize;
-  TStyleManager.TrySetStyle('Windows10');
+  TStyleManager.TrySetStyle('Carbon');
   Application.Title := 'SymLinkCreator';
   Application.CreateForm(TSymLinkForm, SymLinkForm);
   Application.Run;

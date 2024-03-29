@@ -123,8 +123,6 @@ var
   s: String;
   sm: TStyleManager;
 begin
-  // accept drag files to program
-  DragAcceptFiles(SymLinkForm.Handle, true);
   // timeStamps
   longTimeStamp := FormatDateTime('yyyymmdd-hhnnsszzz', now);
   hourTimeStamp := FormatDateTime('yyyymmdd-hh', now);
@@ -206,8 +204,8 @@ begin
   smClearHint := langIni.ReadString('Lang-Menu', 'smClearHint', 'Clear all');
   smCopyAll := langIni.ReadString('Lang-Menu', 'smCopyAll', 'Copy all');
   smCopyAllHint := langIni.ReadString('Lang-Menu', 'smCopyAllHint', 'Copy all to buffer');
-  smCopyNames := langIni.ReadString('Lang-Menu', 'smCopyNAmes', 'Copy only names');
-  smCopyNamesHint := langIni.ReadString('Lang-Menu', 'smCopyNAmesHint', 'Copy only names to buffer');
+  smCopyNames := langIni.ReadString('Lang-Menu', 'smCopyNames', 'Copy only names');
+  smCopyNamesHint := langIni.ReadString('Lang-Menu', 'smCopyNamesHint', 'Copy only names to buffer');
   smpNew := langIni.ReadString('Lang-Menu', 'smpNew', 'New');
   smpOpen := langIni.ReadString('Lang-Menu', 'smpOpen', 'Open');
   smpSave := langIni.ReadString('Lang-Menu', 'smpSave', 'Save');
@@ -215,22 +213,20 @@ begin
   smpCopyNames := langIni.ReadString('Lang-Menu', 'smpCopyNames', 'Copy names');
   smpDelete := langIni.ReadString('Lang-Menu', 'smpDelete', 'Delete');
   smpQuit := langIni.ReadString('Lang-Menu', 'smpQuit', 'Quit');
-
   smpNew := langIni.ReadString('Lang-Menu', 'mNew', 'New');
   smpNewHint := langIni.ReadString('Lang-Menu', 'mNewHint', 'New file-list');
   smpOpen := langIni.ReadString('Lang-Menu', 'mOpen', 'Open');
   smpOpenHint := langIni.ReadString('Lang-Menu', 'mOpenHint', 'Open file-list');
   smpSave := langIni.ReadString('Lang-Menu', 'mSave', 'Save');
   smpSaveHint := langIni.ReadString('Lang-Menu', 'mSaveHint', 'Save file-list');
-  smpCopyAll := langIni.ReadString('Lang-Menu', 'mCopyAll', 'Copy all');
-  smpCopyAllHint := langIni.ReadString('Lang-Menu', 'mCopyHint', 'Copy all to buffer');
+  smpCopyAll := langIni.ReadString('Lang-Menu', 'smpCopyAll', 'Copy all - 2');
+  smpCopyAllHint := langIni.ReadString('Lang-Menu', 'smpCopyHint', 'Copy all to buffer');
   smpCopyNames := langIni.ReadString('Lang-Menu', 'mCopyNames', 'Copy names');
   smpCopyNamesHint := langIni.ReadString('Lang-Menu', 'mCopyNamesHint', 'Copy only file names');
   smpDelete := langIni.ReadString('Lang-Menu', 'mDelete', 'Delete');
   smpDeleteHint := langIni.ReadString('Lang-Menu', 'mDeleteHint', 'Delete current string');
   smpQuit := langIni.ReadString('Lang-Menu', 'mQuit', 'Quit');
   smpQuitHint := langIni.ReadString('Lang-Menu', 'mQuitHint', 'Exit program');
-
   langIni.Free;
   // init main menu lang strings
   MainMenu.Items.Items[0].Caption := smFile;
@@ -321,12 +317,25 @@ begin
     end;
   finally
   end;
-  sm := TStyleManager.Create;
+  // sm := TStyleManager.Create;
   TStyleManager.TrySetStyle(currentTheme);
   for i := 0 to Length(sm.StyleNames) - 1 do
     ThemeBox.Items.Add(sm.StyleNames[i]);
   ThemeBox.Sorted := true;
-  ThemeBox.Text := currentTheme;
+  // ThemeBox.Text := currentTheme;
+  Application.ProcessMessages;
+  // accept drag files to program
+  DragAcceptFiles(SymLinkForm.Handle, true);
+end;
+
+// change theme
+procedure TSymLinkForm.ThemeBoxSelect(Sender: TObject);
+begin
+  TStyleManager.TrySetStyle(ThemeBox.Text, false);
+  currentTheme := ThemeBox.Text;
+  // accept drag files to program
+  Application.ProcessMessages; // process the message queue;
+  DragAcceptFiles(SymLinkForm.Handle, true);
 end;
 
 procedure TSymLinkForm.FormDestroy(Sender: TObject);
@@ -417,16 +426,16 @@ begin
     langIni.WriteString('Lang-Menu', 'smClearHint', smClearHint);
     langIni.WriteString('Lang-Menu', 'smCopyAll', smCopyAll);
     langIni.WriteString('Lang-Menu', 'smCopyAllHint', smCopyAllHint);
-    langIni.WriteString('Lang-Menu', 'smCopyNAmes', smCopyNames);
-    langIni.WriteString('Lang-Menu', 'smCopyNAmesHint', smCopyNamesHint);
+    langIni.WriteString('Lang-Menu', 'smCopyNames', smCopyNames);
+    langIni.WriteString('Lang-Menu', 'smCopyNsmesHint', smCopyNamesHint);
     langIni.WriteString('Lang-Menu', 'mNew', smNew);
     langIni.WriteString('Lang-Menu', 'mNewHint', smNewHint);
     langIni.WriteString('Lang-Menu', 'mOpen', smOpen);
     langIni.WriteString('Lang-Menu', 'mOpenHint', smOpenHint);
     langIni.WriteString('Lang-Menu', 'mSave', smSave);
     langIni.WriteString('Lang-Menu', 'mSaveHint', smSaveHint);
-//    langIni.WriteString('Lang-Menu', 'mCopyAll', smCopy);
-//    langIni.WriteString('Lang-Menu', 'mCopyAllHint', smCopyHint);
+    // langIni.WriteString('Lang-Menu', 'mCopyAll', smCopy);
+    // langIni.WriteString('Lang-Menu', 'mCopyAllHint', smCopyHint);
     langIni.WriteString('Lang-Menu', 'mCopyNames', smCopyNames);
     langIni.WriteString('Lang-Menu', 'mCopyNamesHint', smCopyNamesHint);
     langIni.WriteString('Lang-Menu', 'mDelete', smDelete);
@@ -434,7 +443,7 @@ begin
     langIni.WriteString('Lang-Menu', 'mQuit', smQuit);
     langIni.WriteString('Lang-Menu', 'mQuitHint', smQuitHint);
     langIni.WriteString('Lang-Menu', 'smpNew', smpNew);
-    langIni.WriteString('Lang-Menu', 'smpNewHent', smpNewHint);
+    langIni.WriteString('Lang-Menu', 'smpNewHint', smpNewHint);
     langIni.WriteString('Lang-Menu', 'smpOpen', smpOpen);
     langIni.WriteString('Lang-Menu', 'smpOpenHint', smpOpenHint);
     langIni.WriteString('Lang-Menu', 'smpSave', smpSave);
@@ -531,7 +540,7 @@ Procedure AddToList(FileName: string);
     srs: TSearchRec;
     filefound: boolean;
   begin
-    application.ProcessMessages;
+    Application.ProcessMessages;
     filefound := false;
     if FindFirst(path + '\*.*', faAnyFile, srs) = 0 then
     begin
@@ -590,7 +599,7 @@ var
 begin
   If AskDirs.Checked then // How many files are dropped
   begin
-    DoDirs.Checked := application.MessageBox(PChar(sMsgInclideFiles), PChar(sMsgDlgCaption), MB_YESNO) = IDYes;
+    DoDirs.Checked := Application.MessageBox(PChar(sMsgInclideFiles), PChar(sMsgDlgCaption), MB_YESNO) = IDYes;
   end;
   NumFiles := DragQueryFile(Message.Drop, cardinal(-1), nil, 0);
   for i := 0 to (NumFiles - 1) do // Accept dropped files
@@ -678,13 +687,6 @@ begin
   ThemeBox.Visible := NOT ThemeBox.Visible;
 end;
 
-// change theme
-procedure TSymLinkForm.ThemeBoxSelect(Sender: TObject);
-begin
-  TStyleManager.TrySetStyle(ThemeBox.Text, false);
-  currentTheme := ThemeBox.Text;
-end;
-
 procedure TSymLinkForm.mSaveClick(Sender: TObject);
 Var
   f: TextFile;
@@ -716,7 +718,7 @@ begin
   ListBox.Items.Clear;
   for a := 1 to FileGrid.RowCount - 1 do
   begin
-    application.ProcessMessages;
+    Application.ProcessMessages;
     if FileGrid.Cells[1, a] = '' then
       break;
     str := (FileGrid.Cells[1, a] + FileGrid.Cells[2, a]);
@@ -925,7 +927,7 @@ end;
 
 procedure TSymLinkForm.mQuitClick(Sender: TObject);
 begin
-  application.Terminate;
+  Application.Terminate;
 end;
 
 procedure TSymLinkForm.mCopyAllClick(Sender: TObject);
