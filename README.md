@@ -4,6 +4,7 @@
 
 > Creator of symbolic links on files and folders - Windows x32 application
 
+## ![Windows](img/LogoSccreen.png)
 ---
 
 К примеру: слева путь к папке моделей _**"ComfyUI"**_, справа папка моделей _**"automatic1111"**_, внизу наша программа.
