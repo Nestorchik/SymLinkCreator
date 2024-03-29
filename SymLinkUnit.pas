@@ -378,7 +378,7 @@ begin
   if currentLang <> 'ru' then
   begin
     langIni := TIniFile.Create(Extractfilepath(paramstr(0)) + 'Lang\' + currentLang + '.ini');
-    langIni.WriteString('Lang', 'FilderStr', FolderStr);
+    langIni.WriteString('Lang', 'FolderStr', FolderStr);
     langIni.WriteString('Lang', 'NeedFiles', sNeedFiles);
     langIni.WriteString('Lang', 'folderFirts', NotAFolder);
     langIni.WriteString('Lang', 'Unavailable', srtUnavail);
