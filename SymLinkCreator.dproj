@@ -85,7 +85,7 @@
     <PropertyGroup Condition="'$(Cfg_1_Win32)'!=''">
         <AppDPIAwarenessMode>PerMonitorV2</AppDPIAwarenessMode>
         <VerInfo_IncludeVerInfo>true</VerInfo_IncludeVerInfo>
-        <VerInfo_Keys>CompanyName=A&amp;AP Programmer Group;FileDescription=Simbolic Links Creator;FileVersion=1.1.4.2;InternalName=SymLinkCreator;LegalCopyright=A&amp;AP;LegalTrademarks=A&amp;AP;OriginalFilename=SymLinkCreator.exe;ProductName=$(MSBuildProjectName);ProductVersion=1.1.4.1;Comments=Symbolic Links Creator;ProgramID=Embarcadero RAD 10.3</VerInfo_Keys>
+        <VerInfo_Keys>CompanyName=A&amp;AP Programmer Group;FileDescription=Simbolic Links Creator;FileVersion=1.1.4.2;InternalName=SymLinkCreator;LegalCopyright=A&amp;AP;LegalTrademarks=A&amp;AP;OriginalFilename=SymLinkCreator.exe;ProductName=$(MSBuildProjectName);ProductVersion=1.1.4.2;Comments=Symbolic Links Creator;ProgramID=Embarcadero RAD 10.3</VerInfo_Keys>
         <VerInfo_MinorVer>1</VerInfo_MinorVer>
         <Icon_MainIcon>icons\link.ico</Icon_MainIcon>
         <UWP_DelphiLogo44>icons\link_44.png</UWP_DelphiLogo44>

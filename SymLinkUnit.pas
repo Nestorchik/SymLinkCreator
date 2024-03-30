@@ -157,7 +157,7 @@ begin
   langIni := TIniFile.Create(Extractfilepath(paramstr(0)) + 'Lang\' + currentLang + '.ini');
   sNeedFiles := langIni.ReadString('Lang', 'NeedFiles', 'Drag files/folders then start "Create links"');
   FolderStr := langIni.ReadString('Lang', 'FolderStr', 'Folder');
-  NotAFolder := langIni.ReadString('Lang', 'NotAFolder', 'First string must be FOLDER!!!');
+  NotAFolder := langIni.ReadString('Lang', 'folderFirts', 'First string must be FOLDER!!!');
   srtUnavail := langIni.ReadString('Lang', 'Unavailable', 'Unavailable');
   sPath := langIni.ReadString('Lang', 'Path', 'Path');
   sFile := langIni.ReadString('Lang', 'File', 'File');
@@ -350,7 +350,7 @@ begin
   Ini := TIniFile.Create(Extractfilepath(paramstr(0)) + 'SymLinkCreator.ini');
   Ini.WriteInteger('WinSize', 'Width', SymLinkForm.Width);
   Ini.WriteInteger('WinSize', 'Height', SymLinkForm.Height);
-  Ini.WriteString('WinPosition', 'Comment', 'WinPos Stability only with "Wondows 10" theme!');
+  Ini.WriteString('WinPosition', 'Comment', 'WinPos Stability only with "Windows 10" theme!');
   Ini.WriteInteger('WinPosition', 'X', SymLinkForm.Left);
   Ini.WriteInteger('WinPosition', 'Y', SymLinkForm.Top);
   Ini.WriteInteger('FileGridColWidth', 'Width1', FileGrid.ColWidths[1]);
