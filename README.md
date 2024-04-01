@@ -139,20 +139,14 @@ HTML-файл, поставляемый с программой, изначал�
 ## ![Main Windows](img/12.jpg)
 
 ---
-Переключение локализации интерфейса пока в ini-файле ('ru'/'en')
->Switching the interface localization is still in the ini file ('ru'/'en')
+Переключение локализации интерфейса и с мена стилей в меню по двойному щелчку на статус-бар
+>Switching interface localization and changing styles in the menu by double-clicking on the status bar
 ---
-
-Прошу учесть, что это еще даже не «бета-версия», а «пре-альфа», поэтом много недоработок, оставленных «на потом». Из того, что планируется: мульти-язычность + перекодировка bat-файлов национальный формат (китайцы очень просили), активация-деактивация кнопки RUN по условию «все нормально или не совсем», чек-бокс «составить скрипт без выполнения», создание ссылок с переименованием».
-Прошу потестировать, глюки, баги, тараканы, медведи…
-Пожелания, замечания и т.п.
-
-> Please note that this is not even a "beta version" yet, but a "pre-alpha", so there are many flaws left "for later". From what is planned: multi-lingual + recoding of bat files in the national format (the Chinese asked very much), activation-deactivation of the RUN button under the condition "everything is fine or not at all", a check-box "compose a script without execution", creating links with renaming."
-> Please test, glitches, bugs, cockroaches, bears…
-> Suggestions, comments, etc.
+Образец языкового файла в папке 'lang'. Если надо еще языки - берете 'en.ini' именуете файл двумя буквами (ru/cz/fr), переводите его, и кидаете в папку. Программа его обнаружит и он появится в меню переключения языков.
+>Switching interface localization and changing styles in the menu by double-clicking on the status bar
 ---
-Если вы не программист, то вам из всего скачанного нужны только ZIP-файл (в нем exe-шник) и HTML-файл, ну и в папке DOCs описание на русском, остальное можете удалить.
->If you are not a programmer, then you only need a ZIP file (exe file in it) and an HTML file from everything downloaded, well, in the DOCs folder the description is in Russian, you can delete the rest.
+Если вы не программист, то вам из всего скачанного нужны только ZIP-файл (в нем exe-шник), HTML-файл, папк Lang и Styles ну и в папке DOCs описание на русском, остальное можете удалить.
+>Sample language file in 'lang' folder. If you need more languages, take 'en.ini', name the file with two letters (ru/cz/fr), translate it, and throw it in the folder. The program will detect it and it will appear in the language switching menu.
 ---
 
 NStor
