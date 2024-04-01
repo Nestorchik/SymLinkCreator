@@ -141,9 +141,15 @@ HTML-файл, поставляемый с программой, изначал�
 ---
 Переключение локализации интерфейса и с мена стилей в меню по двойному щелчку на статус-бар
 >Switching interface localization and changing styles in the menu by double-clicking on the status bar
+## ![Main Windows](img/13.jpg)
 ---
-Образец языкового файла в папке 'lang'. Если надо еще языки - берете 'en.ini' именуете файл двумя буквами (ru/cz/fr), переводите его, и кидаете в папку. Программа его обнаружит и он появится в меню переключения языков.
->Switching interface localization and changing styles in the menu by double-clicking on the status bar
+Для переключения языка выберите его из списка. Сами файлы франятся в папке "Lang". Для создания нового перевода возьмите копию "en.ini", дайте ему новое название, и переведите на нужный язык. Эти файлы читаются при старте программы, и в список вставляется все, что будет надено в этой папке.
+>To switch the language, select it from the list. The files themselves are stored in the "Lang" folder. To create a new translation, take a copy of "en.ini", give it a two-letter name and translate it into the desired language. These files are read when the program starts, and everything that will be put in this folder is inserted into the list.
+## ![Main Windows](img/14.jpg)
+---
+Шаблоны внешнегно вида переключаются выбором шаблона из списка. Сами шаблоны находятся в папке "Styles", и программа составляет список шаблонов при старте, в списке появятся те шаблоны, которые лежат в этой папке. Оставляйте там хотя бы один шаблон.
+>Appearance templates are switched by selecting a template from the list. The templates themselves are located in the "Styles" folder, and the program compiles a list of templates at startup; those templates that are in this folder will appear in the list. Leave at least one template there.
+## ![Main Windows](img/15.jpg)
 ---
 Если вы не программист, то вам из всего скачанного нужны только ZIP-файл (в нем exe-шник), HTML-файл, папк Lang и Styles ну и в папке DOCs описание на русском, остальное можете удалить.
 >Sample language file in 'lang' folder. If you need more languages, take 'en.ini', name the file with two letters (ru/cz/fr), translate it, and throw it in the folder. The program will detect it and it will appear in the language switching menu.
