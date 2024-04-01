@@ -1,8 +1,8 @@
 object SymLinkForm: TSymLinkForm
   Left = 221
   Top = 129
-  Width = 1349
-  Height = 733
+  Width = 1087
+  Height = 771
   Margins.Left = 2
   Margins.Top = 2
   Margins.Right = 2
@@ -162,13 +162,14 @@ object SymLinkForm: TSymLinkForm
   OnCreate = FormCreate
   OnDestroy = FormDestroy
   OnKeyDown = FormKeyDown
+  OnResize = SettingsPanelResize
   PixelsPerInch = 96
   TextHeight = 17
   object TabNotebook: TTabbedNotebook
     Left = 0
     Top = 29
-    Width = 1331
-    Height = 623
+    Width = 1069
+    Height = 661
     Align = alClient
     Font.Charset = DEFAULT_CHARSET
     Font.Color = clWindowText
@@ -186,11 +187,14 @@ object SymLinkForm: TSymLinkForm
       Left = 4
       Top = 24
       Caption = 'Files'
+      DesignSize = (
+        1061
+        633)
       object FileGrid: TStringGrid
         Left = 0
         Top = 0
-        Width = 1323
-        Height = 595
+        Width = 1061
+        Height = 633
         Margins.Left = 2
         Margins.Top = 2
         Margins.Right = 2
@@ -221,6 +225,132 @@ object SymLinkForm: TSymLinkForm
           80
           71)
       end
+      object SettingsPanel: TRelativePanel
+        Left = 229
+        Top = 190
+        Width = 320
+        Height = 120
+        ControlCollection = <
+          item
+            Control = LangBox
+            AlignBottomWithPanel = False
+            AlignHorizontalCenterWithPanel = False
+            AlignLeftWithPanel = False
+            AlignRightWithPanel = False
+            AlignTopWithPanel = False
+            AlignVerticalCenterWithPanel = False
+          end
+          item
+            Control = ThemeBox
+            AlignBottomWithPanel = False
+            AlignHorizontalCenterWithPanel = False
+            AlignLeftWithPanel = False
+            AlignRightWithPanel = False
+            AlignTopWithPanel = False
+            AlignVerticalCenterWithPanel = False
+          end
+          item
+            Control = LangLabel
+            AlignBottomWithPanel = False
+            AlignHorizontalCenterWithPanel = False
+            AlignLeftWithPanel = False
+            AlignRightWithPanel = False
+            AlignTopWithPanel = False
+            AlignVerticalCenterWithPanel = False
+          end
+          item
+            Control = ThemeLabel
+            AlignBottomWithPanel = False
+            AlignHorizontalCenterWithPanel = False
+            AlignLeftWithPanel = False
+            AlignRightWithPanel = False
+            AlignTopWithPanel = False
+            AlignVerticalCenterWithPanel = False
+          end
+          item
+            Control = WarnText
+            AlignBottomWithPanel = False
+            AlignHorizontalCenterWithPanel = False
+            AlignLeftWithPanel = False
+            AlignRightWithPanel = False
+            AlignTopWithPanel = False
+            AlignVerticalCenterWithPanel = False
+          end
+          item
+            Control = HideSettingsButton
+            AlignBottomWithPanel = False
+            AlignHorizontalCenterWithPanel = False
+            AlignLeftWithPanel = False
+            AlignRightWithPanel = False
+            AlignTopWithPanel = False
+            AlignVerticalCenterWithPanel = False
+          end>
+        Anchors = []
+        BorderStyle = bsSingle
+        TabOrder = 1
+        Visible = False
+        OnResize = SettingsPanelResize
+        DesignSize = (
+          316
+          116)
+        object LangBox: TComboBox
+          Left = 9
+          Top = 25
+          Width = 146
+          Height = 21
+          Anchors = []
+          DragMode = dmAutomatic
+          TabOrder = 0
+          OnChange = LangBoxChange
+        end
+        object ThemeBox: TComboBox
+          Left = 162
+          Top = 25
+          Width = 145
+          Height = 21
+          Anchors = []
+          DragMode = dmAutomatic
+          DropDownCount = 30
+          TabOrder = 1
+          OnSelect = ThemeBoxSelect
+        end
+        object LangLabel: TLabel
+          Left = 10
+          Top = 6
+          Width = 51
+          Height = 13
+          Anchors = []
+          Caption = 'Language'
+        end
+        object ThemeLabel: TLabel
+          Left = 163
+          Top = 6
+          Width = 34
+          Height = 13
+          Anchors = []
+          Caption = 'Theme'
+        end
+        object WarnText: TStaticText
+          Left = -2
+          Top = 60
+          Width = 319
+          Height = 17
+          Align = alClient
+          Alignment = taCenter
+          AutoSize = False
+          Caption = 'Save your data! These settings will reload the interface!'
+          TabOrder = 2
+        end
+        object HideSettingsButton: TSpeedButton
+          Left = 88
+          Top = 83
+          Width = 141
+          Height = 22
+          Anchors = []
+          Caption = 'Exit without save'
+          OnClick = StatusBarDblClick
+        end
+      end
     end
     object TTabPage
       Left = 4
@@ -229,8 +359,8 @@ object SymLinkForm: TSymLinkForm
       object ListBox: TListBox
         Left = 0
         Top = 0
-        Width = 1323
-        Height = 595
+        Width = 1061
+        Height = 633
         Align = alClient
         ItemHeight = 13
         TabOrder = 0
@@ -244,18 +374,18 @@ object SymLinkForm: TSymLinkForm
         AlignWithMargins = True
         Left = 3
         Top = 3
-        Width = 1317
-        Height = 589
+        Width = 1055
+        Height = 627
         Align = alClient
         TabOrder = 0
-        ExplicitLeft = 0
+        ExplicitLeft = 4
         ExplicitTop = 4
-        ExplicitWidth = 1134
-        ExplicitHeight = 586
+        ExplicitWidth = 1317
+        ExplicitHeight = 589
         ControlData = {
-          4C0000001E880000E03C00000000000000000000000000000000000000000000
-          000000004C000000000000000000000001000000E0D057007335CF11AE690800
-          2B2E126208000000000000004C0000000114020000000000C000000000000046
+          4C0000000A6D0000CD4000000000000000000000000000000000000000000000
+          000000004C000000000000000000000000000000000000000000000000000000
+          0000000000000000000000004C0000000114020000000000C000000000000046
           8000000000000000000000000000000000000000000000000000000000000000
           00000000000000000100000000000000000000000000000000000000}
       end
@@ -263,28 +393,27 @@ object SymLinkForm: TSymLinkForm
   end
   object StatusBar: TStatusBar
     Left = 0
-    Top = 652
-    Width = 1331
+    Top = 690
+    Width = 1069
     Height = 20
+    Hint = '--Double click opens settings'
     AutoHint = True
     Panels = <
       item
-        BiDiMode = bdRightToLeft
-        ParentBiDiMode = False
-        Width = 200
+        Width = 50
       end>
     OnDblClick = StatusBarDblClick
   end
   object GridPanel: TGridPanel
     Left = 0
     Top = 0
-    Width = 1331
+    Width = 1069
     Height = 29
     Align = alTop
     ColumnCollection = <
       item
         SizeStyle = ssAuto
-        Value = 6.342745162989680000
+        Value = 6.342745162989681000
       end
       item
         SizeStyle = ssAuto
@@ -401,11 +530,6 @@ object SymLinkForm: TSymLinkForm
         Column = 12
         Control = Image1
         Row = 0
-      end
-      item
-        Column = 13
-        Control = ThemeBox
-        Row = 0
       end>
     RowCollection = <
       item
@@ -413,7 +537,7 @@ object SymLinkForm: TSymLinkForm
       end>
     TabOrder = 2
     DesignSize = (
-      1331
+      1069
       29)
     object Image2: TImage
       Left = 1
@@ -649,22 +773,10 @@ object SymLinkForm: TSymLinkForm
       ExplicitLeft = 752
       ExplicitTop = 1
     end
-    object ThemeBox: TComboBox
-      Left = 636
-      Top = 3
-      Width = 145
-      Height = 22
-      Style = csOwnerDrawVariable
-      Anchors = []
-      DragMode = dmAutomatic
-      DropDownCount = 30
-      TabOrder = 6
-      OnSelect = ThemeBoxSelect
-    end
   end
   object pMenu: TPopupMenu
-    Left = 336
-    Top = 184
+    Left = 644
+    Top = 96
     object mNew: TMenuItem
       Caption = 'New'
       Hint = 'Clear table and start new list'
@@ -705,12 +817,12 @@ object SymLinkForm: TSymLinkForm
     DefaultExt = 'txt'
     Filter = 'Text files|*.txt|All files|*.*'
     Title = 'Save to file'
-    Left = 408
-    Top = 192
+    Left = 768
+    Top = 72
   end
   object MainMenu: TMainMenu
-    Left = 476
-    Top = 164
+    Left = 592
+    Top = 88
     object mmFile: TMenuItem
       Caption = 'File'
       Hint = 'Files'
@@ -764,19 +876,14 @@ object SymLinkForm: TSymLinkForm
     DefaultExt = 'txt'
     Filter = 'Text files|*.txt|All files|*.*'
     Title = 'Open file'
-    Left = 560
-    Top = 152
+    Left = 860
+    Top = 68
   end
   object msgTimer: TTimer
     Interval = 1500
     OnTimer = msgTimerTimer
-    Left = 360
-    Top = 104
-  end
-  object BlinkTimer: TTimer
-    OnTimer = BlinkTimerTimer
-    Left = 452
-    Top = 112
+    Left = 432
+    Top = 60
   end
   object TrayIcon: TTrayIcon
     Animate = True
@@ -922,7 +1029,7 @@ object SymLinkForm: TSymLinkForm
       74223A22227D}
     PopupMenu = pMenu
     Visible = True
-    Left = 496
-    Top = 72
+    Left = 508
+    Top = 52
   end
 end

@@ -5,7 +5,8 @@ interface
 uses
   Windows, SysUtils, Controls, Forms, Messages, Dialogs, Grids, Clipbrd, ExtCtrls, Menus, StdCtrls, Classes, Graphics,
   Vcl.ComCtrls, IdBaseComponent, IdMessage, Vcl.TabNotBk, DragDrop, DropSource, DragDropFile, DropTarget, DragDropFormats,
-  ImgList, ActnList, Actions, ImageList, Types, example, Vcl.Buttons, Vcl.ToolWin, Vcl.OleCtrls, SHDocVw, Vcl.Imaging.pngimage;
+  ImgList, ActnList, Actions, ImageList, Types, example, Vcl.Buttons, Vcl.ToolWin, Vcl.OleCtrls, SHDocVw, Vcl.Imaging.pngimage,
+  SymLinkINI, IOUtils, Vcl.PlatformDefaultStyleActnCtrls, Vcl.ActnPopup, Vcl.WinXCtrls;
 
 type
 
@@ -29,12 +30,10 @@ type
     mmCopyOnlyNames: TMenuItem;
     OpenFileDialog: TOpenDialog;
     TabNotebook: TTabbedNotebook;
-    FileGrid: TStringGrid;
     mDelete: TMenuItem;
     mmDelClick: TMenuItem;
     msgTimer: TTimer;
     ListBox: TListBox;
-    BlinkTimer: TTimer;
     mOpen: TMenuItem;
     StatusBar: TStatusBar;
     WebBrowser: TWebBrowser;
@@ -52,7 +51,14 @@ type
     Image7: TImage;
     ShellExecute: TBitBtn;
     Image1: TImage;
+    FileGrid: TStringGrid;
+    SettingsPanel: TRelativePanel;
+    LangBox: TComboBox;
     ThemeBox: TComboBox;
+    LangLabel: TLabel;
+    ThemeLabel: TLabel;
+    WarnText: TStaticText;
+    HideSettingsButton: TSpeedButton;
     procedure FormCreate(Sender: TObject);
     procedure mSaveClick(Sender: TObject);
     procedure mNewClick(Sender: TObject);
@@ -63,16 +69,22 @@ type
     procedure CopyButtonClick(Sender: TObject);
     procedure FormKeyDown(Sender: TObject; var Key: Word; Shift: TShiftState);
     procedure mmOpenClick(Sender: TObject);
-    procedure LeftPanelMouseDown(Sender: TObject; Button: TMouseButton; Shift: TShiftState; X, Y: Integer);
     procedure mDeleteClick(Sender: TObject);
     procedure ShellExecuteClick(Sender: TObject);
     procedure msgTimerTimer(Sender: TObject);
     procedure FormDestroy(Sender: TObject);
-    procedure BlinkTimerTimer(Sender: TObject);
     procedure ListBoxReload(Sender: TObject);
     procedure GridRenumerate(Sender: TObject);
     procedure ThemeBoxSelect(Sender: TObject);
+    procedure SetStyle(style: String);
+    procedure LoadIni(Sender: TObject);
+    procedure SaveIni(Sender: TObject);
+    procedure LoadLangIni(lang: string);
+    procedure SaveLangIni(lang: string);
+    procedure LangBoxChange(Sender: TObject);
+    procedure LoadHelp(lang: String);
     procedure StatusBarDblClick(Sender: TObject);
+    procedure SettingsPanelResize(Sender: TObject);
 
   private
     procedure WMDROPFILES(var Message: TWMDROPFILES); message WM_DROPFILES;
@@ -92,6 +104,8 @@ var
     smCopyNamesHint, smpNew, smpNewHint, smpOpen, smpOpenHint, smpSave, smpSaveHint, smpCopyAll, smpCopyAllHint, smpCopyNames, smpCopyNamesHint, smpDelete, smpDeleteHint, smpQuit, smpQuitHint: string;
   // name of load lang
   currentLang, currentTheme: String;
+  // Settings Windows
+  sLangLabel, sLangBoxHint, sThemeLabel, sThemeBoxHint, sWarnText, sHideSettingsButton, sHideSettingsButtonHint, sStatusBarHint: String;
 
 implementation
 
@@ -114,19 +128,13 @@ Var
 {$R *.dfm}
 procedure AddToList(FileName: string); forward;
 
-procedure TSymLinkForm.FormCreate(Sender: TObject);
+procedure TSymLinkForm.LoadIni(Sender: TObject);
 var
-  i, a: Integer;
-  Ini, langIni: TIniFile;
-  List: TStringList;
-  f: TextFile;
-  s: String;
-  sm: TStyleManager;
+  Ini: TIniFile;
 begin
   // timeStamps
   longTimeStamp := FormatDateTime('yyyymmdd-hhnnsszzz', now);
   hourTimeStamp := FormatDateTime('yyyymmdd-hh', now);
-  // load ini-files
   Ini := TIniFile.Create(Extractfilepath(paramstr(0)) + 'SymLinkCreator.ini');
   SymLinkForm.Width := Ini.ReadInteger('WinSize', 'Width', 1000);
   SymLinkForm.Height := Ini.ReadInteger('WinSize', 'Height', 680);
@@ -152,6 +160,45 @@ begin
   currentLang := Ini.ReadString('Lang', 'Lang', 'en');
   currentTheme := Ini.ReadString('Theme', 'Theme', 'Carbon');
   Ini.Free;
+end;
+
+procedure TSymLinkForm.SaveIni(Sender: TObject);
+var
+  Ini: TIniFile;
+begin
+  // Save INI-file
+  Ini := TIniFile.Create(Extractfilepath(paramstr(0)) + 'SymLinkCreator.ini');
+  Ini.WriteInteger('WinSize', 'Width', SymLinkForm.Width);
+  Ini.WriteInteger('WinSize', 'Height', SymLinkForm.Height);
+  Ini.WriteString('WinPosition', 'Comment', 'WinPos Stability only with "Windows 10" theme!');
+  Ini.WriteInteger('WinPosition', 'X', SymLinkForm.Left);
+  Ini.WriteInteger('WinPosition', 'Y', SymLinkForm.Top);
+  Ini.WriteInteger('FileGridColWidth', 'Width1', FileGrid.ColWidths[1]);
+  Ini.WriteInteger('FileGridColWidth', 'Width2', FileGrid.ColWidths[2]);
+  Ini.WriteInteger('FileGridColWidth', 'Width3', FileGrid.ColWidths[3]);
+  Ini.WriteInteger('MaxDragFiles', 'Files', MaxDragFiles);
+  Ini.WriteString('Help', 'File', sHelpFile);
+  Ini.WriteString('Pages', 'ActivePAge', TabNotebook.ActivePage);
+  Ini.WriteString('Logs', 'fPath', logFilePath);
+  Ini.WriteString('Logs', 'fName', logFileName);
+  Ini.WriteString('Logs', 'fExt', logFileExt);
+  Ini.WriteString('Bat', 'fPath', batFilePath);
+  Ini.WriteString('Bat', 'fName', batFileName);
+  Ini.WriteString('Bat', 'fExt', batFileExt);
+  Ini.WriteString('LastFile', 'File', slastFileName);
+  Ini.WriteBool('DoDirs', 'Checked', DoDirs.Checked);
+  Ini.WriteBool('AskDirs', 'Checked', AskDirs.Checked);
+  Ini.WriteBool('CopySizes', 'Checked', CopySizes.Checked);
+  Ini.WriteBool('CopyPaths', 'Checked', CopyPaths.Checked);
+  Ini.WriteString('Lang', 'Lang', currentLang);
+  Ini.WriteString('Theme', 'Theme', currentTheme);
+  Ini.Free;
+end;
+
+procedure TSymLinkForm.LoadLangIni(lang: String);
+var
+  langIni: TIniFile;
+begin
   // open lang files
   CreateDir(Extractfilepath(paramstr(0)) + 'Lang');
   langIni := TIniFile.Create(Extractfilepath(paramstr(0)) + 'Lang\' + currentLang + '.ini');
@@ -227,6 +274,14 @@ begin
   smpDeleteHint := langIni.ReadString('Lang-Menu', 'mDeleteHint', 'Delete current string');
   smpQuit := langIni.ReadString('Lang-Menu', 'mQuit', 'Quit');
   smpQuitHint := langIni.ReadString('Lang-Menu', 'mQuitHint', 'Exit program');
+  sLangLabel := langIni.ReadString('Settings', 'LangLabel', 'Language');
+  sLangBoxHint := langIni.ReadString('Settings', 'LangBoxHint', 'Select a language from the list');
+  sThemeLabel := langIni.ReadString('Settings', 'ThemeLabel', 'Theme');
+  sThemeBoxHint := langIni.ReadString('Settings', 'ThemeBoxHint', 'elect Theme from the list');
+  sWarnText := langIni.ReadString('Settings', 'WarnText', 'Save your data! These settings will reload the interface!');
+  sHideSettingsButton := langIni.ReadString('Settings', 'HideSettingsButton', 'Exit without saving');
+  sHideSettingsButtonHint := langIni.ReadString('Settings', 'HideSettingsButtonHint', 'Exit without change settings');
+  sStatusBarHint := langIni.ReadString('Settings', 'StatusBarHint', 'Double click opens settings');
   langIni.Free;
   // init main menu lang strings
   MainMenu.Items.Items[0].Caption := smFile;
@@ -287,95 +342,23 @@ begin
   TabNotebook.Pages[0] := sFiles;
   TabNotebook.Pages[1] := sList;
   TabNotebook.Pages[2] := sHelp;
-
-  // try load Help page without exceptions
-  try
-    if FileExists(sHelpFile) then
-      WebBrowser.Navigate(Extractfilepath(paramstr(0)) + sHelpFile)
-    else
-      TabNotebook.Pages.Delete(2);
-  finally
-  end;
-  // try load last file-list without exceptions
-  try
-    if FileExists(slastFileName) then
-    begin
-      ListBox.Clear;
-      mNewClick(Self);
-      AssignFile(f, slastFileName);
-      Reset(f);
-      a := 0;
-      while (not EOF(f)) do
-      begin
-        Readln(f, s);
-        if s = '' then
-          break;
-        AddToList(s);
-        Inc(a);
-      end;
-      CloseFile(f)
-    end;
-  finally
-  end;
-  // sm := TStyleManager.Create;
-  TStyleManager.TrySetStyle(currentTheme);
-  for i := 0 to Length(sm.StyleNames) - 1 do
-    ThemeBox.Items.Add(sm.StyleNames[i]);
-  ThemeBox.Sorted := true;
-  // ThemeBox.Text := currentTheme;
-  Application.ProcessMessages;
-  // accept drag files to program
-  DragAcceptFiles(SymLinkForm.Handle, true);
+  // Settings windows initial
+  LangLabel.Caption := sLangLabel;
+  LangBox.Hint := sLangBoxHint;
+  ThemeLabel.Caption := sThemeLabel;
+  ThemeBox.Hint := sThemeBoxHint;
+  WarnText.Caption := sWarnText;
+  HideSettingsButton.Caption := sHideSettingsButton;
+  HideSettingsButton.Hint := sHideSettingsButtonHint;
+  StatusBar.Hint := sStatusBarHint;
 end;
 
-// change theme
-procedure TSymLinkForm.ThemeBoxSelect(Sender: TObject);
-begin
-  TStyleManager.TrySetStyle(ThemeBox.Text, false);
-  currentTheme := ThemeBox.Text;
-  // accept drag files to program
-  Application.ProcessMessages; // process the message queue;
-  DragAcceptFiles(SymLinkForm.Handle, true);
-end;
-
-procedure TSymLinkForm.FormDestroy(Sender: TObject);
+procedure TSymLinkForm.SaveLangIni(lang: String);
 var
-  Ini: TIniFile;
   langIni: TIniFile;
-  a: Integer;
-  f: TextFile;
-  str: string;
 begin
-  // Save INI-file
-  Ini := TIniFile.Create(Extractfilepath(paramstr(0)) + 'SymLinkCreator.ini');
-  Ini.WriteInteger('WinSize', 'Width', SymLinkForm.Width);
-  Ini.WriteInteger('WinSize', 'Height', SymLinkForm.Height);
-  Ini.WriteString('WinPosition', 'Comment', 'WinPos Stability only with "Windows 10" theme!');
-  Ini.WriteInteger('WinPosition', 'X', SymLinkForm.Left);
-  Ini.WriteInteger('WinPosition', 'Y', SymLinkForm.Top);
-  Ini.WriteInteger('FileGridColWidth', 'Width1', FileGrid.ColWidths[1]);
-  Ini.WriteInteger('FileGridColWidth', 'Width2', FileGrid.ColWidths[2]);
-  Ini.WriteInteger('FileGridColWidth', 'Width3', FileGrid.ColWidths[3]);
-  Ini.WriteInteger('MaxDragFiles', 'Files', MaxDragFiles);
-  Ini.WriteString('Help', 'File', sHelpFile);
-  Ini.WriteString('Pages', 'ActivePAge', TabNotebook.ActivePage);
-  Ini.WriteString('Logs', 'fPath', logFilePath);
-  Ini.WriteString('Logs', 'fName', logFileName);
-  Ini.WriteString('Logs', 'fExt', logFileExt);
-  Ini.WriteString('Bat', 'fPath', batFilePath);
-  Ini.WriteString('Bat', 'fName', batFileName);
-  Ini.WriteString('Bat', 'fExt', batFileExt);
-  Ini.WriteString('LastFile', 'File', slastFileName);
-  Ini.WriteBool('DoDirs', 'Checked', DoDirs.Checked);
-  Ini.WriteBool('AskDirs', 'Checked', AskDirs.Checked);
-  Ini.WriteBool('CopySizes', 'Checked', CopySizes.Checked);
-  Ini.WriteBool('CopyPaths', 'Checked', CopyPaths.Checked);
-  Ini.WriteString('Lang', 'Lang', currentLang);
-  Ini.WriteString('Theme', 'Theme', currentTheme);
-  Ini.Free;
   // Save main lang strings
-
-  if currentLang <> 'ru' then
+  if currentLang = '12345' then
   begin
     langIni := TIniFile.Create(Extractfilepath(paramstr(0)) + 'Lang\' + currentLang + '.ini');
     langIni.WriteString('Lang', 'FolderStr', FolderStr);
@@ -427,15 +410,13 @@ begin
     langIni.WriteString('Lang-Menu', 'smCopyAll', smCopyAll);
     langIni.WriteString('Lang-Menu', 'smCopyAllHint', smCopyAllHint);
     langIni.WriteString('Lang-Menu', 'smCopyNames', smCopyNames);
-    langIni.WriteString('Lang-Menu', 'smCopyNsmesHint', smCopyNamesHint);
+    langIni.WriteString('Lang-Menu', 'smCopyNamesHint', smCopyNamesHint);
     langIni.WriteString('Lang-Menu', 'mNew', smNew);
     langIni.WriteString('Lang-Menu', 'mNewHint', smNewHint);
     langIni.WriteString('Lang-Menu', 'mOpen', smOpen);
     langIni.WriteString('Lang-Menu', 'mOpenHint', smOpenHint);
     langIni.WriteString('Lang-Menu', 'mSave', smSave);
     langIni.WriteString('Lang-Menu', 'mSaveHint', smSaveHint);
-    // langIni.WriteString('Lang-Menu', 'mCopyAll', smCopy);
-    // langIni.WriteString('Lang-Menu', 'mCopyAllHint', smCopyHint);
     langIni.WriteString('Lang-Menu', 'mCopyNames', smCopyNames);
     langIni.WriteString('Lang-Menu', 'mCopyNamesHint', smCopyNamesHint);
     langIni.WriteString('Lang-Menu', 'mDelete', smDelete);
@@ -456,8 +437,152 @@ begin
     langIni.WriteString('Lang-Menu', 'smpDeleteHint', smpDeleteHint);
     langIni.WriteString('Lang-Menu', 'smpQuit', smpQuit);
     langIni.WriteString('Lang-Menu', 'smpQuitHint', smpQuitHint);
+    langIni.WriteString('Settings', 'LangLabel', sLangLabel);
+    langIni.WriteString('Settings', 'LangBoxHint', sLangBoxHint);
+    langIni.WriteString('Settings', 'ThemeLabel', sThemeLabel);
+    langIni.WriteString('Settings', 'ThemeBoxHint', sThemeBoxHint);
+    langIni.WriteString('Settings', 'WarnText', sWarnText);
+    langIni.WriteString('Settings', 'HideSettingsButton', sHideSettingsButton);
+    langIni.WriteString('Settings', 'HideSettingsButtonHint', sHideSettingsButtonHint);
+    langIni.WriteString('Settings', 'StatusBarHint', sStatusBarHint);
     langIni.Free;
   end;
+end;
+
+procedure TSymLinkForm.LoadHelp(lang: String);
+begin
+  // try load Help page without exceptions
+  try
+    if FileExists(sHelpFile) then
+      WebBrowser.Navigate(Extractfilepath(paramstr(0)) + sHelpFile)
+    else
+      TabNotebook.Pages.Delete(2);
+  finally
+  end;
+end;
+
+/// ///////////////////////////////////////////////////////////// START FormCreate
+procedure TSymLinkForm.FormCreate(Sender: TObject);
+var
+  i, a: Integer;
+  Ini, langIni: TIniFile;
+  List: TStringList;
+  f: TextFile;
+  s: String;
+  sm: TStyleManager;
+  si: TStyleInfo;
+  FileArray, LangArray: TStringDynArray;
+  m: TMenuItem;
+begin
+  SymLinkForm.Canvas.Font.Charset := GB2312_CHARSET;
+  LoadIni(Self); // load ini-files
+  LoadLangIni(currentLang);
+  LoadHelp(currentLang);
+  // try load last file-list without exceptions
+  try
+    if FileExists(slastFileName) then
+    begin
+      ListBox.Clear;
+      mNewClick(Self);
+      AssignFile(f, slastFileName);
+      Reset(f);
+      a := 0;
+      while (not EOF(f)) do
+      begin
+        Readln(f, s);
+        if s = '' then
+          break;
+        AddToList(s);
+        Inc(a);
+      end;
+      CloseFile(f)
+    end;
+  finally
+  end;
+  sm := TStyleManager.Create; // build list of available Visual Styles
+  begin
+    CreateDir(Extractfilepath(paramstr(0)) + 'Styles');
+    FileArray := TDirectory.GetFiles(Extractfilepath(paramstr(0)) + 'Styles\', '*.vsf'); // Find vsf-files
+    // check & validate founded styles
+    for i := 0 to Length(FileArray) - 1 do
+    begin
+      if TStyleManager.IsValidStyle(FileArray[i]) then
+      begin
+        if TStyleManager.style[si.Name] = nil then
+        begin
+          TStyleManager.LoadFromFile(FileArray[i]);
+        end;
+      end;
+    end;
+    for i := 0 to Length(sm.StyleNames) - 1 do
+      ThemeBox.Items.Add(sm.StyleNames[i]); // Add list available styles
+    ThemeBox.Sorted := true;
+    Try // Try losd Style, if error - use built in Windows style
+      TStyleManager.TrySetStyle(currentTheme);
+    Finally
+    End;
+    Application.ProcessMessages; // Restore Drag&Drop accept to new Form ID if its change
+    DragAcceptFiles(SymLinkForm.Handle, true); // accept drag files to program
+  end;
+
+  try
+    CreateDir(Extractfilepath(paramstr(0)) + 'Lang');
+    LangArray := TDirectory.GetFiles(Extractfilepath(paramstr(0)) + 'Lang\', '*.ini'); // Find lang files}
+    for i := 0 to Length(LangArray) - 1 do
+    begin
+      LangBox.Items.Add(TPath.GetFileNameWithoutExtension(LangArray[i]));
+    end;
+  finally
+  end;
+
+end;
+
+/// ///////////////////////////////////////////////////////////// END FormCreate
+procedure TSymLinkForm.LangBoxChange(Sender: TObject);
+begin
+  currentLang := LangBox.Items[LangBox.ItemIndex];
+  LoadLangIni(currentLang);
+end;
+
+procedure TSymLinkForm.SetStyle(style: String);
+var
+  si: TStyleInfo;
+  s: String;
+begin
+  if TStyleManager.IsValidStyle(s, si) then
+  begin
+    // load stile
+    if TStyleManager.style[si.Name] = nil then
+    begin
+      TStyleManager.LoadFromFile(s);
+    end;
+  end
+  else;
+end;
+
+procedure TSymLinkForm.SettingsPanelResize(Sender: TObject);
+begin
+  SettingsPanel.Left := ((SymLinkForm.Width div 2) - (SettingsPanel.Width div 2)) - 11;
+  SettingsPanel.Top := ((SymLinkForm.Height div 2) - ((SettingsPanel.Height div 2)) - 75);
+end;
+
+// change Style
+procedure TSymLinkForm.ThemeBoxSelect(Sender: TObject);
+begin
+  TStyleManager.TrySetStyle(ThemeBox.Text, false);
+  currentTheme := ThemeBox.Text;
+  Application.ProcessMessages; // process the message queue;
+  DragAcceptFiles(SymLinkForm.Handle, true); // restore Dreag&Drop accept
+end;
+
+procedure TSymLinkForm.FormDestroy(Sender: TObject);
+var
+  a: Integer;
+  f: TextFile;
+  str: string;
+begin
+  SaveIni(Self);
+  SaveLangIni(currentLang);
   // Load last fileList
   begin
     ListBoxReload(Self);
@@ -488,6 +613,15 @@ var
 begin
   b := BytesOf(s);
   b := TEncoding.Convert(TEncoding.GetEncoding(StrToInt(eFromEncode)), TEncoding.GetEncoding(StrToInt(eToEncode)), b);
+  Result := StringOf(b);
+end;
+
+function utf8To1251(const s: string): string;
+var
+  b: TBytes;
+begin
+  b := BytesOf(s);
+  b := TEncoding.Convert(TEncoding.GetEncoding(StrToInt('utf8')), TEncoding.GetEncoding(StrToInt('1251')), b);
   Result := StringOf(b);
 end;
 
@@ -681,10 +815,9 @@ begin
   WinExec('test.cmd', SW_HIDE);
 end;
 
-// show-hide theme box
 procedure TSymLinkForm.StatusBarDblClick(Sender: TObject);
 begin
-  ThemeBox.Visible := NOT ThemeBox.Visible;
+  SettingsPanel.Visible := NOT SettingsPanel.Visible;
 end;
 
 procedure TSymLinkForm.mSaveClick(Sender: TObject);
@@ -733,7 +866,6 @@ var
   strFolder: string;
 begin
   strFolder := FileGrid.Cells[3, 1];
-
   if strFolder.Length = 0 then
   begin
     ShellExecute.Enabled := false;
@@ -763,26 +895,6 @@ begin
   begin
     StatusBar.Panels.Items[0].Text := sMaxDragFiles + ' - "' + sShellExecute + '"';
   end;
-
-  {
-    if ((strFolder = FolderStr) and (FileGrid.Cells[1, 2] <> '')) then
-    begin
-    ShellExecute.Enabled := true;
-    StatusBar.Panels.Items[0].Text := 'OK';
-    end
-    else
-    begin
-    ShellExecute.Enabled := false;
-    StatusBar.SimpleText := '123';
-    end;
-
-    if ((strFolder.length > 0) and (strFolder <> FolderStr)) and (FileGrid.Cells[2, 2] <> '') then
-    begin
-    StatusBar.Panels.Items[0].Text := NotAFolder;
-    ShellExecute.Enabled := false;
-    mNewClick(Self);
-    end;
-  }
 end;
 
 procedure TSymLinkForm.mmOpenClick(Sender: TObject);
@@ -808,14 +920,6 @@ begin
     end;
     CloseFile(f)
   end;
-end;
-
-procedure TSymLinkForm.BlinkTimerTimer(Sender: TObject);
-begin
-  {
-    If you've read everything here, then accept my fervent greetings! ))))))))
-    Do you want me to tell you a nursery rhyme?)))))
-  }
 end;
 
 procedure TSymLinkForm.CopyButtonClick(Sender: TObject);
@@ -901,18 +1005,6 @@ begin
   FileGridKeyDown(Sender, Key, Shift);
 end;
 
-procedure TSymLinkForm.LeftPanelMouseDown(Sender: TObject; Button: TMouseButton; Shift: TShiftState; X, Y: Integer);
-var
-  fileContent, FileName: string; { NOT USE - TEMP PLUG }
-begin
-  if (Button = mbLeft) and DragDetectPlus(Handle, Point(X, Y)) then
-  begin
-    FileName := '123.txt';
-    fileContent := '123-123-123';
-    // DropEmptySource1.Execute;
-  end;
-end;
-
 procedure TSymLinkForm.mNewClick(Sender: TObject);
 begin
   ListBox.Items.Clear;
@@ -948,7 +1040,7 @@ begin
 end;
 
 procedure TSymLinkForm.mCopyNamesClick(Sender: TObject);
-{ only names to buf }
+// only names to buffer
 Var
   buff: PChar;
   a: Integer;

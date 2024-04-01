@@ -6,14 +6,15 @@ uses
   Forms,
   SymLinkUnit in 'SymLinkUnit.pas' {SymLinkForm},
   Vcl.Themes,
-  Vcl.Styles;
+  Vcl.Styles,
+  SymLinkINI in 'SymLinkINI.pas';
+
 {Russian language file}
 
 {$R *.res}
 
 begin
   Application.Initialize;
-  TStyleManager.TrySetStyle('Glossy');
   Application.Title := 'SymLinkCreator';
   Application.CreateForm(TSymLinkForm, SymLinkForm);
   Application.Run;

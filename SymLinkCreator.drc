@@ -8,446 +8,477 @@
   resources were bound to the produced executable.
 */
 
-#define Vcl_Imaging_pnglang_EPNGCannotAddInvalidImageText 64944
-#define Vcl_Imaging_pnglang_EPNGCouldNotLoadResourceText 64945
-#define Vcl_Imaging_pnglang_EPNGOutMemoryText 64946
-#define Vcl_Imaging_pnglang_EPNGCannotChangeTransparentText 64947
-#define Vcl_Imaging_pnglang_EPNGHeaderNotPresentText 64948
-#define Vcl_Imaging_pnglang_EInvalidNewSize 64949
-#define Vcl_Imaging_pnglang_EInvalidSpec 64950
-#define Vcl_Imaging_pnglang_EPNGInvalidBitDepthText 64951
-#define Vcl_Imaging_pnglang_EPNGInvalidIHDRText 64960
-#define Vcl_Imaging_pnglang_EPNGMissingMultipleIDATText 64961
-#define Vcl_Imaging_pnglang_EPNGZLIBErrorText 64962
-#define Vcl_Imaging_pnglang_EPNGInvalidPaletteText 64963
-#define Vcl_Imaging_pnglang_EPNGInvalidFileHeaderText 64964
-#define Vcl_Imaging_pnglang_EPNGIHDRNotFirstText 64965
-#define Vcl_Imaging_pnglang_EPNGSizeExceedsText 64966
-#define Vcl_Imaging_pnglang_EPNGUnknownPalEntryText 64967
-#define Vcl_Imaging_pnglang_EPNGUnknownCriticalChunkText 64968
-#define Vcl_Imaging_pnglang_EPNGUnknownCompressionText 64969
-#define Vcl_Imaging_pnglang_EPNGUnknownInterlaceText 64970
-#define Vcl_Imaging_pnglang_EPNGUnknownColorTypeText 64971
-#define Vcl_Imaging_pnglang_EPNGCannotAssignChunkText 64972
-#define Vcl_Imaging_pnglang_EPNGUnexpectedEndText 64973
-#define Vcl_Imaging_pnglang_EPNGNoImageDataText 64974
-#define Vcl_Imaging_pnglang_EPNGCannotAddChunkText 64975
-#define IdResourceStringsProtocols_RSTLSSSLIOHandlerRequired 64976
-#define IdResourceStringsProtocols_RSTLSSLCanNotSetWhileConnected 64977
-#define IdResourceStringsProtocols_RSTLSSLSSLHandshakeFailed 64978
-#define IdResourceStringsProtocols_RSHeaderEncodeError 64979
-#define DropTarget_sRichEditWarning 64980
-#define DragDrop_sImplementationRequired 64981
-#define DragDrop_sFormatNameReadOnly 64982
-#define DragDropPIDL_sBadDesktop 64983
-#define DragDropPIDL_sBadFilename 64984
-#define Vcl_OleConst_SBadPropValue 64985
-#define Vcl_OleConst_SCannotActivate 64986
-#define Vcl_OleConst_SNoWindowHandle 64987
-#define Vcl_OleConst_SInvalidLicense 64988
-#define Vcl_OleConst_SNotLicensed 64989
-#define Vcl_OleConst_sNoRunningObject 64990
-#define Vcl_Imaging_pnglang_EPngInvalidCRCText 64991
-#define IdResourceStringsCore_RSIOHandlerTypeNotInstalled 64992
-#define IdResourceStringsCore_RSReplyInvalidCode 64993
-#define IdResourceStringsCore_RSReplyCodeAlreadyExists 64994
-#define IdResourceStringsProtocols_RSMIMEExtensionEmpty 64995
-#define IdResourceStringsProtocols_RSMIMEMIMETypeEmpty 64996
-#define IdResourceStringsProtocols_RSMIMEMIMEExtAlreadyExists 64997
-#define IdResourceStringsProtocols_RSIdMessageCannotLoad 64998
-#define IdResourceStringsProtocols_RSMsgClientEncodingText 64999
-#define IdResourceStringsProtocols_RSMsgClientEncodingAttachment 65000
-#define IdResourceStringsProtocols_RSMsgClientInvalidForTransferEncoding 65001
-#define IdResourceStringsProtocols_RSTIdMessagePartCreate 65002
-#define IdResourceStringsProtocols_RSTIdMessageErrorSavingAttachment 65003
-#define IdResourceStringsProtocols_RSTIdMessageErrorAttachmentBlocked 65004
-#define IdResourceStringsProtocols_RSMessageDecoderNotFound 65005
-#define IdResourceStringsProtocols_RSMessageEncoderNotFound 65006
-#define IdResourceStringsProtocols_RSUnrecognizedUUEEncodingScheme 65007
-#define IdResourceStringsCore_RSIdNoDataToRead 65008
-#define IdResourceStringsCore_RSReadTimeout 65009
-#define IdResourceStringsCore_RSReadLnWaitMaxAttemptsExceeded 65010
-#define IdResourceStringsCore_RSReadLnMaxLineLengthExceeded 65011
-#define IdResourceStringsCore_RSRequiresLargeStream 65012
-#define IdResourceStringsCore_RSDataTooLarge 65013
-#define IdResourceStringsCore_RSConnectTimeout 65014
-#define IdResourceStringsCore_RSThreadTerminateAndWaitFor 65015
-#define IdResourceStringsCore_RSAlreadyConnected 65016
-#define IdResourceStringsCore_RSMaximumNumberOfCaptureLineExceeded 65017
-#define IdResourceStringsCore_RSInterceptIsDifferent 65018
-#define IdResourceStringsCore_RSTransparentProxyCannotBind 65019
-#define IdResourceStringsCore_RSTransparentProxyCanNotSupportUDP 65020
-#define IdResourceStringsCore_RSBufferMissingTerminator 65021
-#define IdResourceStringsCore_RSBufferInvalidStartPos 65022
-#define IdResourceStringsCore_RSIOHandlerCannotChange 65023
-#define IdResourceStringsCore_RSSocksAuthMethodError 65024
-#define IdResourceStringsCore_RSSocksAuthError 65025
-#define IdResourceStringsCore_RSSocksServerGeneralError 65026
-#define IdResourceStringsCore_RSSocksServerPermissionError 65027
-#define IdResourceStringsCore_RSSocksServerNetUnreachableError 65028
-#define IdResourceStringsCore_RSSocksServerHostUnreachableError 65029
-#define IdResourceStringsCore_RSSocksServerConnectionRefusedError 65030
-#define IdResourceStringsCore_RSSocksServerTTLExpiredError 65031
-#define IdResourceStringsCore_RSSocksServerCommandError 65032
-#define IdResourceStringsCore_RSSocksServerAddressError 65033
-#define IdResourceStringsCore_RSInterceptCircularLink 65034
-#define IdResourceStringsCore_RSNotEnoughDataInBuffer 65035
-#define IdResourceStringsCore_RSTooMuchDataInBuffer 65036
-#define IdResourceStringsCore_RSFileNotFound 65037
-#define IdResourceStringsCore_RSNotConnected 65038
-#define IdResourceStringsCore_RSObjectTypeNotSupported 65039
-#define IdResourceStrings_RSConnectionClosedGracefully 65040
-#define IdResourceStrings_RSCouldNotBindSocket 65041
-#define IdResourceStrings_RSInvalidPortRange 65042
-#define IdResourceStrings_RSInvalidServiceName 65043
-#define IdResourceStrings_RSInvalidIPv6Address 65044
-#define IdResourceStrings_RSIPVersionUnsupported 65045
-#define IdResourceStrings_RSNotAllBytesSent 65046
-#define IdResourceStrings_RSPackageSizeTooBig 65047
-#define IdResourceStrings_RSSetSizeExceeded 65048
-#define IdResourceStrings_RSEndOfStream 65049
-#define IdResourceStringsCore_RSSocksUDPNotSupported 65050
-#define IdResourceStringsCore_RSSocksRequestFailed 65051
-#define IdResourceStringsCore_RSSocksRequestServerFailed 65052
-#define IdResourceStringsCore_RSSocksRequestIdentFailed 65053
-#define IdResourceStringsCore_RSSocksUnknownError 65054
-#define IdResourceStringsCore_RSSocksServerRespondError 65055
-#define IdResourceStrings_RSStackENOTCONN 65056
-#define IdResourceStrings_RSStackESHUTDOWN 65057
-#define IdResourceStrings_RSStackETOOMANYREFS 65058
-#define IdResourceStrings_RSStackETIMEDOUT 65059
-#define IdResourceStrings_RSStackECONNREFUSED 65060
-#define IdResourceStrings_RSStackELOOP 65061
-#define IdResourceStrings_RSStackENAMETOOLONG 65062
-#define IdResourceStrings_RSStackEHOSTDOWN 65063
-#define IdResourceStrings_RSStackEHOSTUNREACH 65064
-#define IdResourceStrings_RSStackENOTEMPTY 65065
-#define IdResourceStrings_RSStackHOST_NOT_FOUND 65066
-#define IdResourceStrings_RSStackClassUndefined 65067
-#define IdResourceStrings_RSStackAlreadyCreated 65068
-#define IdResourceStrings_RSAntiFreezeOnlyOne 65069
-#define IdResourceStrings_RSCannotSetIPVersionWhenConnected 65070
-#define IdResourceStrings_RSCannotBindRange 65071
-#define IdResourceStrings_RSStackEPROTOTYPE 65072
-#define IdResourceStrings_RSStackENOPROTOOPT 65073
-#define IdResourceStrings_RSStackEPROTONOSUPPORT 65074
-#define IdResourceStrings_RSStackESOCKTNOSUPPORT 65075
-#define IdResourceStrings_RSStackEOPNOTSUPP 65076
-#define IdResourceStrings_RSStackEPFNOSUPPORT 65077
-#define IdResourceStrings_RSStackEAFNOSUPPORT 65078
-#define IdResourceStrings_RSStackEADDRINUSE 65079
-#define IdResourceStrings_RSStackEADDRNOTAVAIL 65080
-#define IdResourceStrings_RSStackENETDOWN 65081
-#define IdResourceStrings_RSStackENETUNREACH 65082
-#define IdResourceStrings_RSStackENETRESET 65083
-#define IdResourceStrings_RSStackECONNABORTED 65084
-#define IdResourceStrings_RSStackECONNRESET 65085
-#define IdResourceStrings_RSStackENOBUFS 65086
-#define IdResourceStrings_RSStackEISCONN 65087
-#define IdResourceStrings_RSStatusDisconnecting 65088
-#define IdResourceStrings_RSStatusDisconnected 65089
-#define IdResourceStrings_RSStatusText 65090
-#define IdResourceStrings_RSStackError 65091
-#define IdResourceStrings_RSStackEINTR 65092
-#define IdResourceStrings_RSStackEBADF 65093
-#define IdResourceStrings_RSStackEACCES 65094
-#define IdResourceStrings_RSStackEFAULT 65095
-#define IdResourceStrings_RSStackEINVAL 65096
-#define IdResourceStrings_RSStackEMFILE 65097
-#define IdResourceStrings_RSStackEWOULDBLOCK 65098
-#define IdResourceStrings_RSStackEINPROGRESS 65099
-#define IdResourceStrings_RSStackEALREADY 65100
-#define IdResourceStrings_RSStackENOTSOCK 65101
-#define IdResourceStrings_RSStackEDESTADDRREQ 65102
-#define IdResourceStrings_RSStackEMSGSIZE 65103
-#define Vcl_ComStrs_sTabFailRetrieve 65104
-#define Vcl_ComStrs_sTabFailGetObject 65105
-#define Vcl_ComStrs_sTabFailSet 65106
-#define Vcl_ComStrs_sTabFailSetObject 65107
-#define IdResourceStrings_RSInvalidSourceArray 65108
-#define IdResourceStrings_RSInvalidDestinationArray 65109
-#define IdResourceStrings_RSCharIndexOutOfBounds 65110
-#define IdResourceStrings_RSInvalidCharCount 65111
-#define IdResourceStrings_RSInvalidDestinationIndex 65112
-#define IdResourceStrings_RSInvalidCodePage 65113
-#define IdResourceStrings_RSFailedTimeZoneInfo 65114
-#define IdResourceStrings_RSWinsockCallError 65115
-#define IdResourceStrings_RSWinsockLoadError 65116
-#define IdResourceStrings_RSStatusResolving 65117
-#define IdResourceStrings_RSStatusConnecting 65118
-#define IdResourceStrings_RSStatusConnected 65119
-#define Vcl_Consts_SStyleHookClassRegistered 65120
-#define Vcl_Consts_SStyleHookClassNotRegistered 65121
-#define Vcl_Consts_SStyleInvalidParameter 65122
-#define Vcl_Consts_SStyleHookClassNotFound 65123
-#define Vcl_Consts_SStyleFeatureNotSupported 65124
-#define Vcl_Consts_SStyleNotRegistered 65125
-#define Vcl_Consts_SStyleUnregisterError 65126
-#define Vcl_Consts_SStyleNotRegisteredNoName 65127
-#define Vcl_Consts_sBeginInvokeNoHandle 65128
-#define System_Win_ComConst_SOleError 65129
-#define System_Win_ComConst_SNoMethod 65130
-#define System_Win_ComConst_SVarNotObject 65131
-#define System_Win_ComConst_STooManyParams 65132
-#define System_Win_ComConst_SDCOMNotInstalled 65133
-#define Vcl_ComStrs_sTabFailClear 65134
-#define Vcl_ComStrs_sTabFailDelete 65135
-#define Vcl_Consts_sCellColumn 65136
-#define Vcl_Consts_sCellRow 65137
-#define Vcl_Consts_STrayIconRemoveError 65138
-#define Vcl_Consts_SWindowsVistaRequired 65139
-#define Vcl_Consts_STaskDlgButtonCaption 65140
-#define Vcl_Consts_STaskDlgRadioButtonCaption 65141
-#define Vcl_Consts_SInvalidTaskDlgButtonCaption 65142
-#define Vcl_Consts_SStyleLoadError 65143
-#define Vcl_Consts_SStyleLoadErrors 65144
-#define Vcl_Consts_SStyleRegisterError 65145
-#define Vcl_Consts_SStyleClassRegisterError 65146
-#define Vcl_Consts_SStyleNotFound 65147
-#define Vcl_Consts_SStyleClassNotFound 65148
-#define Vcl_Consts_SStyleInvalidHandle 65149
-#define Vcl_Consts_SStyleFormatError 65150
-#define Vcl_Consts_SStyleFileDescription 65151
-#define Vcl_Consts_SLogin 65152
-#define Vcl_Consts_SErrorSettingCount 65153
-#define Vcl_Consts_SListBoxMustBeVirtual 65154
-#define Vcl_Consts_sCannotAddFixedSize 65155
-#define Vcl_Consts_sInvalidSpan 65156
-#define Vcl_Consts_sInvalidRowIndex 65157
-#define Vcl_Consts_sInvalidColumnIndex 65158
-#define Vcl_Consts_sInvalidControlItem 65159
-#define Vcl_Consts_sCannotDeleteColumn 65160
-#define Vcl_Consts_sCannotDeleteRow 65161
-#define Vcl_Consts_sCellMember 65162
-#define Vcl_Consts_sCellSizeType 65163
-#define Vcl_Consts_sCellValue 65164
-#define Vcl_Consts_sCellAutoSize 65165
-#define Vcl_Consts_sCellPercentSize 65166
-#define Vcl_Consts_sCellAbsoluteSize 65167
-#define Vcl_Consts_SIconToClipboard 65168
-#define Vcl_Consts_SCannotOpenClipboard 65169
-#define Vcl_Consts_SDefault 65170
-#define Vcl_Consts_SInvalidPrinterOp 65171
-#define Vcl_Consts_SNoDefaultPrinter 65172
-#define Vcl_Consts_SDuplicateMenus 65173
-#define Vcl_Consts_SDockedCtlNeedsName 65174
-#define Vcl_Consts_SDockTreeRemoveError 65175
-#define Vcl_Consts_SDockZoneNotFound 65176
-#define Vcl_Consts_SDockZoneHasNoCtl 65177
-#define Vcl_Consts_SDockZoneVersionConflict 65178
-#define Vcl_Consts_SPromptArrayTooShort 65179
-#define Vcl_Consts_SPromptArrayEmpty 65180
-#define Vcl_Consts_SUsername 65181
-#define Vcl_Consts_SPassword 65182
-#define Vcl_Consts_SDomain 65183
-#define Vcl_Consts_SmkcPgDn 65184
-#define Vcl_Consts_SmkcEnd 65185
-#define Vcl_Consts_SmkcHome 65186
-#define Vcl_Consts_SmkcLeft 65187
-#define Vcl_Consts_SmkcUp 65188
-#define Vcl_Consts_SmkcRight 65189
-#define Vcl_Consts_SmkcDown 65190
-#define Vcl_Consts_SmkcIns 65191
-#define Vcl_Consts_SmkcDel 65192
-#define Vcl_Consts_SmkcShift 65193
-#define Vcl_Consts_SmkcCtrl 65194
-#define Vcl_Consts_SmkcAlt 65195
-#define Vcl_Consts_SOutOfRange 65196
-#define Vcl_Consts_sAllFilter 65197
-#define Vcl_Consts_SInsertLineError 65198
-#define Vcl_Consts_SInvalidClipFmt 65199
-#define Vcl_Consts_SMsgDlgOK 65200
-#define Vcl_Consts_SMsgDlgCancel 65201
-#define Vcl_Consts_SMsgDlgHelp 65202
-#define Vcl_Consts_SMsgDlgAbort 65203
-#define Vcl_Consts_SMsgDlgRetry 65204
-#define Vcl_Consts_SMsgDlgIgnore 65205
-#define Vcl_Consts_SMsgDlgAll 65206
-#define Vcl_Consts_SMsgDlgNoToAll 65207
-#define Vcl_Consts_SMsgDlgYesToAll 65208
-#define Vcl_Consts_SMsgDlgClose 65209
-#define Vcl_Consts_SmkcBkSp 65210
-#define Vcl_Consts_SmkcTab 65211
-#define Vcl_Consts_SmkcEsc 65212
-#define Vcl_Consts_SmkcEnter 65213
-#define Vcl_Consts_SmkcSpace 65214
-#define Vcl_Consts_SmkcPgUp 65215
-#define Vcl_Consts_SVBitmaps 65216
-#define Vcl_Consts_SVTIFFImages 65217
-#define Vcl_Consts_SGridTooLarge 65218
-#define Vcl_Consts_STooManyDeleted 65219
-#define Vcl_Consts_SIndexOutOfRange 65220
-#define Vcl_Consts_SFixedColTooBig 65221
-#define Vcl_Consts_SFixedRowTooBig 65222
-#define Vcl_Consts_SInvalidStringGridOp 65223
-#define Vcl_Consts_SMaskErr 65224
-#define Vcl_Consts_SMaskEditErr 65225
-#define Vcl_Consts_SMsgDlgWarning 65226
-#define Vcl_Consts_SMsgDlgError 65227
-#define Vcl_Consts_SMsgDlgInformation 65228
-#define Vcl_Consts_SMsgDlgConfirm 65229
-#define Vcl_Consts_SMsgDlgYes 65230
-#define Vcl_Consts_SMsgDlgNo 65231
-#define Vcl_Consts_SImageCanvasNeedsBitmap 65232
-#define Vcl_Consts_SControlParentSetToSelf 65233
-#define Vcl_Consts_SOKButton 65234
-#define Vcl_Consts_SCancelButton 65235
-#define Vcl_Consts_SYesButton 65236
-#define Vcl_Consts_SNoButton 65237
-#define Vcl_Consts_SHelpButton 65238
-#define Vcl_Consts_SCloseButton 65239
-#define Vcl_Consts_SIgnoreButton 65240
-#define Vcl_Consts_SRetryButton 65241
-#define Vcl_Consts_SAbortButton 65242
-#define Vcl_Consts_SAllButton 65243
-#define Vcl_Consts_SCannotDragForm 65244
-#define Vcl_Consts_SVMetafiles 65245
-#define Vcl_Consts_SVEnhMetafiles 65246
-#define Vcl_Consts_SVIcons 65247
-#define Vcl_Consts_SMDIChildNotVisible 65248
-#define Vcl_Consts_SVisibleChanged 65249
-#define Vcl_Consts_SCannotShowModal 65250
-#define Vcl_Consts_SScrollBarRange 65251
-#define Vcl_Consts_SPropertyOutOfRange 65252
-#define Vcl_Consts_SMenuIndexError 65253
-#define Vcl_Consts_SMenuReinserted 65254
-#define Vcl_Consts_SMenuNotFound 65255
-#define Vcl_Consts_SNoTimers 65256
-#define Vcl_Consts_SNotPrinting 65257
-#define Vcl_Consts_SPrinting 65258
-#define Vcl_Consts_SPrinterIndexError 65259
-#define Vcl_Consts_SInvalidPrinter 65260
-#define Vcl_Consts_SDeviceOnPort 65261
-#define Vcl_Consts_SGroupIndexTooLow 65262
-#define Vcl_Consts_SNoMDIForm 65263
-#define Vcl_Consts_SUnknownStreamFormat 65264
-#define Vcl_Consts_SOutOfResources 65265
-#define Vcl_Consts_SNoCanvasHandle 65266
-#define Vcl_Consts_SInvalidTextFormatFlag 65267
-#define Vcl_Consts_SInvalidImageSize 65268
-#define Vcl_Consts_SInvalidImageList 65269
-#define Vcl_Consts_SReplaceImage 65270
-#define Vcl_Consts_SInsertImage 65271
-#define Vcl_Consts_SImageIndexError 65272
-#define Vcl_Consts_SImageReadFail 65273
-#define Vcl_Consts_SImageWriteFail 65274
-#define Vcl_Consts_SWindowDCError 65275
-#define Vcl_Consts_SWindowClass 65276
-#define Vcl_Consts_SCannotFocus 65277
-#define Vcl_Consts_SParentRequired 65278
-#define Vcl_Consts_SParentGivenNotAParent 65279
-#define System_RTLConsts_SInvalidDateString 65280
-#define System_RTLConsts_SInvalidTimeString 65281
-#define System_RTLConsts_SInvalidOffsetString 65282
-#define System_RTLConsts_sMustWaitOnOneEvent 65283
-#define System_RTLConsts_sBeginInvokeDestroying 65284
-#define Vcl_Consts_SInvalidBitmap 65285
-#define Vcl_Consts_SInvalidIcon 65286
-#define Vcl_Consts_SInvalidMetafile 65287
-#define Vcl_Consts_SInvalidPixelFormat 65288
-#define Vcl_Consts_SInvalidImage 65289
-#define Vcl_Consts_SScanLine 65290
-#define Vcl_Consts_SChangeIconSize 65291
-#define Vcl_Consts_SChangeWicSize 65292
-#define Vcl_Consts_SOleGraphic 65293
-#define Vcl_Consts_SUnknownExtension 65294
-#define Vcl_Consts_SUnknownClipboardFormat 65295
-#define System_RTLConsts_SWindows2000 65296
-#define System_RTLConsts_SWindowsXP 65297
-#define System_RTLConsts_SWindowsServer2003 65298
-#define System_RTLConsts_SWindowsServer2003R2 65299
-#define System_RTLConsts_SWindowsServer2012 65300
-#define System_RTLConsts_SWindowsServer2012R2 65301
-#define System_RTLConsts_SWindowsServer2016 65302
-#define System_RTLConsts_SWindows8 65303
-#define System_RTLConsts_SWindows8Point1 65304
-#define System_RTLConsts_SWindows10 65305
-#define System_RTLConsts_sObserverUnsupported 65306
-#define System_RTLConsts_sObserverMultipleSingleCast 65307
-#define System_RTLConsts_sObserverNoInterface 65308
-#define System_RTLConsts_sObserverNoSinglecastFound 65309
-#define System_RTLConsts_sObserverNoMulticastFound 65310
-#define System_RTLConsts_sObserverNotAvailable 65311
-#define System_RTLConsts_SGenericItemNotFound 65312
-#define System_RTLConsts_SGenericDuplicateItem 65313
-#define System_RTLConsts_SInsufficientRtti 65314
-#define System_RTLConsts_SParameterCountMismatch 65315
-#define System_RTLConsts_SNonPublicType 65316
-#define System_RTLConsts_SByRefArgMismatch 65317
-#define System_RTLConsts_SServiceNotFound 65318
-#define System_RTLConsts_SVersionStr 65319
-#define System_RTLConsts_SSPVersionStr 65320
-#define System_RTLConsts_SVersion32 65321
-#define System_RTLConsts_SVersion64 65322
-#define System_RTLConsts_SWindows 65323
-#define System_RTLConsts_SWindowsVista 65324
-#define System_RTLConsts_SWindowsServer2008 65325
-#define System_RTLConsts_SWindows7 65326
-#define System_RTLConsts_SWindowsServer2008R2 65327
-#define System_RTLConsts_sSpinCountOutOfRange 65328
-#define System_RTLConsts_sTimespanTooLong 65329
-#define System_RTLConsts_sInvalidTimespanDuration 65330
-#define System_RTLConsts_sTimespanValueCannotBeNan 65331
-#define System_RTLConsts_sCannotNegateTimespan 65332
-#define System_RTLConsts_sInvalidTimespanFormat 65333
-#define System_RTLConsts_sTimespanElementTooLong 65334
-#define System_RTLConsts_SNoContext 65335
-#define System_RTLConsts_SNoContextFound 65336
-#define System_RTLConsts_SNoIndex 65337
-#define System_RTLConsts_SNoSearch 65338
-#define System_RTLConsts_SNoTableOfContents 65339
-#define System_RTLConsts_SNoTopics 65340
-#define System_RTLConsts_SNothingFound 65341
-#define System_RTLConsts_SArgumentOutOfRange 65342
-#define System_RTLConsts_SArgumentNil 65343
-#define System_RTLConsts_SInputBufferExceed 65344
-#define System_RTLConsts_SInvalidCharsInPath 65345
-#define System_RTLConsts_SPathTooLong 65346
-#define System_RTLConsts_SPathNotFound 65347
-#define System_RTLConsts_SPathFormatNotSupported 65348
-#define System_RTLConsts_SSpecifiedFileNotFound 65349
-#define System_RTLConsts_hNoFilterViewer 65350
-#define System_RTLConsts_sArgumentInvalid 65351
-#define System_RTLConsts_sArgumentOutOfRange_Index 65352
-#define System_RTLConsts_sArgumentOutOfRange_StringIndex 65353
-#define System_RTLConsts_sArgumentOutOfRange_InvalidUTF32 65354
-#define System_RTLConsts_sArgument_InvalidHighSurrogate 65355
-#define System_RTLConsts_sArgument_InvalidLowSurrogate 65356
-#define System_RTLConsts_sInvalidStringAndObjectArrays 65357
-#define System_RTLConsts_sNoConstruct 65358
-#define System_RTLConsts_sInvalidTimeoutValue 65359
-#define System_RTLConsts_SSeekNotImplemented 65360
-#define System_RTLConsts_SSortedListError 65361
-#define System_RTLConsts_SStringExpected 65362
-#define System_RTLConsts_SSymbolExpected 65363
-#define System_RTLConsts_SUnknownGroup 65364
-#define System_RTLConsts_SUnknownProperty 65365
-#define System_RTLConsts_SWriteError 65366
-#define System_RTLConsts_SThreadCreateError 65367
-#define System_RTLConsts_SThreadError 65368
-#define System_RTLConsts_SThreadExternalTerminate 65369
-#define System_RTLConsts_SThreadExternalWait 65370
-#define System_RTLConsts_SThreadStartError 65371
-#define System_RTLConsts_SThreadExternalCheckTerminated 65372
-#define System_RTLConsts_SThreadExternalSetReturnValue 65373
-#define System_RTLConsts_SParamIsNil 65374
-#define System_RTLConsts_SParamIsNegative 65375
-#define System_RTLConsts_SLineTooLong 65376
-#define System_RTLConsts_SListCapacityError 65377
-#define System_RTLConsts_SListCountError 65378
-#define System_RTLConsts_SListIndexError 65379
-#define System_RTLConsts_SMemoryStreamError 65380
-#define System_RTLConsts_SNoComSupport 65381
-#define System_RTLConsts_SNumberExpected 65382
-#define System_RTLConsts_SAnsiUTF8Expected 65383
-#define System_RTLConsts_SParseError 65384
-#define System_RTLConsts_SPropertyException 65385
-#define System_RTLConsts_SReadError 65386
-#define System_RTLConsts_SReadOnlyProperty 65387
-#define System_RTLConsts_SRegCreateFailed 65388
-#define System_RTLConsts_SRegGetDataFailed 65389
-#define System_RTLConsts_SRegSetDataFailed 65390
-#define System_RTLConsts_SResNotFound 65391
+#define Vcl_Imaging_pnglang_EPNGCouldNotLoadResourceText 64912
+#define Vcl_Imaging_pnglang_EPNGOutMemoryText 64913
+#define Vcl_Imaging_pnglang_EPNGCannotChangeTransparentText 64914
+#define Vcl_Imaging_pnglang_EPNGHeaderNotPresentText 64915
+#define Vcl_Imaging_pnglang_EInvalidNewSize 64916
+#define Vcl_Imaging_pnglang_EInvalidSpec 64917
+#define Vcl_Imaging_pnglang_EPNGInvalidBitDepthText 64918
+#define Vcl_Imaging_pnglang_EPNGMissingMultipleIDATText 64928
+#define Vcl_Imaging_pnglang_EPNGZLIBErrorText 64929
+#define Vcl_Imaging_pnglang_EPNGInvalidPaletteText 64930
+#define Vcl_Imaging_pnglang_EPNGInvalidFileHeaderText 64931
+#define Vcl_Imaging_pnglang_EPNGIHDRNotFirstText 64932
+#define Vcl_Imaging_pnglang_EPNGSizeExceedsText 64933
+#define Vcl_Imaging_pnglang_EPNGUnknownPalEntryText 64934
+#define Vcl_Imaging_pnglang_EPNGUnknownCriticalChunkText 64935
+#define Vcl_Imaging_pnglang_EPNGUnknownCompressionText 64936
+#define Vcl_Imaging_pnglang_EPNGUnknownInterlaceText 64937
+#define Vcl_Imaging_pnglang_EPNGUnknownColorTypeText 64938
+#define Vcl_Imaging_pnglang_EPNGCannotAssignChunkText 64939
+#define Vcl_Imaging_pnglang_EPNGUnexpectedEndText 64940
+#define Vcl_Imaging_pnglang_EPNGNoImageDataText 64941
+#define Vcl_Imaging_pnglang_EPNGCannotAddChunkText 64942
+#define Vcl_Imaging_pnglang_EPNGCannotAddInvalidImageText 64943
+#define IdResourceStringsProtocols_RSTLSSLCanNotSetWhileConnected 64944
+#define IdResourceStringsProtocols_RSTLSSLSSLHandshakeFailed 64945
+#define IdResourceStringsProtocols_RSHeaderEncodeError 64946
+#define DropTarget_sRichEditWarning 64947
+#define DragDrop_sImplementationRequired 64948
+#define DragDrop_sFormatNameReadOnly 64949
+#define DragDropPIDL_sBadDesktop 64950
+#define DragDropPIDL_sBadFilename 64951
+#define Vcl_OleConst_SBadPropValue 64952
+#define Vcl_OleConst_SCannotActivate 64953
+#define Vcl_OleConst_SNoWindowHandle 64954
+#define Vcl_OleConst_SInvalidLicense 64955
+#define Vcl_OleConst_SNotLicensed 64956
+#define Vcl_OleConst_sNoRunningObject 64957
+#define Vcl_Imaging_pnglang_EPngInvalidCRCText 64958
+#define Vcl_Imaging_pnglang_EPNGInvalidIHDRText 64959
+#define IdResourceStringsCore_RSReplyInvalidCode 64960
+#define IdResourceStringsCore_RSReplyCodeAlreadyExists 64961
+#define IdResourceStringsProtocols_RSMIMEExtensionEmpty 64962
+#define IdResourceStringsProtocols_RSMIMEMIMETypeEmpty 64963
+#define IdResourceStringsProtocols_RSMIMEMIMEExtAlreadyExists 64964
+#define IdResourceStringsProtocols_RSIdMessageCannotLoad 64965
+#define IdResourceStringsProtocols_RSMsgClientEncodingText 64966
+#define IdResourceStringsProtocols_RSMsgClientEncodingAttachment 64967
+#define IdResourceStringsProtocols_RSMsgClientInvalidForTransferEncoding 64968
+#define IdResourceStringsProtocols_RSTIdMessagePartCreate 64969
+#define IdResourceStringsProtocols_RSTIdMessageErrorSavingAttachment 64970
+#define IdResourceStringsProtocols_RSTIdMessageErrorAttachmentBlocked 64971
+#define IdResourceStringsProtocols_RSMessageDecoderNotFound 64972
+#define IdResourceStringsProtocols_RSMessageEncoderNotFound 64973
+#define IdResourceStringsProtocols_RSUnrecognizedUUEEncodingScheme 64974
+#define IdResourceStringsProtocols_RSTLSSSLIOHandlerRequired 64975
+#define IdResourceStringsCore_RSReadTimeout 64976
+#define IdResourceStringsCore_RSReadLnWaitMaxAttemptsExceeded 64977
+#define IdResourceStringsCore_RSReadLnMaxLineLengthExceeded 64978
+#define IdResourceStringsCore_RSRequiresLargeStream 64979
+#define IdResourceStringsCore_RSDataTooLarge 64980
+#define IdResourceStringsCore_RSConnectTimeout 64981
+#define IdResourceStringsCore_RSThreadTerminateAndWaitFor 64982
+#define IdResourceStringsCore_RSAlreadyConnected 64983
+#define IdResourceStringsCore_RSMaximumNumberOfCaptureLineExceeded 64984
+#define IdResourceStringsCore_RSInterceptIsDifferent 64985
+#define IdResourceStringsCore_RSTransparentProxyCannotBind 64986
+#define IdResourceStringsCore_RSTransparentProxyCanNotSupportUDP 64987
+#define IdResourceStringsCore_RSBufferMissingTerminator 64988
+#define IdResourceStringsCore_RSBufferInvalidStartPos 64989
+#define IdResourceStringsCore_RSIOHandlerCannotChange 64990
+#define IdResourceStringsCore_RSIOHandlerTypeNotInstalled 64991
+#define IdResourceStringsCore_RSSocksAuthError 64992
+#define IdResourceStringsCore_RSSocksServerGeneralError 64993
+#define IdResourceStringsCore_RSSocksServerPermissionError 64994
+#define IdResourceStringsCore_RSSocksServerNetUnreachableError 64995
+#define IdResourceStringsCore_RSSocksServerHostUnreachableError 64996
+#define IdResourceStringsCore_RSSocksServerConnectionRefusedError 64997
+#define IdResourceStringsCore_RSSocksServerTTLExpiredError 64998
+#define IdResourceStringsCore_RSSocksServerCommandError 64999
+#define IdResourceStringsCore_RSSocksServerAddressError 65000
+#define IdResourceStringsCore_RSInterceptCircularLink 65001
+#define IdResourceStringsCore_RSNotEnoughDataInBuffer 65002
+#define IdResourceStringsCore_RSTooMuchDataInBuffer 65003
+#define IdResourceStringsCore_RSFileNotFound 65004
+#define IdResourceStringsCore_RSNotConnected 65005
+#define IdResourceStringsCore_RSObjectTypeNotSupported 65006
+#define IdResourceStringsCore_RSIdNoDataToRead 65007
+#define IdResourceStrings_RSCouldNotBindSocket 65008
+#define IdResourceStrings_RSInvalidPortRange 65009
+#define IdResourceStrings_RSInvalidServiceName 65010
+#define IdResourceStrings_RSInvalidIPv6Address 65011
+#define IdResourceStrings_RSIPVersionUnsupported 65012
+#define IdResourceStrings_RSNotAllBytesSent 65013
+#define IdResourceStrings_RSPackageSizeTooBig 65014
+#define IdResourceStrings_RSSetSizeExceeded 65015
+#define IdResourceStrings_RSEndOfStream 65016
+#define IdResourceStringsCore_RSSocksUDPNotSupported 65017
+#define IdResourceStringsCore_RSSocksRequestFailed 65018
+#define IdResourceStringsCore_RSSocksRequestServerFailed 65019
+#define IdResourceStringsCore_RSSocksRequestIdentFailed 65020
+#define IdResourceStringsCore_RSSocksUnknownError 65021
+#define IdResourceStringsCore_RSSocksServerRespondError 65022
+#define IdResourceStringsCore_RSSocksAuthMethodError 65023
+#define IdResourceStrings_RSStackESHUTDOWN 65024
+#define IdResourceStrings_RSStackETOOMANYREFS 65025
+#define IdResourceStrings_RSStackETIMEDOUT 65026
+#define IdResourceStrings_RSStackECONNREFUSED 65027
+#define IdResourceStrings_RSStackELOOP 65028
+#define IdResourceStrings_RSStackENAMETOOLONG 65029
+#define IdResourceStrings_RSStackEHOSTDOWN 65030
+#define IdResourceStrings_RSStackEHOSTUNREACH 65031
+#define IdResourceStrings_RSStackENOTEMPTY 65032
+#define IdResourceStrings_RSStackHOST_NOT_FOUND 65033
+#define IdResourceStrings_RSStackClassUndefined 65034
+#define IdResourceStrings_RSStackAlreadyCreated 65035
+#define IdResourceStrings_RSAntiFreezeOnlyOne 65036
+#define IdResourceStrings_RSCannotSetIPVersionWhenConnected 65037
+#define IdResourceStrings_RSCannotBindRange 65038
+#define IdResourceStrings_RSConnectionClosedGracefully 65039
+#define IdResourceStrings_RSStackENOPROTOOPT 65040
+#define IdResourceStrings_RSStackEPROTONOSUPPORT 65041
+#define IdResourceStrings_RSStackESOCKTNOSUPPORT 65042
+#define IdResourceStrings_RSStackEOPNOTSUPP 65043
+#define IdResourceStrings_RSStackEPFNOSUPPORT 65044
+#define IdResourceStrings_RSStackEAFNOSUPPORT 65045
+#define IdResourceStrings_RSStackEADDRINUSE 65046
+#define IdResourceStrings_RSStackEADDRNOTAVAIL 65047
+#define IdResourceStrings_RSStackENETDOWN 65048
+#define IdResourceStrings_RSStackENETUNREACH 65049
+#define IdResourceStrings_RSStackENETRESET 65050
+#define IdResourceStrings_RSStackECONNABORTED 65051
+#define IdResourceStrings_RSStackECONNRESET 65052
+#define IdResourceStrings_RSStackENOBUFS 65053
+#define IdResourceStrings_RSStackEISCONN 65054
+#define IdResourceStrings_RSStackENOTCONN 65055
+#define IdResourceStrings_RSStatusDisconnected 65056
+#define IdResourceStrings_RSStatusText 65057
+#define IdResourceStrings_RSStackError 65058
+#define IdResourceStrings_RSStackEINTR 65059
+#define IdResourceStrings_RSStackEBADF 65060
+#define IdResourceStrings_RSStackEACCES 65061
+#define IdResourceStrings_RSStackEFAULT 65062
+#define IdResourceStrings_RSStackEINVAL 65063
+#define IdResourceStrings_RSStackEMFILE 65064
+#define IdResourceStrings_RSStackEWOULDBLOCK 65065
+#define IdResourceStrings_RSStackEINPROGRESS 65066
+#define IdResourceStrings_RSStackEALREADY 65067
+#define IdResourceStrings_RSStackENOTSOCK 65068
+#define IdResourceStrings_RSStackEDESTADDRREQ 65069
+#define IdResourceStrings_RSStackEMSGSIZE 65070
+#define IdResourceStrings_RSStackEPROTOTYPE 65071
+#define Vcl_ComStrs_sTabFailSetObject 65072
+#define Vcl_ComStrs_sInvalidOwner 65073
+#define Vcl_ComStrs_sInvalidComCtl32 65074
+#define IdResourceStrings_RSInvalidSourceArray 65075
+#define IdResourceStrings_RSInvalidDestinationArray 65076
+#define IdResourceStrings_RSCharIndexOutOfBounds 65077
+#define IdResourceStrings_RSInvalidCharCount 65078
+#define IdResourceStrings_RSInvalidDestinationIndex 65079
+#define IdResourceStrings_RSInvalidCodePage 65080
+#define IdResourceStrings_RSFailedTimeZoneInfo 65081
+#define IdResourceStrings_RSWinsockCallError 65082
+#define IdResourceStrings_RSWinsockLoadError 65083
+#define IdResourceStrings_RSStatusResolving 65084
+#define IdResourceStrings_RSStatusConnecting 65085
+#define IdResourceStrings_RSStatusConnected 65086
+#define IdResourceStrings_RSStatusDisconnecting 65087
+#define Vcl_Consts_SStyleNotRegisteredNoName 65088
+#define Vcl_Consts_sBeginInvokeNoHandle 65089
+#define Vcl_Consts_SInvalidRelativePanelControlItem 65090
+#define Vcl_Consts_SInvalidRelativePanelSibling 65091
+#define Vcl_Consts_SInvalidRelativePanelSiblingSelf 65092
+#define Vcl_Consts_SRelativePanelCircularDependency 65093
+#define System_Win_ComConst_SOleError 65094
+#define System_Win_ComConst_SNoMethod 65095
+#define System_Win_ComConst_SVarNotObject 65096
+#define System_Win_ComConst_STooManyParams 65097
+#define System_Win_ComConst_SDCOMNotInstalled 65098
+#define Vcl_ComStrs_sTabFailClear 65099
+#define Vcl_ComStrs_sTabFailDelete 65100
+#define Vcl_ComStrs_sTabFailRetrieve 65101
+#define Vcl_ComStrs_sTabFailGetObject 65102
+#define Vcl_ComStrs_sTabFailSet 65103
+#define Vcl_Consts_SStyleLoadError 65104
+#define Vcl_Consts_SStyleLoadErrors 65105
+#define Vcl_Consts_SStyleRegisterError 65106
+#define Vcl_Consts_SStyleClassRegisterError 65107
+#define Vcl_Consts_SStyleNotFound 65108
+#define Vcl_Consts_SStyleClassNotFound 65109
+#define Vcl_Consts_SStyleInvalidHandle 65110
+#define Vcl_Consts_SStyleFormatError 65111
+#define Vcl_Consts_SStyleFileDescription 65112
+#define Vcl_Consts_SStyleHookClassRegistered 65113
+#define Vcl_Consts_SStyleHookClassNotRegistered 65114
+#define Vcl_Consts_SStyleInvalidParameter 65115
+#define Vcl_Consts_SStyleHookClassNotFound 65116
+#define Vcl_Consts_SStyleFeatureNotSupported 65117
+#define Vcl_Consts_SStyleNotRegistered 65118
+#define Vcl_Consts_SStyleUnregisterError 65119
+#define Vcl_Consts_sInvalidControlItem 65120
+#define Vcl_Consts_sCannotDeleteColumn 65121
+#define Vcl_Consts_sCannotDeleteRow 65122
+#define Vcl_Consts_sCellMember 65123
+#define Vcl_Consts_sCellSizeType 65124
+#define Vcl_Consts_sCellValue 65125
+#define Vcl_Consts_sCellAutoSize 65126
+#define Vcl_Consts_sCellPercentSize 65127
+#define Vcl_Consts_sCellAbsoluteSize 65128
+#define Vcl_Consts_sCellColumn 65129
+#define Vcl_Consts_sCellRow 65130
+#define Vcl_Consts_STrayIconRemoveError 65131
+#define Vcl_Consts_SWindowsVistaRequired 65132
+#define Vcl_Consts_STaskDlgButtonCaption 65133
+#define Vcl_Consts_STaskDlgRadioButtonCaption 65134
+#define Vcl_Consts_SInvalidTaskDlgButtonCaption 65135
+#define Vcl_Consts_SListBoxMustBeVirtual 65136
+#define Vcl_Consts_SUnableToSaveSettings 65137
+#define Vcl_Consts_SRestoreDefaultSchedule 65138
+#define Vcl_Consts_SNoGetItemEventHandler 65139
+#define Vcl_Consts_SMissingActionBarStyleName 65140
+#define Vcl_Consts_SActionBarStyleMissing 65141
+#define Vcl_Consts_SANSIEncoding 65142
+#define Vcl_Consts_SASCIIEncoding 65143
+#define Vcl_Consts_SUnicodeEncoding 65144
+#define Vcl_Consts_SBigEndianEncoding 65145
+#define Vcl_Consts_SUTF8Encoding 65146
+#define Vcl_Consts_SUTF7Encoding 65147
+#define Vcl_Consts_sCannotAddFixedSize 65148
+#define Vcl_Consts_sInvalidSpan 65149
+#define Vcl_Consts_sInvalidRowIndex 65150
+#define Vcl_Consts_sInvalidColumnIndex 65151
+#define Vcl_Consts_SPassword 65152
+#define Vcl_Consts_SDomain 65153
+#define Vcl_Consts_SLogin 65154
+#define Vcl_Consts_SAssignSubItemError 65155
+#define Vcl_Consts_SDeleteItemWithSubItems 65156
+#define Vcl_Consts_SDeleteNotAllowed 65157
+#define Vcl_Consts_SMoveNotAllowed 65158
+#define Vcl_Consts_SMoreButtons 65159
+#define Vcl_Consts_SExpand 65160
+#define Vcl_Consts_SErrorLoadingFile 65161
+#define Vcl_Consts_SNoName 65162
+#define Vcl_Consts_SAddRemoveButtons 65163
+#define Vcl_Consts_SResetActionToolBar 65164
+#define Vcl_Consts_SCircularReferencesNotAllowed 65165
+#define Vcl_Consts_SCannotHideActionBand 65166
+#define Vcl_Consts_SErrorSettingCount 65167
+#define Vcl_Consts_SInsertLineError 65168
+#define Vcl_Consts_SInvalidClipFmt 65169
+#define Vcl_Consts_SIconToClipboard 65170
+#define Vcl_Consts_SCannotOpenClipboard 65171
+#define Vcl_Consts_SDefault 65172
+#define Vcl_Consts_SInvalidPrinterOp 65173
+#define Vcl_Consts_SNoDefaultPrinter 65174
+#define Vcl_Consts_SDuplicateMenus 65175
+#define Vcl_Consts_SDockedCtlNeedsName 65176
+#define Vcl_Consts_SDockTreeRemoveError 65177
+#define Vcl_Consts_SDockZoneNotFound 65178
+#define Vcl_Consts_SDockZoneHasNoCtl 65179
+#define Vcl_Consts_SDockZoneVersionConflict 65180
+#define Vcl_Consts_SPromptArrayTooShort 65181
+#define Vcl_Consts_SPromptArrayEmpty 65182
+#define Vcl_Consts_SUsername 65183
+#define Vcl_Consts_SmkcSpace 65184
+#define Vcl_Consts_SmkcPgUp 65185
+#define Vcl_Consts_SmkcPgDn 65186
+#define Vcl_Consts_SmkcEnd 65187
+#define Vcl_Consts_SmkcHome 65188
+#define Vcl_Consts_SmkcLeft 65189
+#define Vcl_Consts_SmkcUp 65190
+#define Vcl_Consts_SmkcRight 65191
+#define Vcl_Consts_SmkcDown 65192
+#define Vcl_Consts_SmkcIns 65193
+#define Vcl_Consts_SmkcDel 65194
+#define Vcl_Consts_SmkcShift 65195
+#define Vcl_Consts_SmkcCtrl 65196
+#define Vcl_Consts_SmkcAlt 65197
+#define Vcl_Consts_SOutOfRange 65198
+#define Vcl_Consts_sAllFilter 65199
+#define Vcl_Consts_SMsgDlgYes 65200
+#define Vcl_Consts_SMsgDlgNo 65201
+#define Vcl_Consts_SMsgDlgOK 65202
+#define Vcl_Consts_SMsgDlgCancel 65203
+#define Vcl_Consts_SMsgDlgHelp 65204
+#define Vcl_Consts_SMsgDlgAbort 65205
+#define Vcl_Consts_SMsgDlgRetry 65206
+#define Vcl_Consts_SMsgDlgIgnore 65207
+#define Vcl_Consts_SMsgDlgAll 65208
+#define Vcl_Consts_SMsgDlgNoToAll 65209
+#define Vcl_Consts_SMsgDlgYesToAll 65210
+#define Vcl_Consts_SMsgDlgClose 65211
+#define Vcl_Consts_SmkcBkSp 65212
+#define Vcl_Consts_SmkcTab 65213
+#define Vcl_Consts_SmkcEsc 65214
+#define Vcl_Consts_SmkcEnter 65215
+#define Vcl_Consts_SVEnhMetafiles 65216
+#define Vcl_Consts_SVIcons 65217
+#define Vcl_Consts_SVBitmaps 65218
+#define Vcl_Consts_SVTIFFImages 65219
+#define Vcl_Consts_SGridTooLarge 65220
+#define Vcl_Consts_STooManyDeleted 65221
+#define Vcl_Consts_SIndexOutOfRange 65222
+#define Vcl_Consts_SFixedColTooBig 65223
+#define Vcl_Consts_SFixedRowTooBig 65224
+#define Vcl_Consts_SInvalidStringGridOp 65225
+#define Vcl_Consts_SMaskErr 65226
+#define Vcl_Consts_SMaskEditErr 65227
+#define Vcl_Consts_SMsgDlgWarning 65228
+#define Vcl_Consts_SMsgDlgError 65229
+#define Vcl_Consts_SMsgDlgInformation 65230
+#define Vcl_Consts_SMsgDlgConfirm 65231
+#define Vcl_Consts_SGroupIndexTooLow 65232
+#define Vcl_Consts_SNoMDIForm 65233
+#define Vcl_Consts_SImageCanvasNeedsBitmap 65234
+#define Vcl_Consts_SControlParentSetToSelf 65235
+#define Vcl_Consts_SOKButton 65236
+#define Vcl_Consts_SCancelButton 65237
+#define Vcl_Consts_SYesButton 65238
+#define Vcl_Consts_SNoButton 65239
+#define Vcl_Consts_SHelpButton 65240
+#define Vcl_Consts_SCloseButton 65241
+#define Vcl_Consts_SIgnoreButton 65242
+#define Vcl_Consts_SRetryButton 65243
+#define Vcl_Consts_SAbortButton 65244
+#define Vcl_Consts_SAllButton 65245
+#define Vcl_Consts_SCannotDragForm 65246
+#define Vcl_Consts_SVMetafiles 65247
+#define Vcl_Consts_SParentRequired 65248
+#define Vcl_Consts_SParentGivenNotAParent 65249
+#define Vcl_Consts_SMDIChildNotVisible 65250
+#define Vcl_Consts_SVisibleChanged 65251
+#define Vcl_Consts_SCannotShowModal 65252
+#define Vcl_Consts_SScrollBarRange 65253
+#define Vcl_Consts_SPropertyOutOfRange 65254
+#define Vcl_Consts_SMenuIndexError 65255
+#define Vcl_Consts_SMenuReinserted 65256
+#define Vcl_Consts_SMenuNotFound 65257
+#define Vcl_Consts_SNoTimers 65258
+#define Vcl_Consts_SNotPrinting 65259
+#define Vcl_Consts_SPrinting 65260
+#define Vcl_Consts_SPrinterIndexError 65261
+#define Vcl_Consts_SInvalidPrinter 65262
+#define Vcl_Consts_SDeviceOnPort 65263
+#define Vcl_Consts_SUnknownExtension 65264
+#define Vcl_Consts_SUnknownClipboardFormat 65265
+#define Vcl_Consts_SUnknownStreamFormat 65266
+#define Vcl_Consts_SOutOfResources 65267
+#define Vcl_Consts_SNoCanvasHandle 65268
+#define Vcl_Consts_SInvalidTextFormatFlag 65269
+#define Vcl_Consts_SInvalidImageSize 65270
+#define Vcl_Consts_SInvalidImageList 65271
+#define Vcl_Consts_SReplaceImage 65272
+#define Vcl_Consts_SInsertImage 65273
+#define Vcl_Consts_SImageIndexError 65274
+#define Vcl_Consts_SImageReadFail 65275
+#define Vcl_Consts_SImageWriteFail 65276
+#define Vcl_Consts_SWindowDCError 65277
+#define Vcl_Consts_SWindowClass 65278
+#define Vcl_Consts_SCannotFocus 65279
+#define System_RTLConsts_sObserverNoMulticastFound 65280
+#define System_RTLConsts_sObserverNotAvailable 65281
+#define System_RTLConsts_SInvalidDateString 65282
+#define System_RTLConsts_SInvalidTimeString 65283
+#define System_RTLConsts_SInvalidOffsetString 65284
+#define System_RTLConsts_sMustWaitOnOneEvent 65285
+#define System_RTLConsts_sBeginInvokeDestroying 65286
+#define Vcl_Consts_SInvalidBitmap 65287
+#define Vcl_Consts_SInvalidIcon 65288
+#define Vcl_Consts_SInvalidMetafile 65289
+#define Vcl_Consts_SInvalidPixelFormat 65290
+#define Vcl_Consts_SInvalidImage 65291
+#define Vcl_Consts_SScanLine 65292
+#define Vcl_Consts_SChangeIconSize 65293
+#define Vcl_Consts_SChangeWicSize 65294
+#define Vcl_Consts_SOleGraphic 65295
+#define System_RTLConsts_SWindows7 65296
+#define System_RTLConsts_SWindowsServer2008R2 65297
+#define System_RTLConsts_SWindows2000 65298
+#define System_RTLConsts_SWindowsXP 65299
+#define System_RTLConsts_SWindowsServer2003 65300
+#define System_RTLConsts_SWindowsServer2003R2 65301
+#define System_RTLConsts_SWindowsServer2012 65302
+#define System_RTLConsts_SWindowsServer2012R2 65303
+#define System_RTLConsts_SWindowsServer2016 65304
+#define System_RTLConsts_SWindows8 65305
+#define System_RTLConsts_SWindows8Point1 65306
+#define System_RTLConsts_SWindows10 65307
+#define System_RTLConsts_sObserverUnsupported 65308
+#define System_RTLConsts_sObserverMultipleSingleCast 65309
+#define System_RTLConsts_sObserverNoInterface 65310
+#define System_RTLConsts_sObserverNoSinglecastFound 65311
+#define System_RTLConsts_SArgumentOutOfRange 65312
+#define System_RTLConsts_SArgumentNil 65313
+#define System_RTLConsts_SGenericItemNotFound 65314
+#define System_RTLConsts_SGenericDuplicateItem 65315
+#define System_RTLConsts_SInsufficientRtti 65316
+#define System_RTLConsts_SParameterCountMismatch 65317
+#define System_RTLConsts_SNonPublicType 65318
+#define System_RTLConsts_SByRefArgMismatch 65319
+#define System_RTLConsts_SServiceNotFound 65320
+#define System_RTLConsts_SVersionStr 65321
+#define System_RTLConsts_SSPVersionStr 65322
+#define System_RTLConsts_SVersion32 65323
+#define System_RTLConsts_SVersion64 65324
+#define System_RTLConsts_SWindows 65325
+#define System_RTLConsts_SWindowsVista 65326
+#define System_RTLConsts_SWindowsServer2008 65327
+#define System_RTLConsts_sNoConstruct 65328
+#define System_RTLConsts_sInvalidTimeoutValue 65329
+#define System_RTLConsts_sSpinCountOutOfRange 65330
+#define System_RTLConsts_sTimespanTooLong 65331
+#define System_RTLConsts_sInvalidTimespanDuration 65332
+#define System_RTLConsts_sTimespanValueCannotBeNan 65333
+#define System_RTLConsts_sCannotNegateTimespan 65334
+#define System_RTLConsts_sInvalidTimespanFormat 65335
+#define System_RTLConsts_sTimespanElementTooLong 65336
+#define System_RTLConsts_SNoContext 65337
+#define System_RTLConsts_SNoContextFound 65338
+#define System_RTLConsts_SNoIndex 65339
+#define System_RTLConsts_SNoSearch 65340
+#define System_RTLConsts_SNoTableOfContents 65341
+#define System_RTLConsts_SNoTopics 65342
+#define System_RTLConsts_SNothingFound 65343
+#define System_RTLConsts_SParamIsNegative 65344
+#define System_RTLConsts_SInputBufferExceed 65345
+#define System_RTLConsts_SInvalidCharsInPath 65346
+#define System_RTLConsts_SInvalidCharsInSearchPattern 65347
+#define System_RTLConsts_SPathTooLong 65348
+#define System_RTLConsts_SPathNotFound 65349
+#define System_RTLConsts_SPathFormatNotSupported 65350
+#define System_RTLConsts_SSpecifiedFileNotFound 65351
+#define System_RTLConsts_hNoFilterViewer 65352
+#define System_RTLConsts_sArgumentInvalid 65353
+#define System_RTLConsts_sArgumentOutOfRange_Index 65354
+#define System_RTLConsts_sArgumentOutOfRange_StringIndex 65355
+#define System_RTLConsts_sArgumentOutOfRange_InvalidUTF32 65356
+#define System_RTLConsts_sArgument_InvalidHighSurrogate 65357
+#define System_RTLConsts_sArgument_InvalidLowSurrogate 65358
+#define System_RTLConsts_sInvalidStringAndObjectArrays 65359
+#define System_RTLConsts_SResNotFound 65360
+#define System_RTLConsts_SSeekNotImplemented 65361
+#define System_RTLConsts_SSortedListError 65362
+#define System_RTLConsts_SStringExpected 65363
+#define System_RTLConsts_SSymbolExpected 65364
+#define System_RTLConsts_SUnknownGroup 65365
+#define System_RTLConsts_SUnknownProperty 65366
+#define System_RTLConsts_SWriteError 65367
+#define System_RTLConsts_SThreadCreateError 65368
+#define System_RTLConsts_SThreadError 65369
+#define System_RTLConsts_SThreadExternalTerminate 65370
+#define System_RTLConsts_SThreadExternalWait 65371
+#define System_RTLConsts_SThreadStartError 65372
+#define System_RTLConsts_SThreadExternalCheckTerminated 65373
+#define System_RTLConsts_SThreadExternalSetReturnValue 65374
+#define System_RTLConsts_SParamIsNil 65375
+#define System_RTLConsts_SInvalidString 65376
+#define System_RTLConsts_SLineTooLong 65377
+#define System_RTLConsts_SListCapacityError 65378
+#define System_RTLConsts_SListCountError 65379
+#define System_RTLConsts_SListIndexError 65380
+#define System_RTLConsts_SMemoryStreamError 65381
+#define System_RTLConsts_SNoComSupport 65382
+#define System_RTLConsts_SNumberExpected 65383
+#define System_RTLConsts_SAnsiUTF8Expected 65384
+#define System_RTLConsts_SParseError 65385
+#define System_RTLConsts_SPropertyException 65386
+#define System_RTLConsts_SReadError 65387
+#define System_RTLConsts_SReadOnlyProperty 65388
+#define System_RTLConsts_SRegCreateFailed 65389
+#define System_RTLConsts_SRegGetDataFailed 65390
+#define System_RTLConsts_SRegSetDataFailed 65391
 #define System_RTLConsts_SDuplicateClass 65392
 #define System_RTLConsts_SDuplicateItem 65393
 #define System_RTLConsts_SDuplicateName 65394
@@ -458,12 +489,12 @@
 #define System_RTLConsts_SIniFileWriteError 65399
 #define System_RTLConsts_SInvalidBinary 65400
 #define System_RTLConsts_SInvalidImage 65401
-#define System_RTLConsts_SInvalidName 65402
-#define System_RTLConsts_SInvalidProperty 65403
-#define System_RTLConsts_SInvalidPropertyPath 65404
-#define System_RTLConsts_SInvalidPropertyValue 65405
-#define System_RTLConsts_SInvalidRegType 65406
-#define System_RTLConsts_SInvalidString 65407
+#define System_RTLConsts_SInvalidMask 65402
+#define System_RTLConsts_SInvalidName 65403
+#define System_RTLConsts_SInvalidProperty 65404
+#define System_RTLConsts_SInvalidPropertyPath 65405
+#define System_RTLConsts_SInvalidPropertyValue 65406
+#define System_RTLConsts_SInvalidRegType 65407
 #define System_SysConst_SInvalidDestinationArray 65408
 #define System_SysConst_SCharIndexOutOfBounds 65409
 #define System_SysConst_SByteIndexOutOfBounds 65410
@@ -594,7 +625,6 @@
 #define System_SysConst_SAccessDenied 65535
 STRINGTABLE
 BEGIN
-	Vcl_Imaging_pnglang_EPNGCannotAddInvalidImageText,	L"It's not allowed to add a new chunk because the current image is invalid."
 	Vcl_Imaging_pnglang_EPNGCouldNotLoadResourceText,	L"The png image could not be loaded from the resource ID."
 	Vcl_Imaging_pnglang_EPNGOutMemoryText,	L"Some operation could not be performed because the system is out of resources. Close some windows and try again."
 	Vcl_Imaging_pnglang_EPNGCannotChangeTransparentText,	L"Setting bit transparency color is not allowed for png images containing alpha value for each pixel (COLOR_RGBALPHA and COLOR_GRAYSCALEALPHA)"
@@ -602,7 +632,6 @@ BEGIN
 	Vcl_Imaging_pnglang_EInvalidNewSize,	L"The new size provided for image resizing is invalid."
 	Vcl_Imaging_pnglang_EInvalidSpec,	L"The \"Portable Network Graphics\" could not be created because invalid image type parameters have being provided."
 	Vcl_Imaging_pnglang_EPNGInvalidBitDepthText,	L"The \"Portable Network Graphics\" image could not be loaded because it uses an invalid image bit depth."
-	Vcl_Imaging_pnglang_EPNGInvalidIHDRText,	L"The \"Portable Network Graphics\" image could not be loaded because one of its main piece of data (ihdr) might be corrupted"
 	Vcl_Imaging_pnglang_EPNGMissingMultipleIDATText,	L"This \"Portable Network Graphics\" image is invalid because it has missing image parts."
 	Vcl_Imaging_pnglang_EPNGZLIBErrorText,	L"Could not decompress the image because it contains invalid compressed data.\r\n Description: "
 	Vcl_Imaging_pnglang_EPNGInvalidPaletteText,	L"The \"Portable Network Graphics\" image contains an invalid palette."
@@ -618,7 +647,7 @@ BEGIN
 	Vcl_Imaging_pnglang_EPNGUnexpectedEndText,	L"This \"Portable Network Graphics\" image is invalid because the decoder found an unexpected end of the file."
 	Vcl_Imaging_pnglang_EPNGNoImageDataText,	L"This \"Portable Network Graphics\" image contains no data."
 	Vcl_Imaging_pnglang_EPNGCannotAddChunkText,	L"The program tried to add a existent critical chunk to the current image which is not allowed."
-	IdResourceStringsProtocols_RSTLSSSLIOHandlerRequired,	L"SSL IOHandler is required for this setting"
+	Vcl_Imaging_pnglang_EPNGCannotAddInvalidImageText,	L"It's not allowed to add a new chunk because the current image is invalid."
 	IdResourceStringsProtocols_RSTLSSLCanNotSetWhileConnected,	L"This value can not be set while the client is connected."
 	IdResourceStringsProtocols_RSTLSSLSSLHandshakeFailed,	L"SSL negotiation failed."
 	IdResourceStringsProtocols_RSHeaderEncodeError,	L"Could not encode header data using charset \"%s\""
@@ -634,7 +663,7 @@ BEGIN
 	Vcl_OleConst_SNotLicensed,	L"License information for %s not found. You cannot use this control in design mode"
 	Vcl_OleConst_sNoRunningObject,	L"Unable to retrieve a pointer to a running object registered with OLE for %s/%s"
 	Vcl_Imaging_pnglang_EPngInvalidCRCText,	L"This \"Portable Network Graphics\" image is not valid because it contains invalid pieces of data (crc error)"
-	IdResourceStringsCore_RSIOHandlerTypeNotInstalled,	L"No IOHandler of type %s is installed."
+	Vcl_Imaging_pnglang_EPNGInvalidIHDRText,	L"The \"Portable Network Graphics\" image could not be loaded because one of its main piece of data (ihdr) might be corrupted"
 	IdResourceStringsCore_RSReplyInvalidCode,	L"Reply Code is not valid: %s"
 	IdResourceStringsCore_RSReplyCodeAlreadyExists,	L"Reply Code already exists: %s"
 	IdResourceStringsProtocols_RSMIMEExtensionEmpty,	L"Extension is empty"
@@ -650,7 +679,7 @@ BEGIN
 	IdResourceStringsProtocols_RSMessageDecoderNotFound,	L"Message decoder not found"
 	IdResourceStringsProtocols_RSMessageEncoderNotFound,	L"Message encoder not found"
 	IdResourceStringsProtocols_RSUnrecognizedUUEEncodingScheme,	L"Unrecognized UUE encoding scheme."
-	IdResourceStringsCore_RSIdNoDataToRead,	L"No data to read."
+	IdResourceStringsProtocols_RSTLSSSLIOHandlerRequired,	L"SSL IOHandler is required for this setting"
 	IdResourceStringsCore_RSReadTimeout,	L"Read timed out."
 	IdResourceStringsCore_RSReadLnWaitMaxAttemptsExceeded,	L"Max line read attempts exceeded."
 	IdResourceStringsCore_RSReadLnMaxLineLengthExceeded,	L"Max line length exceeded."
@@ -666,7 +695,7 @@ BEGIN
 	IdResourceStringsCore_RSBufferMissingTerminator,	L"Buffer terminator must be specified."
 	IdResourceStringsCore_RSBufferInvalidStartPos,	L"Buffer start position is invalid."
 	IdResourceStringsCore_RSIOHandlerCannotChange,	L"Cannot change a connected IOHandler."
-	IdResourceStringsCore_RSSocksAuthMethodError,	L"Invalid socks authentication method."
+	IdResourceStringsCore_RSIOHandlerTypeNotInstalled,	L"No IOHandler of type %s is installed."
 	IdResourceStringsCore_RSSocksAuthError,	L"Authentication error to socks server."
 	IdResourceStringsCore_RSSocksServerGeneralError,	L"General SOCKS server failure."
 	IdResourceStringsCore_RSSocksServerPermissionError,	L"Connection not allowed by ruleset."
@@ -682,7 +711,7 @@ BEGIN
 	IdResourceStringsCore_RSFileNotFound,	L"File \"%s\" not found"
 	IdResourceStringsCore_RSNotConnected,	L"Not Connected"
 	IdResourceStringsCore_RSObjectTypeNotSupported,	L"Object type not supported."
-	IdResourceStrings_RSConnectionClosedGracefully,	L"Connection Closed Gracefully."
+	IdResourceStringsCore_RSIdNoDataToRead,	L"No data to read."
 	IdResourceStrings_RSCouldNotBindSocket,	L"Could not bind socket. Address and port are already in use."
 	IdResourceStrings_RSInvalidPortRange,	L"Invalid Port Range (%d - %d)"
 	IdResourceStrings_RSInvalidServiceName,	L"%s is not a valid service."
@@ -698,7 +727,7 @@ BEGIN
 	IdResourceStringsCore_RSSocksRequestIdentFailed,	L"Request rejected because the client program and identd report different user-ids."
 	IdResourceStringsCore_RSSocksUnknownError,	L"Unknown socks error."
 	IdResourceStringsCore_RSSocksServerRespondError,	L"Socks server did not respond."
-	IdResourceStrings_RSStackENOTCONN,	L"Socket is not connected."
+	IdResourceStringsCore_RSSocksAuthMethodError,	L"Invalid socks authentication method."
 	IdResourceStrings_RSStackESHUTDOWN,	L"Cannot send or receive after socket is closed."
 	IdResourceStrings_RSStackETOOMANYREFS,	L"Too many references, cannot splice."
 	IdResourceStrings_RSStackETIMEDOUT,	L"Connection timed out."
@@ -714,7 +743,7 @@ BEGIN
 	IdResourceStrings_RSAntiFreezeOnlyOne,	L"Only one TIdAntiFreeze can exist per application."
 	IdResourceStrings_RSCannotSetIPVersionWhenConnected,	L"Cannot change IPVersion when connected"
 	IdResourceStrings_RSCannotBindRange,	L"Can not bind in port range (%d - %d)"
-	IdResourceStrings_RSStackEPROTOTYPE,	L"Protocol wrong type for socket."
+	IdResourceStrings_RSConnectionClosedGracefully,	L"Connection Closed Gracefully."
 	IdResourceStrings_RSStackENOPROTOOPT,	L"Bad protocol option."
 	IdResourceStrings_RSStackEPROTONOSUPPORT,	L"Protocol not supported."
 	IdResourceStrings_RSStackESOCKTNOSUPPORT,	L"Socket type not supported."
@@ -730,7 +759,7 @@ BEGIN
 	IdResourceStrings_RSStackECONNRESET,	L"Connection reset by peer."
 	IdResourceStrings_RSStackENOBUFS,	L"No buffer space available."
 	IdResourceStrings_RSStackEISCONN,	L"Socket is already connected."
-	IdResourceStrings_RSStatusDisconnecting,	L"Disconnecting."
+	IdResourceStrings_RSStackENOTCONN,	L"Socket is not connected."
 	IdResourceStrings_RSStatusDisconnected,	L"Disconnected."
 	IdResourceStrings_RSStatusText,	L"%s"
 	IdResourceStrings_RSStackError,	L"Socket Error # %d\r\n%s"
@@ -746,10 +775,10 @@ BEGIN
 	IdResourceStrings_RSStackENOTSOCK,	L"Socket operation on non-socket."
 	IdResourceStrings_RSStackEDESTADDRREQ,	L"Destination address required."
 	IdResourceStrings_RSStackEMSGSIZE,	L"Message too long."
-	Vcl_ComStrs_sTabFailRetrieve,	L"Failed to retrieve tab at index %d"
-	Vcl_ComStrs_sTabFailGetObject,	L"Failed to get object at index %d"
-	Vcl_ComStrs_sTabFailSet,	L"Failed to set tab \"%s\" at index %d"
+	IdResourceStrings_RSStackEPROTOTYPE,	L"Protocol wrong type for socket."
 	Vcl_ComStrs_sTabFailSetObject,	L"Failed to set object at index %d"
+	Vcl_ComStrs_sInvalidOwner,	L"Invalid owner"
+	Vcl_ComStrs_sInvalidComCtl32,	L"This control requires version 4.70 or greater of COMCTL32.DLL"
 	IdResourceStrings_RSInvalidSourceArray,	L"Invalid source array"
 	IdResourceStrings_RSInvalidDestinationArray,	L"Invalid destination array"
 	IdResourceStrings_RSCharIndexOutOfBounds,	L"Character index out of bounds (%d)"
@@ -762,15 +791,13 @@ BEGIN
 	IdResourceStrings_RSStatusResolving,	L"Resolving hostname %s."
 	IdResourceStrings_RSStatusConnecting,	L"Connecting to %s."
 	IdResourceStrings_RSStatusConnected,	L"Connected."
-	Vcl_Consts_SStyleHookClassRegistered,	L"Class '%s' is already registered for '%s'"
-	Vcl_Consts_SStyleHookClassNotRegistered,	L"Class '%s' is not registered for '%s'"
-	Vcl_Consts_SStyleInvalidParameter,	L"%s parameter cannot be nil"
-	Vcl_Consts_SStyleHookClassNotFound,	L"A StyleHook class has not been registered for %s"
-	Vcl_Consts_SStyleFeatureNotSupported,	L"Feature not supported by this style"
-	Vcl_Consts_SStyleNotRegistered,	L"Style '%s' is not registered"
-	Vcl_Consts_SStyleUnregisterError,	L"Cannot unregister the system style"
+	IdResourceStrings_RSStatusDisconnecting,	L"Disconnecting."
 	Vcl_Consts_SStyleNotRegisteredNoName,	L"Style not registered"
 	Vcl_Consts_sBeginInvokeNoHandle,	L"Cannot call BeginInvoke on a control with no parent or window handle"
+	Vcl_Consts_SInvalidRelativePanelControlItem,	L"ControlItem.Control cannot be set to owning RelativePanel"
+	Vcl_Consts_SInvalidRelativePanelSibling,	L"Control is not a sibling within RelativePanel"
+	Vcl_Consts_SInvalidRelativePanelSiblingSelf,	L"Control cannot be positioned relative to itself"
+	Vcl_Consts_SRelativePanelCircularDependency,	L"RelativePanel error: Circular dependency detected. Layout could not complete"
 	System_Win_ComConst_SOleError,	L"OLE error %.8x"
 	System_Win_ComConst_SNoMethod,	L"Method '%s' not supported by automation object"
 	System_Win_ComConst_SVarNotObject,	L"Variant does not reference an automation object"
@@ -778,13 +805,9 @@ BEGIN
 	System_Win_ComConst_SDCOMNotInstalled,	L"DCOM not installed"
 	Vcl_ComStrs_sTabFailClear,	L"Failed to clear tab control"
 	Vcl_ComStrs_sTabFailDelete,	L"Failed to delete tab at index %d"
-	Vcl_Consts_sCellColumn,	L"Column%d"
-	Vcl_Consts_sCellRow,	L"Row%d"
-	Vcl_Consts_STrayIconRemoveError,	L"Cannot remove shell notification icon"
-	Vcl_Consts_SWindowsVistaRequired,	L"%s requires Windows Vista or later"
-	Vcl_Consts_STaskDlgButtonCaption,	L"Button%d"
-	Vcl_Consts_STaskDlgRadioButtonCaption,	L"RadioButton%d"
-	Vcl_Consts_SInvalidTaskDlgButtonCaption,	L"Caption cannot be empty"
+	Vcl_ComStrs_sTabFailRetrieve,	L"Failed to retrieve tab at index %d"
+	Vcl_ComStrs_sTabFailGetObject,	L"Failed to get object at index %d"
+	Vcl_ComStrs_sTabFailSet,	L"Failed to set tab \"%s\" at index %d"
 	Vcl_Consts_SStyleLoadError,	L"Unable to load style '%s'"
 	Vcl_Consts_SStyleLoadErrors,	L"Unable to load styles: %s"
 	Vcl_Consts_SStyleRegisterError,	L"Style '%s' already registered"
@@ -794,13 +817,13 @@ BEGIN
 	Vcl_Consts_SStyleInvalidHandle,	L"Invalid style handle"
 	Vcl_Consts_SStyleFormatError,	L"Invalid style format"
 	Vcl_Consts_SStyleFileDescription,	L"VCL Style File"
-	Vcl_Consts_SLogin,	L"Login"
-	Vcl_Consts_SErrorSettingCount,	L"Error setting %s.Count"
-	Vcl_Consts_SListBoxMustBeVirtual,	L"Listbox (%s) style must be virtual in order to set Count"
-	Vcl_Consts_sCannotAddFixedSize,	L"Cannot add columns or rows while expand style is fixed size"
-	Vcl_Consts_sInvalidSpan,	L"'%d' is not a valid span"
-	Vcl_Consts_sInvalidRowIndex,	L"Row index, %d, out of bounds"
-	Vcl_Consts_sInvalidColumnIndex,	L"Column index, %d, out of bounds"
+	Vcl_Consts_SStyleHookClassRegistered,	L"Class '%s' is already registered for '%s'"
+	Vcl_Consts_SStyleHookClassNotRegistered,	L"Class '%s' is not registered for '%s'"
+	Vcl_Consts_SStyleInvalidParameter,	L"%s parameter cannot be nil"
+	Vcl_Consts_SStyleHookClassNotFound,	L"A StyleHook class has not been registered for %s"
+	Vcl_Consts_SStyleFeatureNotSupported,	L"Feature not supported by this style"
+	Vcl_Consts_SStyleNotRegistered,	L"Style '%s' is not registered"
+	Vcl_Consts_SStyleUnregisterError,	L"Cannot unregister the system style"
 	Vcl_Consts_sInvalidControlItem,	L"ControlItem.Control cannot be set to owning GridPanel"
 	Vcl_Consts_sCannotDeleteColumn,	L"Cannot delete a column that contains controls"
 	Vcl_Consts_sCannotDeleteRow,	L"Cannot delete a row that contains controls"
@@ -810,6 +833,47 @@ BEGIN
 	Vcl_Consts_sCellAutoSize,	L"Auto"
 	Vcl_Consts_sCellPercentSize,	L"Percent"
 	Vcl_Consts_sCellAbsoluteSize,	L"Absolute"
+	Vcl_Consts_sCellColumn,	L"Column%d"
+	Vcl_Consts_sCellRow,	L"Row%d"
+	Vcl_Consts_STrayIconRemoveError,	L"Cannot remove shell notification icon"
+	Vcl_Consts_SWindowsVistaRequired,	L"%s requires Windows Vista or later"
+	Vcl_Consts_STaskDlgButtonCaption,	L"Button%d"
+	Vcl_Consts_STaskDlgRadioButtonCaption,	L"RadioButton%d"
+	Vcl_Consts_SInvalidTaskDlgButtonCaption,	L"Caption cannot be empty"
+	Vcl_Consts_SListBoxMustBeVirtual,	L"Listbox (%s) style must be virtual in order to set Count"
+	Vcl_Consts_SUnableToSaveSettings,	L"Unable to save settings"
+	Vcl_Consts_SRestoreDefaultSchedule,	L"Would you like to reset to the default Priority Schedule?"
+	Vcl_Consts_SNoGetItemEventHandler,	L"No OnGetItem event handler assigned"
+	Vcl_Consts_SMissingActionBarStyleName,	L"A style named %s has not been registered"
+	Vcl_Consts_SActionBarStyleMissing,	L"No ActionBand style unit present in the uses clause.\rYour application must include either XPStyleActnCtrls, StdStyleActnCtrls or a third party ActionBand style unit in its uses clause"
+	Vcl_Consts_SANSIEncoding,	L"ANSI"
+	Vcl_Consts_SASCIIEncoding,	L"ASCII"
+	Vcl_Consts_SUnicodeEncoding,	L"Unicode"
+	Vcl_Consts_SBigEndianEncoding,	L"Big Endian Unicode"
+	Vcl_Consts_SUTF8Encoding,	L"UTF-8"
+	Vcl_Consts_SUTF7Encoding,	L"UTF-7"
+	Vcl_Consts_sCannotAddFixedSize,	L"Cannot add columns or rows while expand style is fixed size"
+	Vcl_Consts_sInvalidSpan,	L"'%d' is not a valid span"
+	Vcl_Consts_sInvalidRowIndex,	L"Row index, %d, out of bounds"
+	Vcl_Consts_sInvalidColumnIndex,	L"Column index, %d, out of bounds"
+	Vcl_Consts_SPassword,	L"&Password"
+	Vcl_Consts_SDomain,	L"&Domain"
+	Vcl_Consts_SLogin,	L"Login"
+	Vcl_Consts_SAssignSubItemError,	L"Cannot assign a subitem to an actionbar when one of it's parent's is already assigned to an actionbar"
+	Vcl_Consts_SDeleteItemWithSubItems,	L"Item %s has subitems, delete anyway?"
+	Vcl_Consts_SDeleteNotAllowed,	L"You are not allowed to delete this item"
+	Vcl_Consts_SMoveNotAllowed,	L"Item %s is not allowed to be moved"
+	Vcl_Consts_SMoreButtons,	L"More Buttons"
+	Vcl_Consts_SExpand,	L"Expand"
+	Vcl_Consts_SErrorLoadingFile,	L"Error loading previously saved settings file: %s\rWould you like to delete it?"
+	Vcl_Consts_SNoName,	L"(No Name)"
+	Vcl_Consts_SAddRemoveButtons,	L"&Add or Remove Buttons"
+	Vcl_Consts_SResetActionToolBar,	L"Reset Toolbar"
+	Vcl_Consts_SCircularReferencesNotAllowed,	L"Circular references not allowed"
+	Vcl_Consts_SCannotHideActionBand,	L"%s does not allow hiding"
+	Vcl_Consts_SErrorSettingCount,	L"Error setting %s.Count"
+	Vcl_Consts_SInsertLineError,	L"Unable to insert a line"
+	Vcl_Consts_SInvalidClipFmt,	L"Invalid clipboard format"
 	Vcl_Consts_SIconToClipboard,	L"Clipboard does not support Icons"
 	Vcl_Consts_SCannotOpenClipboard,	L"Cannot open clipboard: %s"
 	Vcl_Consts_SDefault,	L"Default"
@@ -824,8 +888,8 @@ BEGIN
 	Vcl_Consts_SPromptArrayTooShort,	L"Length of value array must be >= length of prompt array"
 	Vcl_Consts_SPromptArrayEmpty,	L"Prompt array must not be empty"
 	Vcl_Consts_SUsername,	L"&Username"
-	Vcl_Consts_SPassword,	L"&Password"
-	Vcl_Consts_SDomain,	L"&Domain"
+	Vcl_Consts_SmkcSpace,	L"Space"
+	Vcl_Consts_SmkcPgUp,	L"PgUp"
 	Vcl_Consts_SmkcPgDn,	L"PgDn"
 	Vcl_Consts_SmkcEnd,	L"End"
 	Vcl_Consts_SmkcHome,	L"Home"
@@ -840,8 +904,8 @@ BEGIN
 	Vcl_Consts_SmkcAlt,	L"Alt+"
 	Vcl_Consts_SOutOfRange,	L"Value must be between %d and %d"
 	Vcl_Consts_sAllFilter,	L"All"
-	Vcl_Consts_SInsertLineError,	L"Unable to insert a line"
-	Vcl_Consts_SInvalidClipFmt,	L"Invalid clipboard format"
+	Vcl_Consts_SMsgDlgYes,	L"&Yes"
+	Vcl_Consts_SMsgDlgNo,	L"&No"
 	Vcl_Consts_SMsgDlgOK,	L"OK"
 	Vcl_Consts_SMsgDlgCancel,	L"Cancel"
 	Vcl_Consts_SMsgDlgHelp,	L"&Help"
@@ -856,8 +920,8 @@ BEGIN
 	Vcl_Consts_SmkcTab,	L"Tab"
 	Vcl_Consts_SmkcEsc,	L"Esc"
 	Vcl_Consts_SmkcEnter,	L"Enter"
-	Vcl_Consts_SmkcSpace,	L"Space"
-	Vcl_Consts_SmkcPgUp,	L"PgUp"
+	Vcl_Consts_SVEnhMetafiles,	L"Enhanced Metafiles"
+	Vcl_Consts_SVIcons,	L"Icons"
 	Vcl_Consts_SVBitmaps,	L"Bitmaps"
 	Vcl_Consts_SVTIFFImages,	L"TIFF Images"
 	Vcl_Consts_SGridTooLarge,	L"Grid too large for operation"
@@ -872,8 +936,8 @@ BEGIN
 	Vcl_Consts_SMsgDlgError,	L"Error"
 	Vcl_Consts_SMsgDlgInformation,	L"Information"
 	Vcl_Consts_SMsgDlgConfirm,	L"Confirm"
-	Vcl_Consts_SMsgDlgYes,	L"&Yes"
-	Vcl_Consts_SMsgDlgNo,	L"&No"
+	Vcl_Consts_SGroupIndexTooLow,	L"GroupIndex cannot be less than a previous menu item's GroupIndex"
+	Vcl_Consts_SNoMDIForm,	L"Cannot create form. No MDI forms are currently active"
 	Vcl_Consts_SImageCanvasNeedsBitmap,	L"Can only modify an image if it contains a bitmap"
 	Vcl_Consts_SControlParentSetToSelf,	L"A control cannot have itself as its parent"
 	Vcl_Consts_SOKButton,	L"OK"
@@ -888,8 +952,8 @@ BEGIN
 	Vcl_Consts_SAllButton,	L"&All"
 	Vcl_Consts_SCannotDragForm,	L"Cannot drag a form"
 	Vcl_Consts_SVMetafiles,	L"Metafiles"
-	Vcl_Consts_SVEnhMetafiles,	L"Enhanced Metafiles"
-	Vcl_Consts_SVIcons,	L"Icons"
+	Vcl_Consts_SParentRequired,	L"Control '%s' has no parent window"
+	Vcl_Consts_SParentGivenNotAParent,	L"Parent given is not a parent of '%s'"
 	Vcl_Consts_SMDIChildNotVisible,	L"Cannot hide an MDI Child Form"
 	Vcl_Consts_SVisibleChanged,	L"Cannot change Visible in OnShow or OnHide"
 	Vcl_Consts_SCannotShowModal,	L"Cannot make a visible window modal"
@@ -904,8 +968,8 @@ BEGIN
 	Vcl_Consts_SPrinterIndexError,	L"Printer index out of range"
 	Vcl_Consts_SInvalidPrinter,	L"Printer selected is not valid"
 	Vcl_Consts_SDeviceOnPort,	L"%s on %s"
-	Vcl_Consts_SGroupIndexTooLow,	L"GroupIndex cannot be less than a previous menu item's GroupIndex"
-	Vcl_Consts_SNoMDIForm,	L"Cannot create form. No MDI forms are currently active"
+	Vcl_Consts_SUnknownExtension,	L"Unknown picture file extension (.%s)"
+	Vcl_Consts_SUnknownClipboardFormat,	L"Unsupported clipboard format"
 	Vcl_Consts_SUnknownStreamFormat,	L"Unsupported stream format"
 	Vcl_Consts_SOutOfResources,	L"Out of system resources"
 	Vcl_Consts_SNoCanvasHandle,	L"Canvas does not allow drawing"
@@ -920,8 +984,8 @@ BEGIN
 	Vcl_Consts_SWindowDCError,	L"Error creating window device context"
 	Vcl_Consts_SWindowClass,	L"Error creating window class"
 	Vcl_Consts_SCannotFocus,	L"Cannot focus a disabled or invisible window"
-	Vcl_Consts_SParentRequired,	L"Control '%s' has no parent window"
-	Vcl_Consts_SParentGivenNotAParent,	L"Parent given is not a parent of '%s'"
+	System_RTLConsts_sObserverNoMulticastFound,	L"No multi cast observer with ID %d was added to the observer collection"
+	System_RTLConsts_sObserverNotAvailable,	L"Observer is not available"
 	System_RTLConsts_SInvalidDateString,	L"Invalid date string: %s"
 	System_RTLConsts_SInvalidTimeString,	L"Invalid time string: %s"
 	System_RTLConsts_SInvalidOffsetString,	L"Invalid time Offset string: %s"
@@ -936,8 +1000,8 @@ BEGIN
 	Vcl_Consts_SChangeIconSize,	L"Cannot change the size of an icon"
 	Vcl_Consts_SChangeWicSize,	L"Cannot change the size of a WIC Image"
 	Vcl_Consts_SOleGraphic,	L"Invalid operation on TOleGraphic"
-	Vcl_Consts_SUnknownExtension,	L"Unknown picture file extension (.%s)"
-	Vcl_Consts_SUnknownClipboardFormat,	L"Unsupported clipboard format"
+	System_RTLConsts_SWindows7,	L"Windows 7"
+	System_RTLConsts_SWindowsServer2008R2,	L"Windows Server 2008 R2"
 	System_RTLConsts_SWindows2000,	L"Windows 2000"
 	System_RTLConsts_SWindowsXP,	L"Windows XP"
 	System_RTLConsts_SWindowsServer2003,	L"Windows Server 2003"
@@ -952,8 +1016,8 @@ BEGIN
 	System_RTLConsts_sObserverMultipleSingleCast,	L"Cannot have multiple single cast observers added to the observers collection"
 	System_RTLConsts_sObserverNoInterface,	L"The object does not implement the observer interface"
 	System_RTLConsts_sObserverNoSinglecastFound,	L"No single cast observer with ID %d was added to the observer collection"
-	System_RTLConsts_sObserverNoMulticastFound,	L"No multi cast observer with ID %d was added to the observer collection"
-	System_RTLConsts_sObserverNotAvailable,	L"Observer is not available"
+	System_RTLConsts_SArgumentOutOfRange,	L"Argument out of range"
+	System_RTLConsts_SArgumentNil,	L"Argument must not be nil"
 	System_RTLConsts_SGenericItemNotFound,	L"Item not found"
 	System_RTLConsts_SGenericDuplicateItem,	L"Duplicates not allowed"
 	System_RTLConsts_SInsufficientRtti,	L"Insufficient RTTI available to support this operation"
@@ -968,8 +1032,8 @@ BEGIN
 	System_RTLConsts_SWindows,	L"Windows"
 	System_RTLConsts_SWindowsVista,	L"Windows Vista"
 	System_RTLConsts_SWindowsServer2008,	L"Windows Server 2008"
-	System_RTLConsts_SWindows7,	L"Windows 7"
-	System_RTLConsts_SWindowsServer2008R2,	L"Windows Server 2008 R2"
+	System_RTLConsts_sNoConstruct,	L"Class %s is not intended to be constructed"
+	System_RTLConsts_sInvalidTimeoutValue,	L"Invalid Timeout value: %s"
 	System_RTLConsts_sSpinCountOutOfRange,	L"SpinCount out of range. Must be between 0 and %d"
 	System_RTLConsts_sTimespanTooLong,	L"Timespan too long"
 	System_RTLConsts_sInvalidTimespanDuration,	L"The duration cannot be returned because the absolute value exceeds the value of TTimeSpan.MaxValue"
@@ -984,10 +1048,10 @@ BEGIN
 	System_RTLConsts_SNoTableOfContents,	L"Unable to find a Table of Contents"
 	System_RTLConsts_SNoTopics,	L"No topic-based help system installed"
 	System_RTLConsts_SNothingFound,	L"No help found for %s"
-	System_RTLConsts_SArgumentOutOfRange,	L"Argument out of range"
-	System_RTLConsts_SArgumentNil,	L"Argument must not be nil"
+	System_RTLConsts_SParamIsNegative,	L"Parameter %s cannot be a negative value"
 	System_RTLConsts_SInputBufferExceed,	L"Input buffer exceeded for %s = %d, %s = %d"
 	System_RTLConsts_SInvalidCharsInPath,	L"Invalid characters in path"
+	System_RTLConsts_SInvalidCharsInSearchPattern,	L"Invalid characters in search pattern"
 	System_RTLConsts_SPathTooLong,	L"The specified path is too long"
 	System_RTLConsts_SPathNotFound,	L"The specified path was not found"
 	System_RTLConsts_SPathFormatNotSupported,	L"The path format is not supported"
@@ -1000,8 +1064,7 @@ BEGIN
 	System_RTLConsts_sArgument_InvalidHighSurrogate,	L"High surrogate char without a following low surrogate char at index: %d. Check that the string is encoded properly"
 	System_RTLConsts_sArgument_InvalidLowSurrogate,	L"Low surrogate char without a preceding high surrogate char at index: %d. Check that the string is encoded properly"
 	System_RTLConsts_sInvalidStringAndObjectArrays,	L"Length of Strings and Objects arrays must be equal"
-	System_RTLConsts_sNoConstruct,	L"Class %s is not intended to be constructed"
-	System_RTLConsts_sInvalidTimeoutValue,	L"Invalid Timeout value: %s"
+	System_RTLConsts_SResNotFound,	L"Resource %s not found"
 	System_RTLConsts_SSeekNotImplemented,	L"%s.Seek not implemented"
 	System_RTLConsts_SSortedListError,	L"Operation not allowed on sorted list"
 	System_RTLConsts_SStringExpected,	L"String expected"
@@ -1017,7 +1080,7 @@ BEGIN
 	System_RTLConsts_SThreadExternalCheckTerminated,	L"Cannot call CheckTerminated on an externally created thread"
 	System_RTLConsts_SThreadExternalSetReturnValue,	L"Cannot call SetReturnValue on an externally create thread"
 	System_RTLConsts_SParamIsNil,	L"Parameter %s cannot be nil"
-	System_RTLConsts_SParamIsNegative,	L"Parameter %s cannot be a negative value"
+	System_RTLConsts_SInvalidString,	L"Invalid string constant"
 	System_RTLConsts_SLineTooLong,	L"Line too long"
 	System_RTLConsts_SListCapacityError,	L"List capacity out of bounds (%d)"
 	System_RTLConsts_SListCountError,	L"List count out of bounds (%d)"
@@ -1033,7 +1096,6 @@ BEGIN
 	System_RTLConsts_SRegCreateFailed,	L"Failed to create key %s"
 	System_RTLConsts_SRegGetDataFailed,	L"Failed to get data for '%s'"
 	System_RTLConsts_SRegSetDataFailed,	L"Failed to set data for '%s'"
-	System_RTLConsts_SResNotFound,	L"Resource %s not found"
 	System_RTLConsts_SDuplicateClass,	L"A class named %s already exists"
 	System_RTLConsts_SDuplicateItem,	L"List does not allow duplicates ($0%x)"
 	System_RTLConsts_SDuplicateName,	L"A component named %s already exists"
@@ -1044,12 +1106,12 @@ BEGIN
 	System_RTLConsts_SIniFileWriteError,	L"Unable to write to %s"
 	System_RTLConsts_SInvalidBinary,	L"Invalid binary value"
 	System_RTLConsts_SInvalidImage,	L"Invalid stream format"
+	System_RTLConsts_SInvalidMask,	L"'%s' is an invalid mask at (%d)"
 	System_RTLConsts_SInvalidName,	L"''%s'' is not a valid component name"
 	System_RTLConsts_SInvalidProperty,	L"Invalid property value"
 	System_RTLConsts_SInvalidPropertyPath,	L"Invalid property path"
 	System_RTLConsts_SInvalidPropertyValue,	L"Invalid property value"
 	System_RTLConsts_SInvalidRegType,	L"Invalid data type for '%s'"
-	System_RTLConsts_SInvalidString,	L"Invalid string constant"
 	System_SysConst_SInvalidDestinationArray,	L"Invalid destination array"
 	System_SysConst_SCharIndexOutOfBounds,	L"Character index out of bounds (%d)"
 	System_SysConst_SByteIndexOutOfBounds,	L"Start index out of bounds (%d)"
@@ -1183,6 +1245,8 @@ END
 /* c:\program files (x86)\embarcadero\studio\20.0\lib\Win32\release\Controls.res */
 /* C:\Delphi Projects\SimLink\example.DFM */
 /* c:\program files (x86)\embarcadero\studio\20.0\lib\Win32\release\Buttons.res */
+/* c:\program files (x86)\embarcadero\studio\20.0\lib\Win32\release\ExtDlgs.res */
+/* c:\program files (x86)\embarcadero\studio\20.0\lib\Win32\release\WinXCtrls.res */
 /* C:\Delphi Projects\SimLink\SymLinkUnit.dfm */
 /* c:\program files (x86)\embarcadero\studio\20.0\lib\Win32\release\CategoryButtons.res */
 /* C:\Delphi Projects\SimLink\SymLinkCreator.dres */
