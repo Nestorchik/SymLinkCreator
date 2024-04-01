@@ -147,7 +147,7 @@ HTML-файл, поставляемый с программой, изначал�
 >To switch the language, select it from the list. The files themselves are stored in the "Lang" folder. To create a new translation, take a copy of "en.ini", give it a two-letter name and translate it into the desired language. These files are read when the program starts, and everything that will be put in this folder is inserted into the list.
 ## ![Main Windows](img/14.jpg)
 ---
-Шаблоны внешнегно вида переключаются выбором шаблона из списка. Сами шаблоны находятся в папке "Styles", и программа составляет список шаблонов при старте, в списке появятся те шаблоны, которые лежат в этой папке. Оставляйте там хотя бы один шаблон.
+Шаблоны внешнего вида переключаются выбором шаблона из списка. Сами шаблоны находятся в папке "Styles", и программа составляет список шаблонов при старте, в списке появятся те шаблоны, которые лежат в этой папке. Оставляйте там хотя бы один шаблон.
 >Appearance templates are switched by selecting a template from the list. The templates themselves are located in the "Styles" folder, and the program compiles a list of templates at startup; those templates that are in this folder will appear in the list. Leave at least one template there.
 ## ![Main Windows](img/15.jpg)
 ---
