@@ -1,4 +1,4 @@
-# SymLinkCreator (Windows x32) Release v1.2 
+# SymLinkCreator (Windows x32) Release v1.2
 
 **Создатель символических ссылок на файлы и папки - Windows x32 прилолжение**
 
