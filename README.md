@@ -1,6 +1,6 @@
 # SymLinkCreator (Windows x32) Release v1.2
 
-**Создатель символических ссылок на файлы и папки - Windows x32 прилолжение**
+**Создатель символических ссылок на файлы и папки - Windows x32 приложение**
 
 > Creator of symbolic links on files and folders - Windows x32 application
 ---
