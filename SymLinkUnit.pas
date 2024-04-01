@@ -775,6 +775,7 @@ var
   sList: TStringList;
   s, line1: String;
   a: Integer;
+  p: PAnsiChar;
 begin
   longTimeStamp := FormatDateTime('yyyymmdd-hhnnsszzz', now);
   hourTimeStamp := FormatDateTime('yyyymmdd-hh', now);
@@ -800,6 +801,7 @@ begin
   sList.SaveToFile('temp.bat');
   try
     WinExec('temp.bat', SW_HIDE);
+    ShellExecute(Application.Handle, 'open', PChar(SymLinkForm.ListBox.Items[0]), nil, nil, SW_SHOWNORMAL);
   finally
   end;
   // commandLine := batFilePath + '\' + longTimeStamp + '-' + batFileName + batFileExt;
