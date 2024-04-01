@@ -21,9 +21,9 @@
 
 ## ![Main Windows](img/2.jpg)
 
-Первой строкой списка всегда должны быть папка «**Куда**»!!! Стаскиваем ее мышкой в окно программы.
+Первой строкой списка всегда должны быть папка «**Куда**» _(Назначение)_!!! Стаскиваем ее мышкой в окно программы.
 
-> The first line of the list should always be the "**Where To**" folder!!! Drag it with the mouse into the program window.
+> The first line of the list should always be the "**Where To**" _(Destination)_ folder!!! Drag it with the mouse into the program window.
 
 ## ![Main Windows](img/3.jpg)
 
