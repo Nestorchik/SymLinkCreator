@@ -152,7 +152,7 @@ HTML-файл, поставляемый с программой, изначал�
 ## ![Main Windows](img/15.jpg)
 ---
 Если вы не программист, то вам из всего скачанного нужны только ZIP-файл (в нем exe-шник), HTML-файл, папк Lang и Styles ну и в папке DOCs описание на русском, остальное можете удалить.
->Sample language file in 'lang' folder. If you need more languages, take 'en.ini', name the file with two letters (ru/cz/fr), translate it, and throw it in the folder. The program will detect it and it will appear in the language switching menu.
+>If you are not a programmer, then out of everything you downloaded you only need a ZIP file (it contains an exe file), an HTML file, the Lang and Styles folders and a description in Russian in the DOCs folder, you can delete the rest.
 ---
 
 NStor
