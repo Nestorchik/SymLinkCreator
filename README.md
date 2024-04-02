@@ -4,6 +4,8 @@
 
 > Creator of symbolic links on files and folders - Windows x32 application
 ---
+**新闻：即将包含中文...**
+---
 ## ![Logo](img/LogoScreen.png)
 ---
 
