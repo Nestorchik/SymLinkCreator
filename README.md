@@ -4,7 +4,7 @@
 
 > Creator of symbolic links on files and folders - Windows x32 application
 ---
-**新闻：即将包含中文...**
+**新闻：即将包含中文...**   “Docs”文件夹中已添加中文说明
 ---
 ## ![Logo](img/LogoScreen.png)
 ---
