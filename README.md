@@ -4,7 +4,7 @@
 
 > Creator of symbolic links on files and folders - Windows x32 application
 
->文件和文件夹符号链接的创建者 - Windows x32 应用程序
+>文件和文件夹符号链接的创建者 Windows x32 应用程序
 ---
 >添加中文界面语言（由母语人士编辑）和中文说明。 尚不支持中文路径和文件名（后续会添加）
 ---
