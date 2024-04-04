@@ -84,17 +84,15 @@
     <PropertyGroup Condition="'$(Cfg_1_Win32)'!=''">
         <AppDPIAwarenessMode>PerMonitorV2</AppDPIAwarenessMode>
         <VerInfo_IncludeVerInfo>true</VerInfo_IncludeVerInfo>
-        <VerInfo_Keys>CompanyName=A&amp;AP Programmer Group;FileDescription=Simbolic Links Creator;FileVersion=1.1.4.11;InternalName=SymLinkCreator;LegalCopyright=A&amp;AP;LegalTrademarks=A&amp;AP;OriginalFilename=SymLinkCreator.exe;ProductName=$(MSBuildProjectName);ProductVersion=1.1.4.2;Comments=Symbolic Links Creator;ProgramID=Embarcadero RAD 10.3</VerInfo_Keys>
-        <VerInfo_MinorVer>1</VerInfo_MinorVer>
+        <VerInfo_Keys>CompanyName=A&amp;AP Programmer Group;FileDescription=Simbolic Links Creator;FileVersion=1.2.0.3;InternalName=SymLinkCreator;LegalCopyright=A&amp;AP;LegalTrademarks=A&amp;AP;OriginalFilename=SymLinkCreator.exe;ProductName=$(MSBuildProjectName);ProductVersion=1.2.0.0;Comments=Symbolic Links Creator;ProgramID=Embarcadero RAD 10.3</VerInfo_Keys>
+        <VerInfo_MinorVer>2</VerInfo_MinorVer>
         <Icon_MainIcon>icons\link.ico</Icon_MainIcon>
         <UWP_DelphiLogo44>icons\link_44.png</UWP_DelphiLogo44>
         <VerInfo_AutoIncVersion>true</VerInfo_AutoIncVersion>
         <UWP_DelphiLogo150>icons\link_150.png</UWP_DelphiLogo150>
         <AppEnableRuntimeThemes>true</AppEnableRuntimeThemes>
         <VerInfo_Locale>1033</VerInfo_Locale>
-        <VerInfo_Release>4</VerInfo_Release>
-        <VerInfo_PreRelease>true</VerInfo_PreRelease>
-        <VerInfo_Build>11</VerInfo_Build>
+        <VerInfo_Build>3</VerInfo_Build>
     </PropertyGroup>
     <PropertyGroup Condition="'$(Cfg_2)'!=''">
         <DCC_Define>DEBUG;$(DCC_Define)</DCC_Define>

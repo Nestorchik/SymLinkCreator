@@ -171,7 +171,6 @@ object SymLinkForm: TSymLinkForm
     Width = 1069
     Height = 661
     Align = alClient
-    PageIndex = 1
     Font.Charset = DEFAULT_CHARSET
     Font.Color = clWindowText
     Font.Height = -11
@@ -365,7 +364,6 @@ object SymLinkForm: TSymLinkForm
         Align = alClient
         ItemHeight = 13
         TabOrder = 0
-        ExplicitTop = -2
       end
     end
     object TTabPage
@@ -826,7 +824,7 @@ object SymLinkForm: TSymLinkForm
     Left = 592
     Top = 88
     object mmFile: TMenuItem
-      Caption = 'File'
+      Caption = 'Files'
       Hint = 'Files'
       object mmOpen: TMenuItem
         Caption = 'Open'

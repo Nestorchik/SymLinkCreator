@@ -1,4 +1,4 @@
-unit SymLinkUnit;
+﻿unit SymLinkUnit;
 
 interface
 
@@ -127,6 +127,7 @@ Var
 
 {$R *.dfm}
 procedure AddToList(FileName: string); forward;
+function WinToChina(const s: string): string; forward;
 
 procedure TSymLinkForm.LoadIni(Sender: TObject);
 var
@@ -136,6 +137,7 @@ begin
   longTimeStamp := FormatDateTime('yyyymmdd-hhnnsszzz', now);
   hourTimeStamp := FormatDateTime('yyyymmdd-hh', now);
   Ini := TIniFile.Create(Extractfilepath(paramstr(0)) + 'SymLinkCreator.ini');
+  // Ini := TMemIniFile.Create(Extractfilepath(paramstr(0)) + 'SymLinkCreator.ini', TEncoding.BigEndianUnicode);
   SymLinkForm.Width := Ini.ReadInteger('WinSize', 'Width', 1000);
   SymLinkForm.Height := Ini.ReadInteger('WinSize', 'Height', 680);
   SymLinkForm.Left := Ini.ReadInteger('WinPosition', 'X', 100);
@@ -203,7 +205,7 @@ begin
   CreateDir(Extractfilepath(paramstr(0)) + 'Lang');
   langIni := TIniFile.Create(Extractfilepath(paramstr(0)) + 'Lang\' + currentLang + '.ini');
   sNeedFiles := langIni.ReadString('Lang', 'NeedFiles', 'Drag files/folders then start "Create links"');
-  FolderStr := langIni.ReadString('Lang', 'FolderStr', 'Folder');
+  FolderStr := langIni.ReadString('Lang', 'Folder', 'Folder');
   NotAFolder := langIni.ReadString('Lang', 'folderFirts', 'First string must be FOLDER!!!');
   srtUnavail := langIni.ReadString('Lang', 'Unavailable', 'Unavailable');
   sPath := langIni.ReadString('Lang', 'Path', 'Path');
@@ -266,7 +268,7 @@ begin
   smpOpenHint := langIni.ReadString('Lang-Menu', 'mOpenHint', 'Open file-list');
   smpSave := langIni.ReadString('Lang-Menu', 'mSave', 'Save');
   smpSaveHint := langIni.ReadString('Lang-Menu', 'mSaveHint', 'Save file-list');
-  smpCopyAll := langIni.ReadString('Lang-Menu', 'smpCopyAll', 'Copy all - 2');
+  smpCopyAll := langIni.ReadString('Lang-Menu', 'smpCopyAll', 'Copy all ');
   smpCopyAllHint := langIni.ReadString('Lang-Menu', 'smpCopyHint', 'Copy all to buffer');
   smpCopyNames := langIni.ReadString('Lang-Menu', 'mCopyNames', 'Copy names');
   smpCopyNamesHint := langIni.ReadString('Lang-Menu', 'mCopyNamesHint', 'Copy only file names');
@@ -284,6 +286,7 @@ begin
   sStatusBarHint := langIni.ReadString('Settings', 'StatusBarHint', 'Double click opens settings');
   langIni.Free;
   // init main menu lang strings
+  // SetCodePage(smFile,TEncoding.BigEndianUnicode, True);
   MainMenu.Items.Items[0].Caption := smFile;
   MainMenu.Items.Items[0].Hint := smFileHint;
   MainMenu.Items.Items[0].Items[0].Caption := smOpen;
@@ -474,7 +477,7 @@ var
   FileArray, LangArray: TStringDynArray;
   m: TMenuItem;
 begin
-  SymLinkForm.Canvas.Font.Charset := GB2312_CHARSET;
+  // Add('TEncoding.BigEndianUnicode');
   LoadIni(Self); // load ini-files
   LoadLangIni(currentLang);
   LoadHelp(currentLang);
@@ -583,21 +586,20 @@ var
 begin
   SaveIni(Self);
   SaveLangIni(currentLang);
-  // Load last fileList
-  begin
+  // Save last fileList
+ // 1 variant
     ListBoxReload(Self);
     AssignFile(f, slastFileName);
     Rewrite(f);
     With ListBox do
     begin
-      for a := 0 to Count - 1 do
-      begin
-        str := ListBox.Items[a];
-        Writeln(f, str);
-      end;
+    for a := 0 to Count - 1 do
+    begin
+    str := ListBox.Items[a];
+    Writeln(f, str);
+    end;
     end;
     CloseFile(f);
-  end;
 end;
 
 procedure InitLang(lang: String);
@@ -613,6 +615,15 @@ var
 begin
   b := BytesOf(s);
   b := TEncoding.Convert(TEncoding.GetEncoding(StrToInt(eFromEncode)), TEncoding.GetEncoding(StrToInt(eToEncode)), b);
+  Result := StringOf(b);
+end;
+
+function WinToChina(const s: string): string;
+var
+  b: TBytes;
+begin
+  b := BytesOf(s);
+  b := TEncoding.Convert(TEncoding.GetEncoding('utf8'), TEncoding.BigEndianUnicode, b);
   Result := StringOf(b);
 end;
 
