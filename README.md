@@ -3,6 +3,9 @@
 **Создатель символических ссылок на файлы и папки - Windows x32 приложение**
 
 > Creator of symbolic links on files and folders - Windows x32 application
+> 文件和文件夹符号链接的创建者 - Windows x32 应用程序
+---
+新增中文界面语言和中文说明。 尚不支持中文路径和文件名（将来会添加）。
 ---
 ## ![Logo](img/LogoScreen.png)
 ---
