@@ -205,7 +205,7 @@ begin
   CreateDir(Extractfilepath(paramstr(0)) + 'Lang');
   langIni := TIniFile.Create(Extractfilepath(paramstr(0)) + 'Lang\' + currentLang + '.ini');
   sNeedFiles := langIni.ReadString('Lang', 'NeedFiles', 'Drag files/folders then start "Create links"');
-  FolderStr := langIni.ReadString('Lang', 'Folder', 'Folder');
+  FolderStr := langIni.ReadString('Lang', 'FolderStr', 'Folder');
   NotAFolder := langIni.ReadString('Lang', 'folderFirts', 'First string must be FOLDER!!!');
   srtUnavail := langIni.ReadString('Lang', 'Unavailable', 'Unavailable');
   sPath := langIni.ReadString('Lang', 'Path', 'Path');
