@@ -4,9 +4,9 @@
 
 > Creator of symbolic links on files and folders - Windows x32 application
 
-> 新增中文介面語言和中文說明。 尚不支援中文路徑和檔案名稱（將來會新增）。
+>文件和資料夾符號連結的創建者 - Windows x32 應用程式
 ---
-
+> 新增中文介面語言和中文說明。 尚不支援中文路徑和檔案名稱（將來會新增）。
 ---
 ## ![Logo](img/LogoScreen.png)
 ---
