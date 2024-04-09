@@ -1,14 +1,35 @@
-# SymLinkCreator (Windows x32) Release v1.2.1 
+# SymLinkCreator (Windows x32) Release v1.3
 
 **Создатель символических ссылок на файлы и папки - Windows x32 приложение**
 
 > Creator of symbolic links on files and folders - Windows x32 application
 
->文件和文件夹符号链接的创建者 Windows x32 应用程序
+> 文件和文件夹符号链接的创建者 - Windows x32 应用程序
+
 ---
->添加中文界面语言（由母语人士编辑）和中文说明。 尚不支持中文路径和文件名（后续会添加）
+
+> 添加中文界面语言（由母语人士编辑）和中文说明。 不支持中文路径和文件名。界面的完整中文翻译将于 04/10/2024 添加。
+
 ---
+
 ## ![Logo](img/LogoScreen.png)
+
+---
+
+Версия v1.3
+Переработан интерфейс программы. Убрано окно “Help”, добавлена «резиновость» части интерфейса программы, новые пиктограммы, привязанные к пиктограммам меню правой кнопки мыши, реакция на щелчки по пиктограмме. Основной принцип работы остался тот же. Старайтесь пользоваться интерфейсом интуитивно (Drag&Drop).
+
+> Version v1.3
+> The program interface has been redesigned. The “Help” window has been removed, a “rubbery” part of the program interface has been added, new icons linked to the right-click menu icons, and response to clicks on the icon. The basic principle of operation remains the same. Try to use the interface intuitively (Drag&Drop).
+
+## ![Main Window](img/17.png)
+
+---
+
+Для начала работы заранее откройте окна проводника Windows на нужных папках, одно окно с папкой в которой надо создать ссылки, другое окно с папкой, в которой расположены оригиналы файлов, на которые надо сделать ссылки.
+
+> To get started, open Windows Explorer windows in advance on the desired folders, one window with the folder in which you want to create links, another window with the folder in which the original files to which you want to make links are located.
+
 ---
 
 К примеру: слева путь к папке моделей _**"ComfyUI"**_, справа папка моделей _**"automatic1111"**_, внизу наша программа.
@@ -17,19 +38,19 @@
 > For example: on the left is the path to the folder of models "**_ComfyUI_**", on the right is the folder of models "**_automatic1111_**", at the bottom is our program.
 > For the convenience of work, it is better to immediately prepare windows open in the right place with the "**_Where_**" and "**_From_**" folders.
 
-## ![Windows](img/1.jpg)
+## ![Window](img/1.jpg)
 
 Запускаем "**SymLinkCreato**
 
 > Start "**SymLinkCreator**"
 
-## ![Main Windows](img/2.jpg)
+## ![Main Window](img/2.jpg)
 
 Первой строкой списка всегда должны быть папка «**Куда**» _(Назначение)_!!! Стаскиваем ее мышкой в окно программы.
 
 > The first line of the list should always be the "**Where To**" _(Destination)_ folder!!! Drag it with the mouse into the program window.
 
-## ![Main Windows](img/3.jpg)
+## ![Main Window](img/3.jpg)
 
 ---
 
@@ -143,20 +164,35 @@ HTML-файл, поставляемый с программой, изначал�
 ## ![Main Windows](img/12.jpg)
 
 ---
+
 Переключение локализации интерфейса и смена стилей в меню по двойному щелчку на статус-бар
->Switching interface localization and changing styles in the menu by double-clicking on the status bar
+
+> Switching interface localization and changing styles in the menu by double-clicking on the status bar
+
 ## ![Main Windows](img/13.jpg)
+
 ---
+
 Для переключения языка выберите его из списка. Сами файлы хранятся в папке "Lang". Для создания нового перевода возьмите копию "en.ini", дайте ему новое название, и переведите на нужный язык. Эти файлы читаются при старте программы, и в список вставляется все, что будет найдено в этой папке.
->To switch the language, select it from the list. The files themselves are stored in the "Lang" folder. To create a new translation, take a copy of "en.ini", give it a two-letter name and translate it into the desired language. These files are read when the program starts, and everything that will be put in this folder is inserted into the list.
+
+> To switch the language, select it from the list. The files themselves are stored in the "Lang" folder. To create a new translation, take a copy of "en.ini", give it a two-letter name and translate it into the desired language. These files are read when the program starts, and everything that will be put in this folder is inserted into the list.
+
 ## ![Main Windows](img/14.jpg)
+
 ---
+
 Шаблоны внешнего вида переключаются выбором шаблона из списка. Сами шаблоны находятся в папке "Styles", и программа составляет список шаблонов при старте, в списке появятся те шаблоны, которые лежат в этой папке. Оставляйте там хотя бы один шаблон.
->Appearance templates are switched by selecting a template from the list. The templates themselves are located in the "Styles" folder, and the program compiles a list of templates at startup; those templates that are in this folder will appear in the list. Leave at least one template there.
+
+> Appearance templates are switched by selecting a template from the list. The templates themselves are located in the "Styles" folder, and the program compiles a list of templates at startup; those templates that are in this folder will appear in the list. Leave at least one template there.
+
 ## ![Main Windows](img/15.jpg)
+
 ---
+
 Если вы не программист, то вам из всего скачанного нужны только ZIP-файл (в нем exe-шник), HTML-файл, папк Lang и Styles ну и в папке DOCs описание на русском, остальное можете удалить.
->If you are not a programmer, then out of everything you downloaded you only need a ZIP file (it contains an exe file), an HTML file, the Lang and Styles folders and a description in Russian in the DOCs folder, you can delete the rest.
+
+> If you are not a programmer, then out of everything you downloaded you only need a ZIP file (it contains an exe file), an HTML file, the Lang and Styles folders and a description in Russian in the DOCs folder, you can delete the rest.
+
 ---
 
 NStor

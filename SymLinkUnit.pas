@@ -29,29 +29,20 @@ type
     mmCopyAll: TMenuItem;
     mmCopyOnlyNames: TMenuItem;
     OpenFileDialog: TOpenDialog;
-    TabNotebook: TTabbedNotebook;
     mDelete: TMenuItem;
     mmDelClick: TMenuItem;
     msgTimer: TTimer;
-    ListBox: TListBox;
     mOpen: TMenuItem;
     StatusBar: TStatusBar;
-    WebBrowser: TWebBrowser;
     TrayIcon: TTrayIcon;
     GridPanel: TGridPanel;
-    Image2: TImage;
     DoDirs: TCheckBox;
-    Image3: TImage;
     AskDirs: TCheckBox;
     Image4: TImage;
     CopyButton: TBitBtn;
-    Image5: TImage;
     CopyPaths: TCheckBox;
     CopySizes: TCheckBox;
-    Image7: TImage;
     ShellExecute: TBitBtn;
-    Image1: TImage;
-    FileGrid: TStringGrid;
     SettingsPanel: TRelativePanel;
     LangBox: TComboBox;
     ThemeBox: TComboBox;
@@ -59,6 +50,23 @@ type
     ThemeLabel: TLabel;
     WarnText: TStaticText;
     HideSettingsButton: TSpeedButton;
+    TopBar: TStatusBar;
+    LeftPanel: TPanel;
+    Splitter1: TSplitter;
+    RightPanel: TPanel;
+    TabNotebook: TTabbedNotebook;
+    FileGrid: TStringGrid;
+    ListBox: TListBox;
+    fImage: TImage;
+    ImgMAX: TImage;
+    BlinkTimer: TTimer;
+    fc0: TImage;
+    fc1: TImage;
+    fbw0: TImage;
+    OpenDialog1: TOpenDialog;
+    pfMenu: TPopupMenu;
+    pfmLoadFolders: TMenuItem;
+    pfmLoadFiles: TMenuItem;
     procedure FormCreate(Sender: TObject);
     procedure mSaveClick(Sender: TObject);
     procedure mNewClick(Sender: TObject);
@@ -85,6 +93,14 @@ type
     procedure LoadHelp(lang: String);
     procedure StatusBarDblClick(Sender: TObject);
     procedure SettingsPanelResize(Sender: TObject);
+    procedure LeftPanelResize(Sender: TObject);
+    procedure fImageMouseEnter(Sender: TObject);
+    procedure fImageMouseLeave(Sender: TObject);
+    procedure fImageDblClick(Sender: TObject);
+    procedure HideAll(Sender: TObject);
+    procedure ShowAll(Sender: TObject);
+    procedure InsertFiles(Sender: TObject);
+    procedure InsertFolder(Sender: TObject);
 
   private
     procedure WMDROPFILES(var Message: TWMDROPFILES); message WM_DROPFILES;
@@ -96,7 +112,7 @@ type
 var
   SymLinkForm: TSymLinkForm;
   // Lang variables
-  MaxDragFiles, curNumFiles: Integer;
+  MaxDragFiles, curNumFiles, lastPanelWidth: Integer;
   sFiles, sList, sHelp, sSize, sFile, FolderStr, NotAFolder, srtUnavail, sPath, sMsgInclideFiles, sMsgDlgCaption, eFromEncode, eToEncode, sMaxDragFiles, sHelpFile, slastFileName: String;
   sNoData, sDoDirs, sDoDirsHint, sAskDirs, sAskDirsHint, sCopyButton, sCopyButtonHint, sCopySizes, sCopySizesHint, sCopyPaths, sCopyPathsHint, sShellExecute, sShellExecuteHint, mFile, mFileHint: string;
   // MenuNames lang variables
@@ -106,6 +122,12 @@ var
   currentLang, currentTheme: String;
   // Settings Windows
   sLangLabel, sLangBoxHint, sThemeLabel, sThemeBoxHint, sWarnText, sHideSettingsButton, sHideSettingsButtonHint, sStatusBarHint: String;
+  // FolderImages
+  curFolder, curFolderActive, curFolderNOActive: string;
+  // popUp menu on left filder icons
+  spfmLoadFilesCaption, spfmLoadFilesHint, spfmLoadFoldersCaption, spfmLoadFoldersHint: string;
+  greyFolderHint, notFullColorFolderHint, fullFolderHint, imgMaxHint: string;
+  sTargetFolderStrPrefix: string;
 
 implementation
 
@@ -146,9 +168,9 @@ begin
   AskDirs.Checked := Ini.ReadBool('AskDirs', 'Checked', false);
   CopySizes.Checked := Ini.ReadBool('CopySizes', 'Checked', false);
   CopyPaths.Checked := Ini.ReadBool('CopyPaths', 'Checked', false);
-  SymLinkForm.FileGrid.ColWidths[1] := Ini.ReadInteger('FileGridColWidth', 'Width1', 430);
-  SymLinkForm.FileGrid.ColWidths[2] := Ini.ReadInteger('FileGridColWidth', 'Width2', 390);
-  SymLinkForm.FileGrid.ColWidths[3] := Ini.ReadInteger('FileGridColWidth', 'Width3', 85);
+  SymLinkForm.FileGrid.ColWidths[1] := Ini.ReadInteger('FileGridColWidth', 'Width1', 350);
+  SymLinkForm.FileGrid.ColWidths[2] := Ini.ReadInteger('FileGridColWidth', 'Width2', 290);
+  SymLinkForm.FileGrid.ColWidths[3] := Ini.ReadInteger('FileGridColWidth', 'Width3', 90);
   MaxDragFiles := Ini.ReadInteger('MaxDragFiles', 'Files', 25);
   sHelpFile := Ini.ReadString('Help', 'File', 'SimLinkCreatorHelpEn.html');
   TabNotebook.ActivePage := Ini.ReadString('Pages', 'ActivePage', 'Help');
@@ -206,7 +228,7 @@ begin
   langIni := TIniFile.Create(Extractfilepath(paramstr(0)) + 'Lang\' + currentLang + '.ini');
   sNeedFiles := langIni.ReadString('Lang', 'NeedFiles', 'Drag files/folders then start "Create links"');
   FolderStr := langIni.ReadString('Lang', 'FolderStr', 'Folder');
-  NotAFolder := langIni.ReadString('Lang', 'folderFirts', 'First string must be FOLDER!!!');
+  NotAFolder := langIni.ReadString('Lang', 'folderFirts', 'There must be a TARGET FOLDER first!!! Drag it or click the folder.');
   srtUnavail := langIni.ReadString('Lang', 'Unavailable', 'Unavailable');
   sPath := langIni.ReadString('Lang', 'Path', 'Path');
   sFile := langIni.ReadString('Lang', 'File', 'File');
@@ -284,6 +306,18 @@ begin
   sHideSettingsButton := langIni.ReadString('Settings', 'HideSettingsButton', 'Exit without saving');
   sHideSettingsButtonHint := langIni.ReadString('Settings', 'HideSettingsButtonHint', 'Exit without change settings');
   sStatusBarHint := langIni.ReadString('Settings', 'StatusBarHint', 'Double click opens settings');
+  // right folder icon strings
+  spfmLoadFilesCaption := langIni.ReadString('FolderIcon-Menu', 'FilesAddCaption', 'Add files');
+  spfmLoadFilesHint := langIni.ReadString('FolderIcon-Menu', 'FilesAddHint', 'Add multiple files to list');
+  spfmLoadFoldersCaption := langIni.ReadString('FolderIcon-Menu', 'FolderAddCaption', 'Add folders');
+  spfmLoadFoldersHint := langIni.ReadString('FolderIcon-Menu', 'FolderAddHint', 'Add folder to list');
+  // State left folder captions & hints
+  greyFolderHint := langIni.ReadString('FolderIcon-Hint', 'FolderGrayHint', 'Add the TERGET folder! The first item should be the Destination folder!');
+  fullFolderHint := langIni.ReadString('FolderIcon-Hint', 'FolderFullHint', 'Drag files/folders or Right Click to menu');
+  notFullColorFolderHint := langIni.ReadString('FolderIcon-Hint', 'FolderNotFullHint', 'Drag files/folders, o Rigth Click to menu.');
+  imgMaxHint := langIni.ReadString('FolderIcon-Hint', 'FolderMAX', IntToStr(MaxDragFiles) + ' files max - ini-file settings. Delete some or Run Script.');
+  sTargetFolderStrPrefix:=langIni.ReadString('TopBar-Hint', 'TargetPrefix', 'Target folder >>>');
+
   langIni.Free;
   // init main menu lang strings
   // SetCodePage(smFile,TEncoding.BigEndianUnicode, True);
@@ -323,6 +357,15 @@ begin
   pMenu.Items[5].Hint := smpDeleteHint;
   pMenu.Items[6].Caption := smpQuit;
   pMenu.Items[6].Hint := smpQuitHint;
+  // pMenu leftFolder icon
+  pfMenu.Items[0].Caption := spfmLoadFilesCaption;
+  pfMenu.Items[0].Hint := spfmLoadFilesHint;
+  pfMenu.Items[1].Caption := spfmLoadFoldersCaption;
+  pfMenu.Items[1].Hint := spfmLoadFoldersHint;
+  fbw0.Hint := greyFolderHint;
+  fc0.Hint := notFullColorFolderHint;
+  fc1.Hint := fullFolderHint;
+  ImgMAX.Hint := fullFolderHint;
   // init tools lang strings
   ShellExecute.Caption := sShellExecute;
   ShellExecute.Hint := sShellExecuteHint;
@@ -344,7 +387,7 @@ begin
   // Names of tabs in notebook
   TabNotebook.Pages[0] := sFiles;
   TabNotebook.Pages[1] := sList;
-  TabNotebook.Pages[2] := sHelp;
+  // TabNotebook.Pages[2] := sHelp;
   // Settings windows initial
   LangLabel.Caption := sLangLabel;
   LangBox.Hint := sLangBoxHint;
@@ -361,7 +404,7 @@ var
   langIni: TIniFile;
 begin
   // Save main lang strings
-  if currentLang = '12345' then
+  if currentLang = 'save_langs' then
   begin
     langIni := TIniFile.Create(Extractfilepath(paramstr(0)) + 'Lang\' + currentLang + '.ini');
     langIni.WriteString('Lang', 'FolderStr', FolderStr);
@@ -448,20 +491,40 @@ begin
     langIni.WriteString('Settings', 'HideSettingsButton', sHideSettingsButton);
     langIni.WriteString('Settings', 'HideSettingsButtonHint', sHideSettingsButtonHint);
     langIni.WriteString('Settings', 'StatusBarHint', sStatusBarHint);
+    langIni.WriteString('FolderIcon-Menu', 'FilesAddCaption', spfmLoadFilesCaption);
+    langIni.WriteString('FolderIcon-Menu', 'FilesAddHint', spfmLoadFilesHint);
+    langIni.WriteString('FolderIcon-Menu', 'FolderAddCaption', spfmLoadFoldersCaption);
+    langIni.WriteString('FolderIcon-Menu', 'FolderAddHint', spfmLoadFoldersHint);
+    langIni.WriteString('FolderIcon-Hint', 'FolderGrayHint', greyFolderHint);
+    langIni.WriteString('FolderIcon-Hint', 'FolderFullHint', fullFolderHint);
+    langIni.WriteString('FolderIcon-Hint', 'FolderNotFullHint', notFullColorFolderHint);
+    langIni.WriteString('FolderIcon-Hint', 'FolderMAX', imgMaxHint);
+    langIni.WriteString('FolderIcon-Hint', 'TargetPrefix', sTargetFolderStrPrefix);
     langIni.Free;
   end;
 end;
 
+procedure TSymLinkForm.HideAll(Sender: TObject);
+begin
+  GridPanel.Visible := false;
+  TopBar.Visible := false;
+  LeftPanel.Width := SymLinkForm.Width;
+  BlinkTimer.Enabled := false;
+  ImgMAX.Visible := false;
+end;
+
+procedure TSymLinkForm.ShowAll(Sender: TObject);
+begin
+  if GridPanel.Visible then
+    LeftPanel.Width := LeftPanel.Width
+  else
+    LeftPanel.Width := 200;
+  GridPanel.Visible := True;
+  TopBar.Visible := True;
+end;
+
 procedure TSymLinkForm.LoadHelp(lang: String);
 begin
-  // try load Help page without exceptions
-  try
-    if FileExists(sHelpFile) then
-      WebBrowser.Navigate(Extractfilepath(paramstr(0)) + sHelpFile)
-    else
-      TabNotebook.Pages.Delete(2);
-  finally
-  end;
 end;
 
 /// ///////////////////////////////////////////////////////////// START FormCreate
@@ -477,10 +540,9 @@ var
   FileArray, LangArray: TStringDynArray;
   m: TMenuItem;
 begin
-  // Add('TEncoding.BigEndianUnicode');
   LoadIni(Self); // load ini-files
   LoadLangIni(currentLang);
-  LoadHelp(currentLang);
+  // LoadHelp(currentLang);
   // try load last file-list without exceptions
   try
     if FileExists(slastFileName) then
@@ -519,13 +581,13 @@ begin
     end;
     for i := 0 to Length(sm.StyleNames) - 1 do
       ThemeBox.Items.Add(sm.StyleNames[i]); // Add list available styles
-    ThemeBox.Sorted := true;
+    ThemeBox.Sorted := True;
     Try // Try losd Style, if error - use built in Windows style
       TStyleManager.TrySetStyle(currentTheme);
     Finally
     End;
     Application.ProcessMessages; // Restore Drag&Drop accept to new Form ID if its change
-    DragAcceptFiles(SymLinkForm.Handle, true); // accept drag files to program
+    DragAcceptFiles(SymLinkForm.Handle, True); // accept drag files to program
   end;
 
   try
@@ -537,7 +599,7 @@ begin
     end;
   finally
   end;
-
+  LeftPanelResize(Self);
 end;
 
 /// ///////////////////////////////////////////////////////////// END FormCreate
@@ -545,6 +607,20 @@ procedure TSymLinkForm.LangBoxChange(Sender: TObject);
 begin
   currentLang := LangBox.Items[LangBox.ItemIndex];
   LoadLangIni(currentLang);
+end;
+
+procedure TSymLinkForm.LeftPanelResize(Sender: TObject);
+begin
+  fImage.Top := ((LeftPanel.Height div 2) - (fImage.Height div 2) + 20);
+  fImage.Left := ((LeftPanel.Width div 2) - (fImage.Width div 2) + 10);
+  ImgMAX.Top := ((LeftPanel.Height div 2) - (ImgMAX.Height div 2) + 20);
+  ImgMAX.Left := ((LeftPanel.Width div 2) - (ImgMAX.Width div 2) + 10);
+  fbw0.Left := fImage.Left;
+  fbw0.Top := fImage.Top;
+  fc0.Left := fImage.Left;
+  fc0.Top := fImage.Top;;
+  fc1.Left := fImage.Left;
+  fc1.Top := fImage.Top;
 end;
 
 procedure TSymLinkForm.SetStyle(style: String);
@@ -565,8 +641,8 @@ end;
 
 procedure TSymLinkForm.SettingsPanelResize(Sender: TObject);
 begin
-  SettingsPanel.Left := ((SymLinkForm.Width div 2) - (SettingsPanel.Width div 2)) - 11;
-  SettingsPanel.Top := ((SymLinkForm.Height div 2) - ((SettingsPanel.Height div 2)) - 75);
+  SettingsPanel.Left := ((SymLinkForm.Width div 2) - (SettingsPanel.Width div 2));
+  SettingsPanel.Top := ((SymLinkForm.Height div 2) - ((SettingsPanel.Height div 2)));
 end;
 
 // change Style
@@ -575,7 +651,7 @@ begin
   TStyleManager.TrySetStyle(ThemeBox.Text, false);
   currentTheme := ThemeBox.Text;
   Application.ProcessMessages; // process the message queue;
-  DragAcceptFiles(SymLinkForm.Handle, true); // restore Dreag&Drop accept
+  DragAcceptFiles(SymLinkForm.Handle, True); // restore Dreag&Drop accept
 end;
 
 procedure TSymLinkForm.FormDestroy(Sender: TObject);
@@ -587,19 +663,19 @@ begin
   SaveIni(Self);
   SaveLangIni(currentLang);
   // Save last fileList
- // 1 variant
-    ListBoxReload(Self);
-    AssignFile(f, slastFileName);
-    Rewrite(f);
-    With ListBox do
-    begin
+  // 1 variant (for internationsl decoding strings)
+  ListBoxReload(Self);
+  AssignFile(f, slastFileName);
+  Rewrite(f);
+  With ListBox do
+  begin
     for a := 0 to Count - 1 do
     begin
-    str := ListBox.Items[a];
-    Writeln(f, str);
+      str := ListBox.Items[a];
+      Writeln(f, str);
     end;
-    end;
-    CloseFile(f);
+  end;
+  CloseFile(f);
 end;
 
 procedure InitLang(lang: String);
@@ -693,7 +769,7 @@ Procedure AddToList(FileName: string);
       begin
         if srs.Name = '..' then
           continue;
-        filefound := true;
+        filefound := True;
         if (srs.Attr and faDirectory) <> 0 then // scan subfsssss....
           ScanDir(path + '\' + srs.Name)
         ELSE // work as file
@@ -874,6 +950,7 @@ begin
     FileGrid.Cells[0, a] := IntToStr(a);
 end;
 
+// Timer event
 procedure TSymLinkForm.msgTimerTimer(Sender: TObject);
 var
   strFolder: string;
@@ -883,30 +960,63 @@ begin
   begin
     ShellExecute.Enabled := false;
     StatusBar.Panels.Items[0].Text := NotAFolder;
-    exit;
+    HideAll(Self);
+    fbw0.Visible := True;
+    fc0.Visible := false;
+    fc1.Visible := false;
+    TopBar.Panels[0].Text := sTargetFolderStrPrefix + ' ---';
   end;
   if strFolder <> FolderStr then
   begin
     ShellExecute.Enabled := false;
     StatusBar.Panels.Items[0].Text := NotAFolder;
+    TopBar.Panels[0].Text := '';
+    HideAll(Self);
+    fbw0.Visible := True;
+    fc0.Visible := false;
+    fc1.Visible := false;
+    TopBar.Panels[0].Text := sTargetFolderStrPrefix + ' ---';
     mNewClick(Self);
     exit;
   end;
   if (strFolder = FolderStr) and (ListBox.Items.Count = 1) then
   begin
-    // StatusBar.Panels.Items[0].Text := FileGrid.Cells[3, 2];
     StatusBar.Panels.Items[0].Text := sNeedFiles;
+    TopBar.Panels[0].Text :=  sTargetFolderStrPrefix + ' ' + ListBox.Items[0];
+    ShowAll(Self);
+    fc0.Visible := True;
+    fbw0.Visible := false;
+    fc1.Visible := false;
     ShellExecute.Enabled := false;
     exit;
   end;
   if (strFolder = FolderStr) and (ListBox.Items.Count > 1) then
   begin
+    TopBar.Panels[0].Text := sTargetFolderStrPrefix + ' ' +  ListBox.Items[0];
     StatusBar.Panels.Items[0].Text := sNeedFiles;
-    ShellExecute.Enabled := true;
+    ShellExecute.Enabled := True;
+    ShowAll(Self);
+    fc1.Visible := True;
+    fc1.Hint := notFullColorFolderHint;
+    fc0.Visible := false;
+    fbw0.Visible := false;
   end;
   if ListBox.Items.Count >= MaxDragFiles then
   begin
     StatusBar.Panels.Items[0].Text := sMaxDragFiles + ' - "' + sShellExecute + '"';
+    TopBar.Panels[0].Text := sTargetFolderStrPrefix + ' ' + ListBox.Items[0];
+    BlinkTimer.Enabled := True;
+    ImgMAX.Visible := NOT ImgMAX.Visible;
+    fc1.Hint := imgMAXHint;
+    ImgMAX.Hint := imgMaxHint;
+    ShowAll(Self);
+    fc1.Visible := True;
+  end
+  else
+  begin
+    BlinkTimer.Enabled := false;
+    ImgMAX.Visible := false;
+    TopBar.Panels[0].Text := sTargetFolderStrPrefix + ' ' + ListBox.Items[0];
   end;
 end;
 
@@ -980,6 +1090,36 @@ begin
   end;
 end;
 
+procedure TSymLinkForm.InsertFiles(Sender: TObject);
+var
+  i: Integer;
+begin
+  if ListBox.Items.Count >= MaxDragFiles then
+    exit;
+  if OpenDialog1.Execute then
+    for i := 0 to OpenDialog1.Files.Count - 1 do
+    begin
+      AddToList(OpenDialog1.Files[i]);
+    end;
+end;
+
+procedure TSymLinkForm.InsertFolder(Sender: TObject);
+var
+  OpenDialog: TFileOpenDialog;
+  SelectedFolder: string;
+begin
+  OpenDialog := TFileOpenDialog.Create(SymLinkForm);
+  try
+    OpenDialog.Options := OpenDialog.Options + [fdoPickFolders];
+    if not OpenDialog.Execute then
+      Abort;
+    SelectedFolder := OpenDialog.FileName;
+    AddToList(SelectedFolder);
+  finally
+    OpenDialog.Free;
+  end;
+end;
+
 procedure TSymLinkForm.FileGridKeyDown(Sender: TObject; var Key: Word; Shift: TShiftState);
 Var
   a: Integer;
@@ -1001,6 +1141,35 @@ begin
     ListBoxReload(Self);
     GridRenumerate(Self);
   end;
+end;
+
+procedure TSymLinkForm.fImageDblClick(Sender: TObject);
+var
+  OpenDialog: TFileOpenDialog;
+  SelectedFolder: string;
+begin
+  OpenDialog := TFileOpenDialog.Create(SymLinkForm);
+  try
+    OpenDialog.Options := OpenDialog.Options + [fdoPickFolders];
+    if not OpenDialog.Execute then
+      Abort;
+    SelectedFolder := OpenDialog.FileName;
+    AddToList(SelectedFolder);
+  finally
+    OpenDialog.Free;
+  end;
+end;
+
+procedure TSymLinkForm.fImageMouseEnter(Sender: TObject);
+begin
+  // curFolderActive:='images\fc0.png';
+  // fImage.Picture.LoadFromFile(Extractfilepath(paramstr(0)) + curFolderActive);
+end;
+
+procedure TSymLinkForm.fImageMouseLeave(Sender: TObject);
+begin
+  // curFolderActive:='images\fbw0.png';
+  // fImage.Picture.LoadFromFile(Extractfilepath(paramstr(0)) + curFolderActive);
 end;
 
 procedure TSymLinkForm.FormKeyDown(Sender: TObject; var Key: Word; Shift: TShiftState);
