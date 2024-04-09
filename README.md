@@ -22,7 +22,7 @@
 > Version v1.3
 > The program interface has been redesigned. The “Help” window has been removed, a “rubbery” part of the program interface has been added, new icons linked to the right-click menu icons, and response to clicks on the icon. The basic principle of operation remains the same. Try to use the interface intuitively (Drag&Drop).
 
-## ![Main Window](img/17.png)
+## ![Main Window](img/17.jpg)
 
 ---
 
