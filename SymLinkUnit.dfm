@@ -173,15 +173,15 @@ object SymLinkForm: TSymLinkForm
     Top = 52
     Width = 5
     Height = 742
-    ExplicitTop = 49
-    ExplicitHeight = 688
+    ExplicitTop = 53
   end
   object StatusBar: TStatusBar
     Left = 0
     Top = 794
     Width = 1163
     Height = 20
-    Hint = '--Double click opens settings'
+    Cursor = crHandPoint
+    Hint = 'Double click opens settings'
     AutoHint = True
     Panels = <
       item
@@ -246,10 +246,14 @@ object SymLinkForm: TSymLinkForm
       end
       item
         SizeStyle = ssAuto
-        Value = 50.000000000000000000
+        Value = 150.000000000000000000
       end
       item
-        SizeStyle = ssAuto
+        SizeStyle = ssAbsolute
+        Value = 100.000000000000000000
+      end
+      item
+        SizeStyle = ssAbsolute
         Value = 100.000000000000000000
       end
       item
@@ -400,6 +404,7 @@ object SymLinkForm: TSymLinkForm
       Top = 2
       Width = 112
       Height = 25
+      Cursor = crHandPoint
       Hint = '-- no lang file --'
       Anchors = []
       Caption = 'Copy file list'
@@ -504,6 +509,7 @@ object SymLinkForm: TSymLinkForm
       Top = 2
       Width = 102
       Height = 25
+      Cursor = crHandPoint
       Anchors = []
       Caption = 'Create links'
       Enabled = False
@@ -550,6 +556,7 @@ object SymLinkForm: TSymLinkForm
       Top = 6
       Width = 7
       Height = 16
+      Margins.Left = 50
       Anchors = []
       AutoSize = True
       Picture.Data = {
@@ -557,8 +564,7 @@ object SymLinkForm: TSymLinkForm
         00100806000000DA8165F0000000097048597300000EC400000EC401952B0E1B
         000000144944415478DA63FCFFFF3F032EC0382A39D42401BE032FE13D52E22F
         0000000049454E44AE426082}
-      ExplicitLeft = 752
-      ExplicitTop = 1
+      ExplicitTop = 7
     end
   end
   object TopBar: TStatusBar
@@ -2985,6 +2991,54 @@ object SymLinkForm: TSymLinkForm
         1E4034963C80682CFD7FE7BD683D7DD1A4FA0000000049454E44AE426082}
       Visible = False
     end
+    object imgGear: TImage
+      Left = 32
+      Top = 462
+      Width = 16
+      Height = 16
+      Cursor = crHandPoint
+      Picture.Data = {
+        0954506E67496D61676589504E470D0A1A0A0000000D49484452000000100000
+        001008060000001FF3FF61000000097048597300000EC400000EC401952B0E1B
+        000002CD4944415478DA6364A01030E292D0D1D657983575F1260E0EF6FFD905
+        49BEC74F1C7D44D000270757635131318195AB96EECDCF2E2B4B4FCEEF646262
+        6458B37149514D7D59BF8F7780EDDFBFBF3F6EDFB1F5128601B6D68EC67DEDB3
+        8EB1B1B2B13D787A6BD5CF1FBF45B4D4759D989819191E3FBBBFE3C58BE76F2C
+        CD6C639859987E1657665A6CD8B8EE028A01AE4EDECEED0D93F630333333FCFC
+        F983E1CF9FDF0C1C9C6C40CCCEC0CAC6CAF0FF1F5031231303C8452D5D35AE0B
+        17CFD983E185697D4B56E868E9877FFBF2858181E93FC39FDF7F5E0908F13388
+        49888A810CFAFAE507C3BDFBB7D778073A84A278415FD750C1C5C92BC448CFDC
+        8D9B8DDFF5EFFFDF0C478E1D6898B364523323D0C6FA8AF61A7FFFA0C63F7FFE
+        323C7A727FEFE1A3FB77ECD9B7630D30601F800DD8BAE6E8756101318D7FFF81
+        0AEE3F62F8C7F8EB654651B4D4A7CF1FFF81E4F9F90418F76F3FFD9C8D9D4D9C
+        91919981999989E13FE39F1B9AFA729A600336AF38724358484CFD3FD0A3F7EF
+        DC6360E3667A999A1F21F9F1E387FF20793E5E7EC61D1B8E3E67656515E7E0E0
+        62000624C3BFFF7F6EE818CB430CD0D6D05774B0F6083135B2F46467E671FCC7
+        F08BE1F6A38B75FD533B5BFEFFFBCF509C5B53E368EBD6040AE037EF5FED3972
+        F4E0AEFD8777AE3973FEC47D94409C3171E96A15599D90278F1E33B073B23070
+        70B3BE606262626065619700691614126278F9FED172DF20E7288C74E0EEECE3
+        525DDCB59B19A8E1FBB79F0C6F5EBD0647250B2B0B0317172783B0983003170F
+        2703285DF44E69745EB464DE3E14032C4C6D0DDB6AA61E07FA93FDF6FDEB4BFF
+        FEFD0B4C487AEE8C8C8C0C2FDF3ED9FFEAE5ABB7C6466621CCCC8CBFEADB4BAC
+        366D597B16231D5818DB19080A0AF16FDFB3E1605A427E514254762F28E1ECD8
+        BFAEBCA1B5BCCBD325D0F5EFBFDFEF77EDDB728660665257D596EB699CB5959D
+        8383B1B623CFE7E4A9A30F48CA8DC402003A77132004E116640000000049454E
+        44AE426082}
+      OnClick = StatusBarDblClick
+    end
+    object pin: TImage
+      Left = 104
+      Top = 212
+      Width = 6
+      Height = 6
+      Picture.Data = {
+        0954506E67496D61676589504E470D0A1A0A0000000D49484452000000060000
+        00060806000000E0CCEF48000000097048597300000EC400000EC401952B0E1B
+        000000344944415478DA630CF81FF2FF26C32D066470FDC1750646B7FF5EFF77
+        31EC41916058F08FAA121CFFF9FEFFD8FB0D55E236030300074D230CD4CB13F9
+        0000000049454E44AE426082}
+      Visible = False
+    end
   end
   object RightPanel: TPanel
     Left = 165
@@ -2999,6 +3053,7 @@ object SymLinkForm: TSymLinkForm
       Width = 996
       Height = 740
       Align = alClient
+      PageIndex = 1
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWindowText
       Font.Height = -11
@@ -3015,6 +3070,20 @@ object SymLinkForm: TSymLinkForm
         Left = 4
         Top = 24
         Caption = 'Files'
+      end
+      object TTabPage
+        Left = 4
+        Top = 24
+        Caption = 'Flat list'
+        object ListBox: TListBox
+          Left = 0
+          Top = 0
+          Width = 988
+          Height = 712
+          Align = alClient
+          ItemHeight = 13
+          TabOrder = 0
+        end
         object FileGrid: TStringGrid
           Left = 0
           Top = 0
@@ -3042,34 +3111,20 @@ object SymLinkForm: TSymLinkForm
           Options = [goFixedVertLine, goFixedHorzLine, goVertLine, goHorzLine, goDrawFocusSelected, goColSizing, goTabs]
           ParentFont = False
           PopupMenu = pMenu
-          TabOrder = 0
+          TabOrder = 1
           OnKeyDown = FileGridKeyDown
           ColWidths = (
             28
             188
-            80
+            40
             71)
-        end
-      end
-      object TTabPage
-        Left = 4
-        Top = 24
-        Caption = 'Flat list'
-        object ListBox: TListBox
-          Left = 0
-          Top = 0
-          Width = 988
-          Height = 712
-          Align = alClient
-          ItemHeight = 13
-          TabOrder = 0
         end
       end
     end
   end
   object SettingsPanel: TRelativePanel
     Left = 350
-    Top = 141
+    Top = 136
     Width = 320
     Height = 120
     ControlCollection = <
@@ -3137,7 +3192,7 @@ object SymLinkForm: TSymLinkForm
       116)
     object LangBox: TComboBox
       Left = 9
-      Top = 25
+      Top = 26
       Width = 146
       Height = 25
       Anchors = []
@@ -3147,7 +3202,7 @@ object SymLinkForm: TSymLinkForm
     end
     object ThemeBox: TComboBox
       Left = 161
-      Top = 29
+      Top = 26
       Width = 145
       Height = 25
       Anchors = []
@@ -3188,6 +3243,7 @@ object SymLinkForm: TSymLinkForm
       Top = 83
       Width = 141
       Height = 22
+      Cursor = crHandPoint
       Anchors = []
       Caption = 'Exit without save'
       OnClick = StatusBarDblClick

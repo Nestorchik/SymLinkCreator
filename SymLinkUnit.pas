@@ -54,9 +54,6 @@ type
     LeftPanel: TPanel;
     Splitter1: TSplitter;
     RightPanel: TPanel;
-    TabNotebook: TTabbedNotebook;
-    FileGrid: TStringGrid;
-    ListBox: TListBox;
     fImage: TImage;
     ImgMAX: TImage;
     BlinkTimer: TTimer;
@@ -67,6 +64,11 @@ type
     pfMenu: TPopupMenu;
     pfmLoadFolders: TMenuItem;
     pfmLoadFiles: TMenuItem;
+    imgGear: TImage;
+    TabNotebook: TTabbedNotebook;
+    ListBox: TListBox;
+    FileGrid: TStringGrid;
+    pin: TImage;
     procedure FormCreate(Sender: TObject);
     procedure mSaveClick(Sender: TObject);
     procedure mNewClick(Sender: TObject);
@@ -599,6 +601,8 @@ begin
     end;
   finally
   end;
+  imgGear.Parent:=StatusBar;
+  pin.Parent:=StatusBar;
   LeftPanelResize(Self);
 end;
 
@@ -621,6 +625,10 @@ begin
   fc0.Top := fImage.Top;;
   fc1.Left := fImage.Left;
   fc1.Top := fImage.Top;
+  imgGear.Top:= 4;
+  imgGear.Left:=SymLinkForm.Width - 50;
+  pin.Top:=9;
+  pin.Left:=SymLinkForm.Width - 65;
 end;
 
 procedure TSymLinkForm.SetStyle(style: String);
@@ -956,6 +964,7 @@ var
   strFolder: string;
 begin
   strFolder := FileGrid.Cells[3, 1];
+//  pin.Visible:= NOT pin.Visible; // blink green dot
   if strFolder.Length = 0 then
   begin
     ShellExecute.Enabled := false;
