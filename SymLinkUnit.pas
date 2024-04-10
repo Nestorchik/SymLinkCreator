@@ -66,9 +66,9 @@ type
     pfmLoadFiles: TMenuItem;
     imgGear: TImage;
     TabNotebook: TTabbedNotebook;
+    pin: TImage;
     ListBox: TListBox;
     FileGrid: TStringGrid;
-    pin: TImage;
     procedure FormCreate(Sender: TObject);
     procedure mSaveClick(Sender: TObject);
     procedure mNewClick(Sender: TObject);
