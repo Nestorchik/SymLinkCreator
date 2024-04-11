@@ -42,7 +42,7 @@ type
     CopyButton: TBitBtn;
     CopyPaths: TCheckBox;
     CopySizes: TCheckBox;
-    ShellExecute: TBitBtn;
+    ShellExecuteButton: TBitBtn;
     SettingsPanel: TRelativePanel;
     LangBox: TComboBox;
     ThemeBox: TComboBox;
@@ -69,6 +69,8 @@ type
     pin: TImage;
     ListBox: TListBox;
     FileGrid: TStringGrid;
+    imgAbout: TImage;
+    aboutFon: TImage;
     procedure FormCreate(Sender: TObject);
     procedure mSaveClick(Sender: TObject);
     procedure mNewClick(Sender: TObject);
@@ -80,7 +82,7 @@ type
     procedure FormKeyDown(Sender: TObject; var Key: Word; Shift: TShiftState);
     procedure mmOpenClick(Sender: TObject);
     procedure mDeleteClick(Sender: TObject);
-    procedure ShellExecuteClick(Sender: TObject);
+    procedure ShellExecuteButtonClick(Sender: TObject);
     procedure msgTimerTimer(Sender: TObject);
     procedure FormDestroy(Sender: TObject);
     procedure ListBoxReload(Sender: TObject);
@@ -103,6 +105,7 @@ type
     procedure ShowAll(Sender: TObject);
     procedure InsertFiles(Sender: TObject);
     procedure InsertFolder(Sender: TObject);
+    procedure imgAboutClick(Sender: TObject);
 
   private
     procedure WMDROPFILES(var Message: TWMDROPFILES); message WM_DROPFILES;
@@ -130,6 +133,7 @@ var
   spfmLoadFilesCaption, spfmLoadFilesHint, spfmLoadFoldersCaption, spfmLoadFoldersHint: string;
   greyFolderHint, notFullColorFolderHint, fullFolderHint, imgMaxHint: string;
   sTargetFolderStrPrefix: string;
+  sAbout: string;
 
 implementation
 
@@ -237,7 +241,7 @@ begin
   sSize := langIni.ReadString('Lang', 'Sise', 'Size');
   sFiles := langIni.ReadString('Lang', 'TabFiles', 'Files');
   sList := langIni.ReadString('Lang', 'TabList', 'Flat list');
-  sHelp := langIni.ReadString('Lang', 'TabHelp', 'Help');
+  sAbout := langIni.ReadString('Lang', 'TabAbout', 'About');
   sMsgInclideFiles := langIni.ReadString('Lang', 'sMsgInclideFiles', 'Include files in them instead of folders?');
   sMsgDlgCaption := langIni.ReadString('Lang', 'sMsgDlgCaption', 'The logic of enabling folders');
   srtUnavail := langIni.ReadString('Lang', 'srtUnavail', 'Unavailable');
@@ -369,8 +373,8 @@ begin
   fc1.Hint := fullFolderHint;
   ImgMAX.Hint := fullFolderHint;
   // init tools lang strings
-  ShellExecute.Caption := sShellExecute;
-  ShellExecute.Hint := sShellExecuteHint;
+  ShellExecuteButton.Caption := sShellExecute;
+  ShellExecuteButton.Hint := sShellExecuteHint;
   CopyPaths.Caption := sCopyPaths;
   CopyPaths.Hint := sCopyPathsHint;
   CopySizes.Caption := sCopySizes;
@@ -389,7 +393,7 @@ begin
   // Names of tabs in notebook
   TabNotebook.Pages[0] := sFiles;
   TabNotebook.Pages[1] := sList;
-  // TabNotebook.Pages[2] := sHelp;
+  TabNotebook.Pages[2] := sAbout;
   // Settings windows initial
   LangLabel.Caption := sLangLabel;
   LangBox.Hint := sLangBoxHint;
@@ -418,7 +422,7 @@ begin
     langIni.WriteString('Lang', 'Sise', sSize);
     langIni.WriteString('Lang', 'TabFiles', sFiles);
     langIni.WriteString('Lang', 'TabList', sList);
-    langIni.WriteString('Lang', 'TabHelp', sHelp);
+    langIni.WriteString('Lang', 'TabAbout', sAbout);
     langIni.WriteString('Lang', 'sMsgInclideFiles', sMsgInclideFiles);
     langIni.WriteString('Lang', 'sMsgDlgCaption', sMsgDlgCaption);
     langIni.WriteString('Lang', 'srtUnavail', srtUnavail);
@@ -513,6 +517,11 @@ begin
   LeftPanel.Width := SymLinkForm.Width;
   BlinkTimer.Enabled := false;
   ImgMAX.Visible := false;
+end;
+
+procedure TSymLinkForm.imgAboutClick(Sender: TObject);
+begin
+  ShellExecute(handle, 'open', 'https://github.com/Nestorchik/SymLinkCreator', nil, nil, SW_SHOW);
 end;
 
 procedure TSymLinkForm.ShowAll(Sender: TObject);
@@ -625,10 +634,12 @@ begin
   fc0.Top := fImage.Top;;
   fc1.Left := fImage.Left;
   fc1.Top := fImage.Top;
-  imgGear.Top:= 4;
+  imgGear.Top:= 6;
   imgGear.Left:=SymLinkForm.Width - 50;
   pin.Top:=9;
   pin.Left:=SymLinkForm.Width - 65;
+  imgAbout.Top:=(RightPanel.Height div 2) - (imgAbout.Height div 2) + 10;
+  imgAbout.Left:=(RightPanel.Width div 2) - (imgAbout.Width div 2) + 40;;
 end;
 
 procedure TSymLinkForm.SetStyle(style: String);
@@ -751,7 +762,7 @@ Procedure AddToList(FileName: string);
         if Rowtoadd > MaxDragFiles then
         begin
           StatusBar.SimpleText := sMaxDragFiles;
-          ShellExecute.Enabled := false;
+          ShellExecuteButton.Enabled := false;
           exit;
         end;
         FileGrid.RowCount := FileGrid.RowCount + 1;
@@ -906,7 +917,7 @@ begin
   DeleteFile('temp.bat');
 end;
 
-procedure TSymLinkForm.ShellExecuteClick(Sender: TObject);
+procedure TSymLinkForm.ShellExecuteButtonClick(Sender: TObject);
 begin
   saveBatFile('');
   WinExec('test.cmd', SW_HIDE);
@@ -967,7 +978,7 @@ begin
 //  pin.Visible:= NOT pin.Visible; // blink green dot
   if strFolder.Length = 0 then
   begin
-    ShellExecute.Enabled := false;
+    ShellExecuteButton.Enabled := false;
     StatusBar.Panels.Items[0].Text := NotAFolder;
     HideAll(Self);
     fbw0.Visible := True;
@@ -977,7 +988,7 @@ begin
   end;
   if strFolder <> FolderStr then
   begin
-    ShellExecute.Enabled := false;
+    ShellExecuteButton.Enabled := false;
     StatusBar.Panels.Items[0].Text := NotAFolder;
     TopBar.Panels[0].Text := '';
     HideAll(Self);
@@ -996,14 +1007,14 @@ begin
     fc0.Visible := True;
     fbw0.Visible := false;
     fc1.Visible := false;
-    ShellExecute.Enabled := false;
+    ShellExecuteButton.Enabled := false;
     exit;
   end;
   if (strFolder = FolderStr) and (ListBox.Items.Count > 1) then
   begin
     TopBar.Panels[0].Text := sTargetFolderStrPrefix + ' ' +  ListBox.Items[0];
     StatusBar.Panels.Items[0].Text := sNeedFiles;
-    ShellExecute.Enabled := True;
+    ShellExecuteButton.Enabled := True;
     ShowAll(Self);
     fc1.Visible := True;
     fc1.Hint := notFullColorFolderHint;
