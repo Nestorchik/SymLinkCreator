@@ -5,11 +5,7 @@ program SymLinkCreator;
 uses
   Forms,
   SymLinkUnit in 'SymLinkUnit.pas' {SymLinkForm},
-  Vcl.Themes,
-  Vcl.Styles,
-  SymLinkINI in 'SymLinkINI.pas';
-
-{Russian language file}
+  Vcl.Themes, Vcl.Styles;
 
 {$R *.res}
 
