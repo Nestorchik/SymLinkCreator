@@ -157,15 +157,15 @@ BAT-файл записывается для совместимости в 866 �
 
 • lang-файл (просто открыто т.к. идет дальнейшая разработка программы с мульти-язычностью)
 
-HTML-файл, поставляемый с программой, изначально содержит краткую справку по ней, и при старте загружается на страницу во вкладке «Help».
+HTML-файл, поставляемый с программой, изначально содержит краткую справку по ней, и при старте загружается на страницу во вкладке «Help». _(был раньше, сейчас удален)_
 
 > In addition, the program creates its own:
 > 
-> • _ ini-file storing program settings, checkboxes, etc. (created automatically)
+> • ini-file storing program settings, checkboxes, etc. (created automatically)
 > 
 > • a list of files of the current project window (loaded automatically at the next start)
 > 
-> • _ lang-file (just open because the program is being further developed with multilingualism)
+> • lang-file (just open because the program is being further developed with multilingualism)
 > 
 > HTML file, supplied with the program, it initially contains a brief help on it, and at startup it is loaded to the page in the "Help" tab.
 
