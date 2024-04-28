@@ -150,15 +150,23 @@ BAT-файл записывается для совместимости в 866 �
 ---
 
 Кроме того, программа создает у себя свои:
+
 • ini-файл, хранящий настройки программы, чек-боксов и т.п. (создается автоматически)
+
 • список файлов текущего окна проекта (загружается при следующем старте автоматически)
+
 • lang-файл (просто открыто т.к. идет дальнейшая разработка программы с мульти-язычностью)
+
 HTML-файл, поставляемый с программой, изначально содержит краткую справку по ней, и при старте загружается на страницу во вкладке «Help».
 
 > In addition, the program creates its own:
+> 
 > • _ ini-file storing program settings, checkboxes, etc. (created automatically)
+> 
 > • a list of files of the current project window (loaded automatically at the next start)
+> 
 > • _ lang-file (just open because the program is being further developed with multilingualism)
+> 
 > HTML file, supplied with the program, it initially contains a brief help on it, and at startup it is loaded to the page in the "Help" tab.
 
 ## ![Main Windows](img/12.jpg)
