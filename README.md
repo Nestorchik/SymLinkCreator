@@ -112,7 +112,7 @@
 
 ---
 
-Списки можно составлять самому, единственное условие, что первая строка списка должна быть адресом папки, а не файла, т.к. она автоматически становится папку «Куда». Длина списка может быть любой, но при загрузке списка в программу, список обрежется на количество строк, установленном в ini-файле. Если программу что-то не устроит в списке файлов, она его не примет.
+Списки можно составлять самому, единственное условие, что первая строка списка должна быть адресом папки, а не файла, т.к. она автоматически становится папкой «Куда». Длина списка может быть любой, но при загрузке списка в программу, список обрежется на количество строк, установленном в ini-файле. Если программу что-то не устроит в списке файлов, она его не примет.
 
 > You can make lists yourself, the only condition is that the first line of the list should be the address of the folder, not the file, because it automatically becomes the "Where" folder. The length of the list can be any, but when loading the list into the program, the list will be cut off by the number of lines set in the ini-file. If the program is not satisfied with something in the file list, it will not accept it.
 
