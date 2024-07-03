@@ -19,10 +19,15 @@
 Версия v1.3.2
 - Добавлена проверка аттрибутов папки-назначения "только для чтения" с выводом предупреждения
 - Изменена логика сохранения списка текущего списка файлов 
+- Light-версия (без стилей, по умолчанию стиль Windows)
 
 > Version v1.3.2
+>
 > Added check of destination folder attributes "read only" with warning output
+>
 > Changed logic for saving current file list
+>
+> Light version (no styles, default Windows style)
 
 ---
 
