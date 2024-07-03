@@ -71,6 +71,7 @@ type
     FileGrid: TStringGrid;
     imgAbout: TImage;
     aboutFon: TImage;
+    ReadOnlyTimer: TTimer;
     procedure FormCreate(Sender: TObject);
     procedure mSaveClick(Sender: TObject);
     procedure mNewClick(Sender: TObject);
@@ -94,19 +95,17 @@ type
     procedure LoadLangIni(lang: string);
     procedure SaveLangIni(lang: string);
     procedure LangBoxChange(Sender: TObject);
-    procedure LoadHelp(lang: String);
     procedure StatusBarDblClick(Sender: TObject);
     procedure SettingsPanelResize(Sender: TObject);
     procedure LeftPanelResize(Sender: TObject);
     procedure fImageMouseEnter(Sender: TObject);
-    procedure fImageMouseLeave(Sender: TObject);
     procedure fImageDblClick(Sender: TObject);
     procedure HideAll(Sender: TObject);
     procedure ShowAll(Sender: TObject);
     procedure InsertFiles(Sender: TObject);
     procedure InsertFolder(Sender: TObject);
     procedure imgAboutClick(Sender: TObject);
-
+    procedure ReadOnlyTimerTimer(Sender: TObject);
   private
     procedure WMDROPFILES(var Message: TWMDROPFILES); message WM_DROPFILES;
     { Private declarations }
@@ -322,7 +321,7 @@ begin
   fullFolderHint := langIni.ReadString('FolderIcon-Hint', 'FolderFullHint', 'Drag files/folders or Right Click to menu');
   notFullColorFolderHint := langIni.ReadString('FolderIcon-Hint', 'FolderNotFullHint', 'Drag files/folders, o Rigth Click to menu.');
   imgMaxHint := langIni.ReadString('FolderIcon-Hint', 'FolderMAX', IntToStr(MaxDragFiles) + ' files max - ini-file settings. Delete some or Run Script.');
-  sTargetFolderStrPrefix:=langIni.ReadString('TopBar-Hint', 'TargetPrefix', 'Target folder >>>');
+  sTargetFolderStrPrefix := langIni.ReadString('TopBar-Hint', 'TargetPrefix', 'Target folder >>>');
 
   langIni.Free;
   // init main menu lang strings
@@ -534,11 +533,6 @@ begin
   TopBar.Visible := True;
 end;
 
-procedure TSymLinkForm.LoadHelp(lang: String);
-begin
-end;
-
-/// ///////////////////////////////////////////////////////////// START FormCreate
 procedure TSymLinkForm.FormCreate(Sender: TObject);
 var
   i, a: Integer;
@@ -571,7 +565,9 @@ begin
         AddToList(s);
         Inc(a);
       end;
-      CloseFile(f)
+      CloseFile(f);
+      sleep(5);
+      DeleteFile(slastFileName);
     end;
   finally
   end;
@@ -598,7 +594,7 @@ begin
     Finally
     End;
     Application.ProcessMessages; // Restore Drag&Drop accept to new Form ID if its change
-    DragAcceptFiles(SymLinkForm.Handle, True); // accept drag files to program
+    DragAcceptFiles(SymLinkForm.handle, True); // accept drag files to program
   end;
 
   try
@@ -610,12 +606,11 @@ begin
     end;
   finally
   end;
-  imgGear.Parent:=StatusBar;
-  pin.Parent:=StatusBar;
+  imgGear.Parent := StatusBar;
+  pin.Parent := StatusBar;
   LeftPanelResize(Self);
 end;
 
-/// ///////////////////////////////////////////////////////////// END FormCreate
 procedure TSymLinkForm.LangBoxChange(Sender: TObject);
 begin
   currentLang := LangBox.Items[LangBox.ItemIndex];
@@ -634,12 +629,12 @@ begin
   fc0.Top := fImage.Top;;
   fc1.Left := fImage.Left;
   fc1.Top := fImage.Top;
-  imgGear.Top:= 6;
-  imgGear.Left:=SymLinkForm.Width - 50;
-  pin.Top:=9;
-  pin.Left:=SymLinkForm.Width - 65;
-  imgAbout.Top:=(RightPanel.Height div 2) - (imgAbout.Height div 2) + 10;
-  imgAbout.Left:=(RightPanel.Width div 2) - (imgAbout.Width div 2) + 40;;
+  imgGear.Top := 6;
+  imgGear.Left := SymLinkForm.Width - 50;
+  pin.Top := 9;
+  pin.Left := SymLinkForm.Width - 65;
+  imgAbout.Top := (RightPanel.Height div 2) - (imgAbout.Height div 2) + 10;
+  imgAbout.Left := (RightPanel.Width div 2) - (imgAbout.Width div 2) + 40;;
 end;
 
 procedure TSymLinkForm.SetStyle(style: String);
@@ -664,13 +659,12 @@ begin
   SettingsPanel.Top := ((SymLinkForm.Height div 2) - ((SettingsPanel.Height div 2)));
 end;
 
-// change Style
 procedure TSymLinkForm.ThemeBoxSelect(Sender: TObject);
 begin
   TStyleManager.TrySetStyle(ThemeBox.Text, false);
   currentTheme := ThemeBox.Text;
   Application.ProcessMessages; // process the message queue;
-  DragAcceptFiles(SymLinkForm.Handle, True); // restore Dreag&Drop accept
+  DragAcceptFiles(SymLinkForm.handle, True); // restore Dreag&Drop accept
 end;
 
 procedure TSymLinkForm.FormDestroy(Sender: TObject);
@@ -683,18 +677,21 @@ begin
   SaveLangIni(currentLang);
   // Save last fileList
   // 1 variant (for internationsl decoding strings)
-  ListBoxReload(Self);
-  AssignFile(f, slastFileName);
-  Rewrite(f);
-  With ListBox do
-  begin
-    for a := 0 to Count - 1 do
+  try
+    ListBoxReload(Self);
+    AssignFile(f, slastFileName);
+    Rewrite(f);
+    With ListBox do
     begin
-      str := ListBox.Items[a];
-      Writeln(f, str);
+      for a := 0 to Count - 1 do
+      begin
+        str := ListBox.Items[a];
+        Writeln(f, str);
+      end;
     end;
+    CloseFile(f);
+  finally
   end;
-  CloseFile(f);
 end;
 
 procedure InitLang(lang: String);
@@ -703,7 +700,6 @@ var
 begin
 end;
 
-// Encoder
 function WinToDos(const s: string): string;
 var
   b: TBytes;
@@ -743,6 +739,34 @@ begin
     if str1[a] <> str2[a] then
       break;
   findtopos := a - 1;
+end;
+
+procedure TSymLinkForm.ReadOnlyTimerTimer(Sender: TObject);
+var
+  checkFile, checkFolder: string;
+  attrs, OK: Integer;
+begin
+  If (FileGrid.RowCount > 0) then
+  begin
+    OK := 3;
+    checkFolder := FileGrid.Cells[1, 1] + FileGrid.Cells[2, 1];
+    checkFile := (FileGrid.Cells[1, 1] + FileGrid.Cells[2, 1] + '\writeCheck_Delete_me.txt');
+    try
+      if DirectoryExists(checkFolder) then
+        Dec(OK);
+      if (GetFileAttributes(pwidechar(widestring(checkFolder))) and FILE_ATTRIBUTE_DIRECTORY) <> 0 then
+        Dec(OK);
+      attrs := FileGetAttr(FileGrid.Cells[1, 1] + FileGrid.Cells[2, 1]);
+      if attrs and faReadOnly > 0 then
+        Dec(OK);
+    finally
+    end;
+    if (OK = 0) then
+    begin
+      MessageBeep(MB_OK);
+      StatusBar.Panels.Items[0].Text := 'CHECK READ ONLY TARGET FOLDER !!! CHECK READ ONLY TARGET FOLDER !!! CHECK READ ONLY TARGET FOLDER !!! CHECK READ ONLY TARGET FOLDER !!!';
+    end;
+  end;
 end;
 
 Procedure AddToList(FileName: string);
@@ -907,7 +931,7 @@ begin
   sList.SaveToFile('temp.bat');
   try
     WinExec('temp.bat', SW_HIDE);
-    ShellExecute(Application.Handle, 'open', PChar(SymLinkForm.ListBox.Items[0]), nil, nil, SW_SHOWNORMAL);
+    ShellExecute(Application.handle, 'open', PChar(SymLinkForm.ListBox.Items[0]), nil, nil, SW_SHOWNORMAL);
   finally
   end;
   // commandLine := batFilePath + '\' + longTimeStamp + '-' + batFileName + batFileExt;
@@ -969,13 +993,12 @@ begin
     FileGrid.Cells[0, a] := IntToStr(a);
 end;
 
-// Timer event
 procedure TSymLinkForm.msgTimerTimer(Sender: TObject);
 var
   strFolder: string;
 begin
   strFolder := FileGrid.Cells[3, 1];
-//  pin.Visible:= NOT pin.Visible; // blink green dot
+  // pin.Visible:= NOT pin.Visible; // blink green dot
   if strFolder.Length = 0 then
   begin
     ShellExecuteButton.Enabled := false;
@@ -1002,7 +1025,7 @@ begin
   if (strFolder = FolderStr) and (ListBox.Items.Count = 1) then
   begin
     StatusBar.Panels.Items[0].Text := sNeedFiles;
-    TopBar.Panels[0].Text :=  sTargetFolderStrPrefix + ' ' + ListBox.Items[0];
+    TopBar.Panels[0].Text := sTargetFolderStrPrefix + ' ' + ListBox.Items[0];
     ShowAll(Self);
     fc0.Visible := True;
     fbw0.Visible := false;
@@ -1012,7 +1035,7 @@ begin
   end;
   if (strFolder = FolderStr) and (ListBox.Items.Count > 1) then
   begin
-    TopBar.Panels[0].Text := sTargetFolderStrPrefix + ' ' +  ListBox.Items[0];
+    TopBar.Panels[0].Text := sTargetFolderStrPrefix + ' ' + ListBox.Items[0];
     StatusBar.Panels.Items[0].Text := sNeedFiles;
     ShellExecuteButton.Enabled := True;
     ShowAll(Self);
@@ -1027,7 +1050,7 @@ begin
     TopBar.Panels[0].Text := sTargetFolderStrPrefix + ' ' + ListBox.Items[0];
     BlinkTimer.Enabled := True;
     ImgMAX.Visible := NOT ImgMAX.Visible;
-    fc1.Hint := imgMAXHint;
+    fc1.Hint := imgMaxHint;
     ImgMAX.Hint := imgMaxHint;
     ShowAll(Self);
     fc1.Visible := True;
@@ -1183,12 +1206,6 @@ end;
 procedure TSymLinkForm.fImageMouseEnter(Sender: TObject);
 begin
   // curFolderActive:='images\fc0.png';
-  // fImage.Picture.LoadFromFile(Extractfilepath(paramstr(0)) + curFolderActive);
-end;
-
-procedure TSymLinkForm.fImageMouseLeave(Sender: TObject);
-begin
-  // curFolderActive:='images\fbw0.png';
   // fImage.Picture.LoadFromFile(Extractfilepath(paramstr(0)) + curFolderActive);
 end;
 
